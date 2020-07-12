@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{title}}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/index.css' />
-    <script type="module" src="/script/popup.js"></script>
-  </head>
-  <body>
-    {{> navMain}}
-    {{> popup}}
-    {{{body}}}
 
-  </body>
+<head>
+  <title>{{title}}</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  <script type="module" src="./../script/popup.js"></script>
+</head>
+
+<body>
+  {{> navMain}}
+  {{> popup}}
+  {{{ body }}}
+
+</body>
+
 </html>
