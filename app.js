@@ -11,7 +11,7 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-//const dev-mode = true;
+const devMode = true;
 const logger = require("morgan");
 
 // config logger (for debug)
@@ -32,7 +32,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     cookie: { maxAge: 60000 }, // in millisec
     store: new MongoStore({
-      mongooseConnection: mongoose.connection, // you can store session infos in mongodb :)
+      mongooseConnection: mongoose.connection, // we store session infos in mongodb
       ttl: 24 * 60 * 60, // 1 day
     }),
     saveUninitialized: true,
@@ -43,6 +43,13 @@ app.use(
 app.use(flash());
 
 // MIDDLEWARES
+if (devMode === true) {
+  app.use(require("./middlewares/devMode")); // triggers dev mode during dev phase
+  app.use(require("./middlewares/debugSessionInfos")); // displays session debug
+}
+
+app.use(require("./middlewares/exposeLoginStatus"));
+app.use(require("./middlewares/exposeFlashMessage"));
 
 // routers
 app.use("/", require("./routes/index"));
