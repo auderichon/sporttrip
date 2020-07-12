@@ -1,57 +1,50 @@
 require("dotenv").config();
-require("./config/dbconfig");
+require("./config/dbconfig"); // db setup
 require("./helpers/hbs");
 
 // base dependencies
 const express = require("express");
+const app = express();
+const cookieParser = require("cookie-parser");
+const flash = require("connect-flash");
 const hbs = require("hbs");
 const mongoose = require("mongoose");
-const createError = require("http-errors");
 const session = require("express-session");
-const path = require("path");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
 const MongoStore = require("connect-mongo")(session);
-
-const indexRouter = require("./routes/index");
-const usersRouter = require("./routes/users");
-
-const app = express();
+//const dev-mode = true;
+const logger = require("morgan");
 
 // config logger (for debug)
 app.use(logger("dev"));
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
+// initial config
 app.set("view engine", "hbs");
+app.set("views", __dirname + "/views");
+app.use(express.static(__dirname + "/public"));
 hbs.registerPartials(__dirname + "/views/partials");
-
-app.use(logger("dev"));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
+// SESSION SETUP
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 60000 }, // in millisec
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection, // you can store session infos in mongodb :)
+      ttl: 24 * 60 * 60, // 1 day
+    }),
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
-
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
+app.use(flash());
 
 // MIDDLEWARES
 
 // routers
+app.use("/", require("./routes/index"));
 
 module.exports = app;
