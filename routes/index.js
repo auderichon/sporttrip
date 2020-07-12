@@ -9,7 +9,9 @@ router.get("/", (req, res, next) => {
     .find({
       day: { $gte: today },
     })
-    .then((activities) => res.render("index", { activities }))
+    .then((activities) =>
+      res.render("index", { title: "SportTrip", activities })
+    )
     .catch(next);
 });
 

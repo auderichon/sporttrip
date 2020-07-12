@@ -49,9 +49,10 @@ if (devMode === true) {
 }
 
 app.use(require("./middlewares/exposeLoginStatus"));
-app.use(require("./middlewares/exposeFlashMessage"));
+//app.use(require("./middlewares/exposeFlashMessage"));
 
 // routers
 app.use("/", require("./routes/index"));
+app.use("/activity", require("./routes/activities"));
 
 module.exports = app;
