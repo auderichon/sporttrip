@@ -1,9 +1,16 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+const activityModel = require("../models/Activities");
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", (req, res, next) => {
+  let today = new Date();
+  activityModel
+    .find({
+      day: { $gte: today },
+    })
+    .then((activities) => res.render("index", { activities }))
+    .catch(next);
 });
 
 module.exports = router;
