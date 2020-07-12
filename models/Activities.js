@@ -4,11 +4,8 @@ const Schema = mongoose.Schema;
 const ActivitySchema = new Schema({
   activityName: String,
   date: {
-    day: Number,
-    month: Number,
-    year: Number,
-    hour: Number,
-    minutes: Number,
+    day: String,
+    time: String,
   },
   location: {
     city: String,
