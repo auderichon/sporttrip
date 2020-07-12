@@ -1,5 +1,5 @@
 require("dotenv").config();
-require("./config/mongodb");
+require("./config/dbconfig");
 require("./helpers/hbs");
 
 // base dependencies
