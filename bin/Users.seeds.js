@@ -1,6 +1,6 @@
-require("dotenv").config();
-require("./../config/dbconfig");
-const UserModel = require("./../models/Users");
+// require("dotenv").config();
+// require("./../config/dbconfig");
+// const UserModel = require("./../models/Users");
 
 const UsersList = [
   {
@@ -10,11 +10,11 @@ const UsersList = [
     password: "1234",
     sports: [
       {
-        sport: "5f0aeecdc62ed51ba87a6f68", // Cycling
+        sport: "Cycling", // Cycling
         level: "intermediate",
       },
       {
-        sport: "5f0aeecdc62ed51ba87a6f69", // Running
+        sport: "Running / Trail", // Running
         level: "pro",
       },
     ],
@@ -24,30 +24,33 @@ const UsersList = [
   {
     firstName: "Mala",
     lastName: "Mine",
-    email: "foo@bar.baz",
+    email: "bar@foo.baz",
     password: "1234",
-    sports: {
-      sport: "5f0aeecdc62ed51ba87a6f6a", // Swimming
+    sports: [{
+      sport: "Swimming / Diving", // Swimming
       level: "intermediate",
-    },
-
+    }],
     birthday: "1980-01-01",
     stravaLink: "https://www.strava.com",
   },
   {
     firstName: "Audrey",
     lastName: "Bel",
-    email: "foo@bar.baz",
+    email: "baz@bar.foo",
     password: "1234",
-    sports: {
-      sport: "5f0aeecdc62ed51ba87a6f6b", // Sailing
+    sports: [{
+      sport: "Sailing", // Sailing
       level: "beginner",
-    },
+    }],
     birthday: "1980-01-01",
     stravaLink: "https://www.strava.com",
   },
 ];
 
+module.exports = UsersList ;
+
+/* 
 UserModel.create(UsersList)
   .then((dbRes) => console.log(dbRes))
   .catch((dbErr) => console.error(dbErr));
+ */

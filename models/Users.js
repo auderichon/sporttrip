@@ -32,21 +32,6 @@ const UserSchema = new Schema({
          },
       },
    ],
-   createdActivities: {
-      type: Schema.Types.ObjectId,
-      ref: "activities", // TODO: VERIFY COLLECTION NAME
-      // default: "User has not created an activity yet",
-   },
-   activitiesParticipation: {
-      type: Schema.Types.ObjectId,
-      ref: "activities", // TODO: VERIFY COLLECTION NAME
-      // default: "User has not participated in an activity yet",
-   },
-   reviews: {
-      type: Schema.Types.ObjectId,
-      ref: "reviews",
-      // default: "No reviews yet",
-   },
    picture: {
       type: String,
       default: "https://cdn.onlinewebfonts.com/svg/img_258083.png",

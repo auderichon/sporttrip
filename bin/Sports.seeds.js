@@ -1,6 +1,6 @@
-require("dotenv").config();
-require("./../config/dbconfig");
-const sportModel = require("./../models/Sports");
+// require("dotenv").config();
+// require("./../config/dbconfig");
+// const sportModel = require("./../models/Sports");
 
 const sportsList = [
   {
@@ -55,7 +55,11 @@ const sportsList = [
   },
 ];
 
+module.exports = sportsList ;
+
+/* 
 sportModel
   .create(sportsList)
   .then((dbRes) => console.log(dbRes))
   .catch((dbErr) => console.error(dbErr));
+ */
