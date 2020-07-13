@@ -1,1 +1,97 @@
 <h2>Update activity</h2>
+
+<div>
+    <form action="/activity/update" method="post">
+        {{!-- message if problem in creation (lack of info for instance) --}}
+        {{!-- {{#if msg}}
+    <p class="msg {{msg.status}}">{{msg.txt}}</p>
+    {{/if}} --}}
+        <h3>Update your activity before sharing it with other athletes</h3>
+
+        <div class="form-item">
+            <label for="activity-name">Activity name</label>
+            <input id="activity-name" name="activity-name" type="text" placeholder="Your activity's name"
+                value="{{ this.name }}" required>
+        </div>
+
+        <div class="form-item">
+            <label for="activity-date">Starting date</label>
+            <input id="activity-date" name="activity-date" type="datetime-local" required>
+        </div>
+
+        <div class="check-input-row">
+            <div>
+                <label for="activity-city">Meeting point</label>
+                <input id="activity-city" name="activity-city" type="text" placeholder="Starting point of your activity"
+                    value="{{ this.city }}" required>
+            </div>
+
+            <div>
+                <label for="activity-country">Country</label>
+                <input id="activity-country" name="activity-country" type="text" placeholder="Country"
+                    value="{{ this.country }}" required>
+            </div>
+        </div>
+
+        <div class="form-item">
+            <p>Sport: {{ this.sport }}</p>
+        </div>
+
+        <div class="check-input-row">
+            <p>Level required from the participants: </p>
+
+            {{!-- précocher {{ this.level }}  --}}
+            <div>
+                <input type="checkbox" id="level-all" name="level-all" value="all">
+                <label for="level-all">all levels accepted</label>
+            </div>
+            <div>
+                <input type="checkbox" id="level-beginner" name="level-beginner" value="beginner">
+                <label for="level-beginner">beginner</label>
+            </div>
+            <div>
+                <input type="checkbox" id="level-intermediate" name="level-intermediate" value="intermediate">
+                <label for="level-intermediate">intermediate</label>
+            </div>
+            <div>
+                <input type="checkbox" id="level-experienced" name="level-experienced" value="experienced">
+                <label for="level-experienced">experienced</label>
+            </div>
+            <div>
+                <input type="checkbox" id="level-professional" name="level-professional" value="professional">
+                <label for="level-professional">professional</label>
+            </div>
+        </div>
+
+        {{!-- préselect {{ this.duration }}  --}}
+        <div class="form-item">
+            <label for="activity-duration">Activity duration:</label>
+            <select id="activity-duration" name="activity-duration" required>
+                <option selected>Choose...</option>
+                <option value="1/2 day">1/2 day</option>
+                <option value="full day">full day</option>
+                <option value="2 days">2 days</option>
+                <option value="3 days">3 days</option>
+                <option value="4 to 6 days">4 to 6 days</option>
+                <option value="1 week">1 week</option>
+                <option value=">1 week">>1 week</option>
+            </select>
+        </div>
+
+        <div class="form-item">
+            <label for="maxParticipants">Maximum number of participants accepted</label>
+            <input id="maxParticipants" name="maxParticipants" type="number" value="{{ this.maxNbParticipants }}"
+                required>
+        </div>
+
+        <div class="form-item">
+            <label for="activity-description">Give the other athletes more details about your activity</label>
+            <input id="activity-description" name="activity-description" type="textarea" value=""
+                placeholder="Here describe your activity to other athletes, be specific of what you expect from them, if you have the possibility to lend them gear or if they should bring their own, if you are flexible in terms of dates and times... anything you think useful !"
+                value={{ this.description }} required>
+        </div>
+
+        <button>Update activity</button>
+    </form>
+
+</div>
