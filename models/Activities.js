@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 const ActivitySchema = new Schema({
   activityName: String,
-  date: {
-    day: String,
-    time: String,
-  },
+  date: Date,
   location: {
     city: String,
     country: String,
@@ -24,7 +21,6 @@ const ActivitySchema = new Schema({
     enum: [
       "1/2 day",
       "full day",
-      "1 day",
       "2 days",
       "3 days",
       "4 to 6 days",
