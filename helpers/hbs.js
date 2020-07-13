@@ -75,3 +75,7 @@ hbs.registerHelper("format-date", function (date) {
 hbs.registerHelper("format-time", function (time) {
   return moment(time).format("hh:mm");
 });
+
+hbs.registerHelper("format-date-input", function (time) {
+  return moment(time).format("yyyy-MM-ddThh:mm");
+});

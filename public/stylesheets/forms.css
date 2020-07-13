@@ -56,6 +56,8 @@ textarea {
   width: 100%;
   height: 200px;
   overflow: auto;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
 button {
