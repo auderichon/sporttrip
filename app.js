@@ -13,6 +13,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const devMode = true;
 const logger = require("morgan");
+// const io = require('socket.io')(app);
 
 // config logger (for debug)
 app.use(logger("dev"));
@@ -25,6 +26,9 @@ hbs.registerPartials(__dirname + "/views/partials");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+
+//SETUP CHAT
+
 
 // SESSION SETUP
 app.use(
