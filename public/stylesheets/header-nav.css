@@ -1,45 +1,47 @@
-*{
-  padding: 0%;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
-}
-nav{
-  background-color: rgb(57, 97, 138);
-  height: 70px;
+@import "./variables.css";
+
+nav {
+  background-color: var(--color-main);
+  height: var(--nav-height);
   width: 100%;
 }
 
-label.logo{
-  color: whitesmoke;
+label.logo {
   font-size: 35px;
   line-height: 80px;
   padding: 0 50px;
   font-weight: bold;
-
 }
-label a{
+
+label a {
   color: white;
 }
 
-nav ul{
+nav ul {
   float: right;
   margin-right: 20px;
 }
-nav ul li{
+
+nav ul li {
   display: inline-block;
   line-height: 80px;
   margin: 0 5px;
 }
-nav ul li a{
-  color: whitesmoke;
-  font-size: 17px;
+
+nav ul li a {
   padding: 7px 13px;
   border-radius: 3px;
   text-transform: uppercase;
 }
-a.active,a:hover{
+
+a.active,
+a:hover {
   background-color: lightgrey;
-  transition: .5s;
+  transition: 0.5s;
+}
+
+@media (max-width: 1000px) {
+  nav ul li a {
+    font-size: 0.8rem;
+  }
 }

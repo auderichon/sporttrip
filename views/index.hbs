@@ -1,2 +1,19 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div id="home">
+    <header>
+        <h1>Find partners for <br>your next sports trip!</h1>
+    </header>
+    <div id="home-listing">
+        <div id="filters">
+            <h4>Filters:</h4>
+        </div>
+        <div id="activity-list">
+            {{#each activities}}
+            <div class="each-activity">
+                <h4>{{ this.activityName }}</h4>
+                {{!-- <p>by {{ this.user.name }}</p> --}}
+                <p>{{ format-date this.date }}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

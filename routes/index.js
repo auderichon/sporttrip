@@ -6,12 +6,16 @@ const activityModel = require("../models/Activities");
 router.get("/", (req, res, next) => {
   let today = new Date();
   activityModel
-    .find({
-      date: { $gte: today },
-    })
+    .find //{
+    //   date: { $gte: today }, + classer par date
+    // }
+    ()
     .then((activities) => {
       console.log(activities);
-      res.render("index", { title: "SportTrip", activities });
+      res.render("index", {
+        title: "SportTrip: find partners for your next sports trip",
+        activities,
+      });
     })
     .catch(next);
 });

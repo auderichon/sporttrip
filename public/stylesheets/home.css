@@ -1,0 +1,47 @@
+@import "./variables.css";
+
+#home header {
+  background-image: url("/images/home-pic.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 50%;
+  position: relative;
+  height: 450px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 100%;
+  text-align: center;
+}
+
+#home-listing {
+  display: flex;
+  margin-top: 20px;
+}
+
+#filters {
+  width: 20%;
+  height: 1000px; /*à changer quand on aura rempli les filtres */
+  background-color: var(--color-main);
+}
+
+#filters h4 {
+  font-weight: normal;
+}
+
+#activity-list {
+  display: flex;
+  border: 1px;
+  width: 80%;
+  padding: 3%;
+}
+
+.each-activity {
+  color: var(--color-main);
+}
