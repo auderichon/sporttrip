@@ -7,11 +7,12 @@ router.get("/", (req, res, next) => {
   let today = new Date();
   activityModel
     .find({
-      day: { $gte: today },
+      date: { $gte: today },
     })
-    .then((activities) =>
-      res.render("index", { title: "SportTrip", activities })
-    )
+    .then((activities) => {
+      console.log(activities);
+      res.render("index", { title: "SportTrip", activities });
+    })
     .catch(next);
 });
 

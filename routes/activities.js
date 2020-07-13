@@ -1,6 +1,6 @@
 const express = require("express"); // import express in this module
 const router = new express.Router(); // create an app sub-module (router)
-// const activityModel = require("../models/Activities");
+const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
 // const userModel = require("../models/Users");
 
@@ -21,7 +21,7 @@ router.get("/create", (req, res, next) => {
   sportModel
     .find()
     .then((sports) => {
-      res.render("activity/create-activity", { sports });
+      res.render("activity/create-activity", { title: "New activity", sports });
     })
     .catch(next);
 });
@@ -36,7 +36,36 @@ router.get("/create", (req, res, next) => {
 // });
 
 router.post("/create", (req, res, next) => {
-  // res.render("activity/create-activity");
+  const {
+    activityName,
+    date,
+    city,
+    country,
+    sport,
+    requiredLevel,
+    duration,
+    maxNbParticipants,
+    description,
+  } = req.body;
+
+  activityModel
+    .create({
+      activityName,
+      date,
+      city,
+      country,
+      sport,
+      requiredLevel,
+      duration,
+      maxNbParticipants,
+      description,
+      creator: req.session.currentUser._id,
+    })
+    .then(() => {
+      req.flash("success", "activity successfully created");
+      res.redirect("/");
+    })
+    .catch(next);
 });
 
 module.exports = router;
