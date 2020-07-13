@@ -1,6 +1,6 @@
 <h2>Create Activity</h2>
 
-<div>
+<div id="form-container">
     <form action="/activity/create" method="post">
         {{!-- message if problem in creation (lack of info for instance) --}}
         {{!-- {{#if msg}}
@@ -16,17 +16,17 @@
 
         <div class="form-item">
             <label for="activity-date">Starting date</label>
-            <input id="activity-date" name="activity-date" type="datetime-local" required>
+            <input class="input-small" id="activity-date" name="activity-date" type="datetime-local" required>
         </div>
 
-        <div class="form-row form-item">
-            <div class="form-group col-md-6">
+        <div class="check-input-row">
+            <div id="input-activity-city">
                 <label for="activity-city">Meeting point</label>
                 <input id="activity-city" name="activity-city" type="text" placeholder="Starting point of your activity"
                     value="La Chapelle en Vercors" required>
             </div>
 
-            <div class="form-group col-md-6">
+            <div>
                 <label for="activity-country">Country</label>
                 <input id="activity-country" name="activity-country" type="text" placeholder="Country" value="France"
                     required>
@@ -35,7 +35,7 @@
 
         <div class="form-item">
             <label for="activity-sport">Sport</label>
-            <select id="activity-sport" name="activity-sport" required>
+            <select class="input-small" id="activity-sport" name="activity-sport" required>
                 <option selected>Choose...</option>
                 {{#each sports}}
                 <option value="{{ this.name }}">{{ this.name }}</option>
@@ -45,31 +45,36 @@
 
         <div class="check-input-row">
             <p>Level required from the participants: </p>
-            <div>
-                <input type="checkbox" id="level-all" name="level-all" value="all">
-                <label for="level-all">all levels accepted</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-beginner" name="level-beginner" value="beginner">
-                <label for="level-beginner">beginner</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-intermediate" name="level-intermediate" value="intermediate">
-                <label for="level-intermediate">intermediate</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-experienced" name="level-experienced" value="experienced">
-                <label for="level-experienced">experienced</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-professional" name="level-professional" value="professional">
-                <label for="level-professional">professional</label>
+            <div class="checkbox-list">
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-all" name="level-all" value="all">
+                    <label class="checkbox-label" for="level-all">all levels accepted</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-beginner" name="level-beginner" value="beginner">
+                    <label class="checkbox-label" for="level-beginner">beginner</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-intermediate" name="level-intermediate"
+                        value="intermediate">
+                    <label class="checkbox-label" for="level-intermediate">intermediate</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-experienced" name="level-experienced"
+                        value="experienced">
+                    <label class="checkbox-label" for="level-experienced">experienced</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-professional" name="level-professional"
+                        value="professional">
+                    <label class="checkbox-label" for="level-professional">professional</label>
+                </div>
             </div>
         </div>
 
         <div class="form-item">
             <label for="activity-duration">Activity duration:</label>
-            <select id="activity-duration" name="activity-duration" required>
+            <select class="input-small" id="activity-duration" name="activity-duration" required>
                 <option selected>Choose...</option>
                 <option value="1/2 day">1/2 day</option>
                 <option value="full day">full day</option>
@@ -83,14 +88,14 @@
 
         <div class="form-item">
             <label for="maxParticipants">Maximum number of participants accepted</label>
-            <input id="maxParticipants" name="maxParticipants" type="number" value="1" required>
+            <input class="input-small" id="maxParticipants" name="maxParticipants" type="number" value="1" required>
         </div>
 
         <div class="form-item">
             <label for="activity-description">Give the other athletes more details about your activity</label>
-            <input id="activity-description" name="activity-description" type="textarea" value=""
-                placeholder="Here describe your activity to other athletes, be specific of what you expect from them, if you have the possibility to lend them gear or if they should bring their own, if you are flexible in terms of dates and times... anything you think useful !"
-                required>
+            <textarea id="activity-description" name="activity-description" value=""
+                placeholder="Here describe your activity: be specific of what you expect from participants, if you have the possibility to lend them gear or if they should bring their own, if you are flexible in terms of dates and times... anything you think useful !"
+                required></textarea>
         </div>
 
         <button>Create activity</button>
