@@ -1,47 +1,14 @@
-{{!-- HEADER --}}
+<nav>
+  <label class="logo">
 
-{{!-- END HEADER --}}
-<div class="big-container">
-    <header class="header">
-        <nav class="nav-wrapper flexed-item">
-            <div class="nav-link-wrapper flexed-item">
-                <div class="nav-logo">
-                    <a href="/index" class="flexed-item">
-                        <span class="logo-item circle"></span>
-                        <h2 class="logo-item">SportTrip</h2>
-                    </a>
-                </div>
-
-                <ul>
-                    <li class="nav-item animated-link nav-item-admin">
-                        <a href="/partials/pop-up" class="button">isLoggedIn</a>
-                    </li>
-                    {{!-- {{#if isLoggedIn}} --}}
-                    <li class="nav-item animated-link nav-item-admin">
-                        <a href="/user/user-profile">Profile</a>
-                    </li>
-                    <li class="nav-item animated-link nav-item-admin">
-                        <a href="/activity/create-activity">Create activity</a>
-                    </li>
-                    <li class="nav-item animated-link nav-item-admin">
-                        <a href="/activity/activity-update">update activity</a>
-                    </li>
-                    {{!-- {{/if}} --}}
-                </ul>
-            </div>
-            <div class="flexed-item nav-end">
-                {{!-- {{#unless isLoggedIn}} --}}
-                <a href="partials/signin" id="nav_login" class="button-ternary flexed-item nav-end-item">
-                    <span class="btn-text">Sign in</span>
-                </a>
-                {{!-- {{/unless}}
-        {{#if isLoggedIn}} --}}
-                <a href="/index" id="nav_logout" class="button-ternary flexed-item nav-end-item">
-                    <span class="btn-text">Log out</span>
-                </a>
-                {{!-- {{/if}} --}}
-                <i class="fas fa-shopping-cart shop-cart-icon nav-end-item"></i>
-            </div>
-        </nav>
-    </header>
-</div>
+  <a href="/">SportTrip</a>
+  </label>
+<ul>
+ 
+  <li><a href="/activity/create">Create-activity</a></li>
+   <li><a href="/user/activities">My-activity</a></li>
+      <li><a href="/user-profile">Profile</a></li>
+  <li><a href="/signup">Sign Up</a></li>
+  <li><a href="">LogIn</a></li>
+</ul>
+</nav>
