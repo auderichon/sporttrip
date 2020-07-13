@@ -1,12 +1,12 @@
 <h2>Update activity</h2>
 
-<div>
+<div id="form-container">
     <form action="/activity/update" method="post">
         {{!-- message if problem in creation (lack of info for instance) --}}
         {{!-- {{#if msg}}
     <p class="msg {{msg.status}}">{{msg.txt}}</p>
     {{/if}} --}}
-        <h3>Update your activity before sharing it with other athletes</h3>
+        <h3>Update your activity before sharing it with other athletes:</h3>
 
         <div class="form-item">
             <label for="activity-name">Activity name</label>
@@ -16,7 +16,7 @@
 
         <div class="form-item">
             <label for="activity-date">Starting date</label>
-            <input id="activity-date" name="activity-date" type="datetime-local" required>
+            <input class="input-small" id="activity-date" name="activity-date" type="datetime-local" required>
         </div>
 
         <div class="check-input-row">
@@ -41,32 +41,37 @@
             <p>Level required from the participants: </p>
 
             {{!-- précocher {{ this.level }}  --}}
-            <div>
-                <input type="checkbox" id="level-all" name="level-all" value="all">
-                <label for="level-all">all levels accepted</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-beginner" name="level-beginner" value="beginner">
-                <label for="level-beginner">beginner</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-intermediate" name="level-intermediate" value="intermediate">
-                <label for="level-intermediate">intermediate</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-experienced" name="level-experienced" value="experienced">
-                <label for="level-experienced">experienced</label>
-            </div>
-            <div>
-                <input type="checkbox" id="level-professional" name="level-professional" value="professional">
-                <label for="level-professional">professional</label>
+            <div class="checkbox-list">
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-all" name="level-all" value="all">
+                    <label for="level-all">all levels accepted</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-beginner" name="level-beginner" value="beginner">
+                    <label for="level-beginner">beginner</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-intermediate" name="level-intermediate"
+                        value="intermediate">
+                    <label for="level-intermediate">intermediate</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-experienced" name="level-experienced"
+                        value="experienced">
+                    <label for="level-experienced">experienced</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-professional" name="level-professional"
+                        value="professional">
+                    <label for="level-professional">professional</label>
+                </div>
             </div>
         </div>
 
         {{!-- préselect {{ this.duration }}  --}}
         <div class="form-item">
             <label for="activity-duration">Activity duration:</label>
-            <select id="activity-duration" name="activity-duration" required>
+            <select class="input-small" id="activity-duration" name="activity-duration" required>
                 <option selected>Choose...</option>
                 <option value="1/2 day">1/2 day</option>
                 <option value="full day">full day</option>
@@ -80,15 +85,15 @@
 
         <div class="form-item">
             <label for="maxParticipants">Maximum number of participants accepted</label>
-            <input id="maxParticipants" name="maxParticipants" type="number" value="{{ this.maxNbParticipants }}"
-                required>
+            <input class="input-small" id="maxParticipants" name="maxParticipants" type="number"
+                value="{{ this.maxNbParticipants }}" required>
         </div>
 
         <div class="form-item">
             <label for="activity-description">Give the other athletes more details about your activity</label>
-            <input id="activity-description" name="activity-description" type="textarea" value=""
+            <textarea id="activity-description" name="activity-description" type="textarea" value=""
                 placeholder="Here describe your activity to other athletes, be specific of what you expect from them, if you have the possibility to lend them gear or if they should bring their own, if you are flexible in terms of dates and times... anything you think useful !"
-                value={{ this.description }} required>
+                value={{ this.description }} required></textarea>
         </div>
 
         <button>Update activity</button>

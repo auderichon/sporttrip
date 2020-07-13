@@ -12,10 +12,12 @@ const ActivitySchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "sport",
   },
-  requiredLevel: {
-    type: String,
-    enum: ["all", "beginner", "intermediate", "experienced", "professional"],
-  },
+  requiredLevel: [
+    {
+      type: String,
+      enum: ["all", "beginner", "intermediate", "experienced", "professional"],
+    },
+  ],
   duration: {
     type: String,
     enum: [
