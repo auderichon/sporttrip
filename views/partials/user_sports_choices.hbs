@@ -1,0 +1,56 @@
+        <div class="form-item">
+            <label for="activity-sport">Sport</label>
+            <select class="user-sport"
+                    id="user-sport"
+                    name="sport"
+                    required>
+                <option selected>Choose...</option>
+                {{#each sports}}
+                <option value="{{ this._id }}">{{ this.name }}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="check-input-row">
+            <p>Level </p>
+            <div class="checkbox-list">
+                <div class="checkbox-group">
+                    <input class="checkbox"
+                           type="checkbox"
+                           id="level-beginner"
+                           name="level"
+                           value="beginner"
+                           checked>
+                    <label class="checkbox-label"
+                           for="level-beginner">beginner</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox"
+                           type="checkbox"
+                           id="level-intermediate"
+                           name="level"
+                           value="intermediate">
+                    <label class="checkbox-label"
+                           for="level-intermediate">intermediate</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox"
+                           type="checkbox"
+                           id="level"
+                           name="level"
+                           value="experienced">
+                    <label class="checkbox-label"
+                           for="level-experienced">experienced</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox"
+                           type="checkbox"
+                           id="level-professional"
+                           name="level"
+                           value="professional">
+                    <label class="checkbox-label"
+                           for="level-professional">professional</label>
+                </div>
+            </div>
+        </div>
+
+        <div> <b>FAIRE APPARAITRE LE NOM DU SPORT+LEVEL EN AJAX ICI ==> CSS A REVOIR</b></div>

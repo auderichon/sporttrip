@@ -1,0 +1,82 @@
+<h2>Create your Sportrip account</h2>
+
+<div id="form-container">
+    <form action="/activity/create"
+          method="post"
+          enctype="multipart/form-data">
+        {{!-- message if problem in creation (lack of info for instance) --}}
+        {{!-- {{#if msg}}
+    <p class="msg {{msg.status}}">{{msg.txt}}</p>
+    {{/if}} --}}
+
+        <h3>Personal infos</h3>
+
+        <div class="form-item">
+            <label for="user-lastname">Lastname</label>
+            <input id="user-lastname"
+                   name="lastName"
+                   type="text"
+                   placeholder="Your lastname"
+                   value="Foo"
+                   required>
+        </div>
+        <div class="form-item">
+            <label for="user-firstname">Firstname</label>
+            <input id="user-firstname"
+                   name="firstName"
+                   type="text"
+                   placeholder="Your firstname"
+                   value="Bar"
+                   required>
+        </div>
+        <div class="form-item">
+            <label for="user-email">Email</label>
+            <input id="user-email"
+                   name="email"
+                   type="email"
+                   placeholder="Your email"
+                   value="fake@mail.com"
+                   required>
+        </div>
+        <div class="form-item">
+            <label for="user-birthday">Birth date</label>
+            <input class="input-small"
+                   id="user-birthday"
+                   name="birthday"
+                   type="date"
+                   required>
+        </div>
+        <div class="form-item">
+            <label for="user-password">Choose a password</label>
+            <input id="user-password"
+                   name="password"
+                   type="password"
+                   value="fakepassword"
+                   required>
+        </div>
+        <div class="form-item">
+            <label for="user-picture">Picture</label>
+            <input id="user-picture"
+                   name="picture"
+                   type="file"
+                   required>
+        </div>
+        <div class="form-item">
+            <label for="user-strava">On Strava too ?</label>
+            <input id="user-strava"
+                   name="stravaLink"
+                   type="url"
+                   placeholder="Your Strava account link"
+                   required>
+        </div>
+
+        <h3>Select your 3 favorite sports</h3>
+
+        {{> user_sports_choices}}
+        {{> user_sports_choices}}
+        {{> user_sports_choices}}
+
+        <button>Create account</button>
+    </form>
+
+</div>

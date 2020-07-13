@@ -58,5 +58,6 @@ app.use(require("./middlewares/exposeLoginStatus"));
 // routers
 app.use("/", require("./routes/index"));
 app.use("/activity", require("./routes/activities"));
+app.use("/user", require("./routes/users"));
 
 module.exports = app;

@@ -1,10 +1,11 @@
 var express = require("express");
 var router = express.Router();
+const uploader = require("./../config/cloudinary");
+
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
 const userModel = require("../models/Users");
-const reviewModel = require("../models/Review");
-const UserModel = require("../models/Users");
+const reviewModel = require("../models/Reviews");
 
 // *********************************************
 // TODO: PREFIXED THE ROUTES WITH /user
@@ -12,16 +13,16 @@ const UserModel = require("../models/Users");
 
 // CREATE USER ACCOUNT  ===> à protéger
 
-router.get("/create-account", (req, res, next) => {
+router.get("/signup", (req, res, next) => {
    sportModel
       .find()
-      .then((allSports) => {
-         res.render("create-account", allSports);
+      .then((sports) => {
+         res.render("user/create-account", {sports});
       })
       .catch(next);
 });
 
-router.post("/create-account", uploader.single("picture"), (req, res, next) => {
+router.post("/signup", uploader.single("picture"), (req, res, next) => {
    const newUser = req.body;
    if (req.file) newUser.picture = req.file.path;
 
@@ -37,7 +38,7 @@ router.post("/create-account", uploader.single("picture"), (req, res, next) => {
 
 // USER ACCOUNT  ===> à protéger
 
-router.get("/user-account/:id", (req, res, next) => {
+router.get("/account/:id", (req, res, next) => {
    userModel
       .findById(req.params.id)
       .populate("sport", "activity", "reviews")
@@ -92,5 +93,17 @@ router.post("/profile/:id", uploader.single("picture"), (req, res, next) => {
 });
 
 // USER ACTIVITIES ===> PROTECT
+
+router.get("/activities/:id", (req, res, next) => {
+   userModel
+      .findById(req.params.id)
+      .populate("sport", "activity", "reviews")
+      .then((user) => {
+         res.render("user/user-activities", user);
+      })
+      .catch(next);
+});
+
+
 
 module.exports = router;
