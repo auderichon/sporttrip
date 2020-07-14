@@ -1,5 +1,6 @@
 require("dotenv").config();
 require("./../config/dbconfig");
+const mongoose = require("mongoose");
 const bcrypt = require("bcrypt"); // npm i bcrypt
 
 // all models
@@ -18,6 +19,8 @@ const reviewsList = require("./Reviews.seeds");
 
 async function sendAllSeeds() {
   try {
+    mongoose.connection.dropDatabase();
+
     const allSports = await sportModel.create(sportsList);
     //console.log(allSports);
 
