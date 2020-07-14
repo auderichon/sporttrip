@@ -1,11 +1,10 @@
-const socket = io('http://localhost:3010');
+const socket = io('http://localhost:3000');
+
 const messageContainer = document.getElementById('message-container');
 const messaageFrom = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
-const name =prompt('what is your name');
-appendMessage('you koined');
-socket.emit('new-user',name)
+
 
 socket.on('chat-message',data =>{
     appendMessage(`${data.name} : ${data.message}`);
@@ -26,6 +25,7 @@ messaageFrom.addEventListener('submit', e =>{
 })
 function appendMessage(message){
     const messageElement = document.createElement('div')
+    messageElement.className ="colorsMgs";
     messageElement.innerText = message
     messageContainer.append(messageElement)
 }

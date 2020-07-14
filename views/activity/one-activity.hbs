@@ -1,2 +1,48 @@
 <h2>{{ activity.activityName }}</h2>
-<a href="/activity/update/{{ activity._id }}">Update activity</a>
+
+<div id="activity-container">
+    <div id="one-activity-page">
+        <img id="one-activity-img" src="{{ activity.sport.picture }}" alt="{{ activity.sport.name }}">
+        <div id="one-activity-content">
+            <table>
+                <tr>
+                    <td>Sport:</td>
+                    <td class="activity-details">{{ activity.sport.name }}</td>
+                </tr>
+                <tr>
+                    <td>Organiser:</td>
+                    <td class="activity-details">{{ activity.user.firstName }} {{ activity.user.lastName }}</td>
+                </tr>
+                <tr>
+                    <td>Starting date:</td>
+                    <td class="activity-details">{{ format-date activity.date }}</td>
+                </tr>
+                <tr>
+                    <td>Starting time:</td>
+                    <td class="activity-details">{{ format-time activity.date }}</td>
+                </tr>
+                <tr>
+                    <td>Duration:</td>
+                    <td class="activity-details">{{ activity.duration }}</td>
+                </tr>
+                <tr>
+                    <td>Level required:</td>
+                    <td class="activity-details">{{ activity.level }}</td>
+                </tr>
+                <tr>
+                    <td>Max. number of participants:</td>
+                    <td class="activity-details">{{ activity.maxNbParticipants }}</td>
+                </tr>
+            </table>
+            <div id="description">
+                <p>More details about this {{ activity.sport.name }} event:</p>
+                <p class="activity-details">{{ activity.description }}</p>
+            </div>
+        </div>
+        {{!-- accessible only if logged user.id === creator --}}
+        <div class="btn-update">
+            <a href="/activity/update/{{ activity._id }}">Update activity</a>
+        </div>
+
+    </div>
+</div>
