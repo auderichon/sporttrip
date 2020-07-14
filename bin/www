@@ -82,8 +82,8 @@ router.get("login",(req,res) => {
 io.on('connection', socket => {
   console.log('connecter');
   console.log(socket.handshake.session)
-    users[socket.id] = name
-    socket.broadcast.emit('user-connected', name)
+    users[socket.id] = "toto";
+    socket.broadcast.emit('user-connected', "toto")
   
 
 socket.on('send-chat-message',message =>{
