@@ -4,9 +4,10 @@
   background-image: url("/images/home-pic.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 100% 50%;
+  background-position: 100% 40%;
   position: relative;
   height: 450px;
+  top: 0;
 }
 
 h1 {
@@ -22,13 +23,16 @@ h1 {
 
 #home-listing {
   display: flex;
+  justify-content: space-around;
   margin-top: 20px;
 }
 
 #filters {
   width: 20%;
+  max-width: 250px;
   height: 1000px; /*à changer quand on aura rempli les filtres */
   background-color: var(--color-main);
+  padding: 10px 15px 10px;
 }
 
 #filters h4 {
@@ -37,11 +41,27 @@ h1 {
 
 #activity-list {
   display: flex;
+  justify-content: space-between;
   border: 1px;
   width: 80%;
-  padding: 3%;
+  padding: 0 3% 0;
 }
 
 .each-activity {
   color: var(--color-main);
+  width: 30%;
+  border: var(--color-main) 1px solid;
+  padding: 5px;
+  height: fit-content;
+}
+
+.each-activity img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media (max-width: 1000px) {
+  #home header {
+    height: 350px;
+  }
 }
