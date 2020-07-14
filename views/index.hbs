@@ -9,7 +9,9 @@
         <div id="activity-list">
             {{#each activities}}
             <div class="each-activity">
+                <img src="{{ this.sport.picture }}" alt="">
                 <h4>{{ this.activityName }}</h4>
+                <p>with {{ this.creator.firstName }}</p>
                 {{!-- <p>by {{ this.user.name }}</p> --}}
                 <p>{{ format-date this.date }}</p>
             </div>

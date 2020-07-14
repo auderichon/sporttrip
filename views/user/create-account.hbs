@@ -1,7 +1,7 @@
 <h2>Create your Sportrip account</h2>
 
 <div id="form-container">
-    <form action="/activity/create"
+    <form action="/auth/signup"
           method="post"
           enctype="multipart/form-data">
         {{!-- message if problem in creation (lack of info for instance) --}}
@@ -59,7 +59,7 @@
             <input id="user-picture"
                    name="picture"
                    type="file"
-                   required>
+                   >
         </div>
         <div class="form-item">
             <label for="user-strava">On Strava too ?</label>
@@ -67,7 +67,7 @@
                    name="stravaLink"
                    type="url"
                    placeholder="Your Strava account link"
-                   required>
+                   >
         </div>
 
         <h3>Select your 3 favorite sports</h3>

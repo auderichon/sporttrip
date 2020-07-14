@@ -11,7 +11,7 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const devMode = true;
+const devMode = false;
 const logger = require("morgan");
 // const io = require('socket.io')(app);
 
@@ -57,6 +57,7 @@ app.use(require("./middlewares/exposeLoginStatus"));
 
 // routers
 app.use("/", require("./routes/index"));
+app.use("/auth", require("./routes/auth"));
 app.use("/activity", require("./routes/activities"));
 app.use("/user", require("./routes/users"));
 
