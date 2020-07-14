@@ -82,6 +82,8 @@ h1 {
 
 .activity-creator img {
   width: 25%;
+  border-radius: 50%;
+  border: var(--color-main) 1px solid;
 }
 
 .activity-button {
@@ -101,5 +103,17 @@ h1 {
 @media (max-width: 1000px) {
   #home header {
     height: 350px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .each-activity {
+    width: 45%;
+  }
+}
+
+@media (max-width: 750px) {
+  .each-activity {
+    width: 90%;
   }
 }

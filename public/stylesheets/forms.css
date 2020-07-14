@@ -6,7 +6,7 @@
 }
 
 form {
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
 }
@@ -19,13 +19,14 @@ form div {
   display: flex;
   flex-direction: column;
   height: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  margin-right: 15px;
 }
 
 input,
 select {
   height: 30px;
-  width: 50%;
 }
 
 #activity-city {
@@ -37,7 +38,7 @@ select {
 }
 
 label {
-  padding: 5px 0 5px;
+  padding: 5px 5px 5px 0;
 }
 
 .check-input-row {
@@ -45,11 +46,12 @@ label {
   flex-direction: row;
   align-items: center;
   height: fit-content;
-  margin-bottom: 10px;
+  width: 70%;
+  margin-left: 10px;
 }
 
 .input-small {
-  width: 25%;
+  width: 30%;
 }
 
 textarea {
@@ -61,11 +63,18 @@ textarea {
   font-size: 14px;
 }
 
-button {
+#form-container button {
   width: 25%;
   align-self: center;
   height: 40px;
   margin-top: 20px;
+  border-radius: 10px;
+  background-color: var(--color-main);
+  color: whitesmoke;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 5%;
 }
 
 .checkbox {
@@ -76,21 +85,48 @@ button {
 .checkbox-label {
   width: fit-content;
   display: block;
+  margin-left: 5px;
+  line-height: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .checkbox-list {
   display: flex;
-  flex-wrap: wrap;
-}
-
-.checkbox-group {
-  display: flex;
-  width: 30%;
-  align-items: center;
+  flex-direction: column;
   height: fit-content;
 }
 
+.checkbox-group {
+  align-items: center;
+  height: fit-content;
+  display: flex;
+}
+
 .check-input-row p {
-  width: 20%;
+  width: 30%;
   display: block;
+  display: flex;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.input-sports {
+  display: flex;
+  justify-items: space-between;
+  align-items: baseline;
+  height: fit-content;
+  width: 100%;
+}
+
+#activity-sport {
+  width: 100%;
+}
+
+.input-sports:first-child {
+  width: 30%;
+}
+
+.input-sports:nth-child(2) {
+  width: 60%;
+  margin-left: 30px;
 }
