@@ -103,19 +103,24 @@ router.get("/profile/:id", (req, res, next) => {
 // USER ACTIVITIES ===> PROTECT
 
 router.get("/activities/:id", (req, res, next) => {
+	console.log("je suis ici");
 	Promise.all([
 		userModel.findById(req.params.id),
-		activityModel.find().populate("participants creator"),
+		//activityModel.find().populate("participants creator sport"),
+		activityModel
+			.find({ "participants.participantID": req.params.id })
+			.populate("participants.participantID creator sport"),
 	])
 		.then((dbRes) => {
-			console.log("DB RES USER ACTIVITIES ======> " , dbRes);
 			res.render("user/user-activities", {
 				title: `${dbRes[0].firstName}'s activities`,
-				activity: dbRes[0],
-				user: dbRes[1],
+				user: dbRes[0],
+				activity: dbRes[1],
 			});
 		})
 		.catch(next);
 });
 
 module.exports = router;
+
+// { $or: [ { <expression1> }, { <expression2> }, ...  { <expressionN> } ] }

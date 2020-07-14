@@ -1,7 +1,22 @@
-<h2>ALL USER ACTIVITIES</h2>
+<h2>All my activities</h2>
 
-TOTO IS HERE
+<h3>Activities that I created </h3>
 
-{{#each activity.creator}}
+{{#each this.participants}}
+<h1 style="color: black">{{this.participantID.firstName}}</h1>
+{{/each}}
+
+<h3>Activities where I participated</h3>
+
+
+{{#compare this.creator._id currentUser._id "==="}}
+<h1>toto</h1>
+{{else}}
+<h1>la tete a toto</h1>
+{{/compare}}
+{{#each activity}}
+
+<p> activities : {{this.activityName}} </p>
+<p> creator : {{this.creator.firstName}} </p>
 
 {{/each}}
