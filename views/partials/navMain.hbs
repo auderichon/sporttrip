@@ -1,7 +1,10 @@
-<nav>
+<nav class="nav">
   <label class="logo">
-
     <a href="/">SporTrip</a>
+  </label>
+  <input type="checkbox" id="check">
+  <label for="check" class="checkbtn">
+    <i class="fas fa-bars"></i>
   </label>
   <ul>
     {{#if isLoggedIn}}
@@ -9,8 +12,9 @@
     <li><a href="/user/activities/{{user._id}}">My Activities</a></li>
     <li><a href="/user/account/{{user._id}}">My account</a></li>
      <li><a href="/auth/signout">logOut</a></li>
-    {{/if}}
+     {{else}}
     <li><a href="/auth/signup">Sign Up</a></li>
     <li><a href="/auth/signin">Log In</a></li>
+    {{/if}}
   </ul>
 </nav>
