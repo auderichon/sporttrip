@@ -11,40 +11,8 @@ const reviewModel = require("../models/Reviews");
 // TODO: PREFIXED THE ROUTES WITH /user
 // *********************************************
 
-// CREATE USER ACCOUNT  ===> à protéger
 
-router.get("/signup", (req, res, next) => {
-	sportModel
-		.find()
-		.then((sports) => {
-			res.render("user/create-account", { sports });
-		})
-		.catch(next);
-});
-
-// { $push: { <field1>: { <modifier1>: <value1>, ... }, ... } } // pour pusher  les sports  ??
-/* ou
-collection.update(
-   { _id: 1 },
-   { $addToSet: { <field>: "value" } }
-)
-*/
-
-router.post("/signup", uploader.single("picture"), (req, res, next) => {
-	const newUser = req.body;
-	if (req.file) newUser.picture = req.file.path;
-
-	userModel
-		.create(newUser)
-		.then(() => {
-			req.flash("success", "account successfully created");
-			res.redirect("/");
-			// TODO: once user has subscribed => consider isLogged = true ;
-		})
-		.catch(next);
-});
-
-// USER ACCOUNT  ===> à protéger
+// ACCESS USER ACCOUNT  ===> à protéger
 
 router.get("/account/:id", (req, res, next) => {
 	userModel
@@ -64,7 +32,7 @@ router.post("/profile/:id", uploader.single("picture"), (req, res, next) => {
 
 	userModel
 		.findByIdAndUpdate(updatedUser)
-		.populate("sport", "activity", "reviews")
+		.populate("sport")
 		.then((user) => {
 			res.render("user/user-profile", user);
 			res.redirect("/profile/:id");

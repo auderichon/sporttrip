@@ -1,7 +1,7 @@
 <h2>Sign in</h2>
 
 <div id="form-container">
-  <form action="/activity/create"
+  <form action="/auth/signin"
         method="post">
 
     <div class="form-item">
@@ -13,7 +13,7 @@
              value="foo@bar.baz"
              required>
     </div>
- 
+
     <div class="form-item">
       <label for="user-password">Password</label>
       <input id="user-password"
@@ -22,22 +22,8 @@
              value="1234"
              required>
     </div>
-    <div class="form-item">
-      <label for="user-strava">On Strava too ?</label>
-      <input id="user-strava"
-             name="stravaLink"
-             type="url"
-             placeholder="Your Strava account link"
-             required>
-    </div>
 
-    <h3>Select your 3 favorite sports</h3>
-
-    {{> user_sports_choices}}
-    {{> user_sports_choices}}
-    {{> user_sports_choices}}
-
-    <button>Create account</button>
+    <button>Log in</button>
   </form>
 
 </div>
