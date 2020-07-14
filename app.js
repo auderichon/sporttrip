@@ -27,9 +27,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-
-
-
 // SESSION SETUP HEAD
 const sessionObj = session({
   secret: process.env.SESSION_SECRET,
@@ -40,7 +37,7 @@ const sessionObj = session({
   }),
   saveUninitialized: true,
   resave: true,
-})
+});
 app.use(sessionObj);
 app.use(flash());
 
@@ -50,11 +47,10 @@ if (devMode === true) {
   app.use(require("./middlewares/debugSessionInfos")); // displays session debug
 }
 
-
-app.use(function(req,res,next) {
-  req.session.toto = "yolo"
+app.use(function (req, res, next) {
+  req.session.toto = "yolo";
   next();
-})
+});
 
 app.use(require("./middlewares/exposeLoginStatus"));
 //app.use(require("./middlewares/exposeFlashMessage"));
@@ -65,4 +61,4 @@ app.use("/auth", require("./routes/auth"));
 app.use("/activity", require("./routes/activities"));
 app.use("/user", require("./routes/users"));
 
-module.exports = {app,sessionObj};
+module.exports = { app, sessionObj };

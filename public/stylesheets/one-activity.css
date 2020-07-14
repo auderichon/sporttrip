@@ -1,0 +1,51 @@
+#one-activity-img {
+  width: 50%;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+#one-activity-page {
+  width: 80%;
+  margin-top: 30px;
+}
+
+#one-activity-content {
+  line-height: 2;
+  color: var(--color-main);
+}
+
+.activity-details {
+  color: #00b7ff;
+  padding-left: 20px;
+  line-height: 1.5;
+}
+
+#one-activity-page #description {
+  margin-top: 30px;
+}
+
+#one-activity-page table {
+  margin-left: 20px;
+}
+
+#activity-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-update {
+  margin: 40px auto 20px;
+  width: 30%;
+  background: var(--color-main);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  justify-self: center;
+}
+
+.btn-update a {
+  color: whitesmoke;
+  font-weight: 500;
+}
