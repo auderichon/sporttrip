@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                     <td>Level required:</td>
-                    <td class="activity-details">{{ activity.level }}</td>
+                    <td class="activity-details">{{ activity.requiredLevel }}</td>
                 </tr>
                 <tr>
                     <td>Max. number of participants:</td>
@@ -38,8 +38,9 @@
                 <tr>
                     <td>Registered participants:</td>
                     <td class="activity-details">
-                        {{#each activity.participants}}
-                        <p><a href="/profile/{{ this._id }}"></a>{{ this.name }}</p>
+                        {{#each activity.participants }}
+                        <p><a href="/profile/{{ this.participantID._id }}">{{ this.participantID.firstName }}
+                                {{ this.participantID.lastName }}</a></p>
                         {{/each}}
                     </td>
                 </tr>
@@ -50,9 +51,11 @@
             </div>
         </div>
         {{!-- accessible only if logged user.id === creator --}}
+        {{#compare activity.creator._id currentUser._id operator="==="}}
         <div class="btn-update">
             <a href="/activity/update/{{ activity._id }}">Update activity</a>
         </div>
+        {{/compare}}
 
     </div>
 </div>

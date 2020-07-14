@@ -19,12 +19,15 @@ router.get("/create", (req, res, next) => {
 
 router.get("/:id", (req, res, next) => {
   Promise.all([
-    activityModel.findById(req.params.id).populate("sport").populate("user"),
+    activityModel
+      .findById(req.params.id)
+      .populate("participants.participantID creator sport"),
     sportModel.find(),
     userModel.find(),
   ])
     .then((dbRes) => {
       let activity = dbRes[0];
+      console.log("----------------- ACTIVITY" + activity.participants);
       res.render("activity/one-activity", {
         title: activity.activityName,
         activity,
