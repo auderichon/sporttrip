@@ -1,56 +1,33 @@
 <h2>Update your account {{user.firstName}}</h2>
 
 <div id="form-container">
-  <form action="/user/edit-account/{{user._id}}"
-        method="post"
-        enctype="multipart/form-data">
+  <form action="/user/edit-account/{{user._id}}" method="post" enctype="multipart/form-data">
 
     <h3>Personal infos</h3>
 
     <div class="form-item">
       <label for="user-lastname">Edit Lastname</label>
-      <input id="user-lastname"
-             name="lastName"
-             type="text"
-             value={{user.lastName}}
-             required>
+      <input class="input-small" id="user-lastname" name="lastName" type="text" value={{user.lastName}} required>
     </div>
     <div class="form-item">
       <label for="user-firstname">Edit Firstname</label>
-      <input id="user-firstname"
-             name="firstName"
-             type="text"
-             value={{user.firstName}}
-             required>
+      <input class="input-small" id="user-firstname" name="firstName" type="text" value={{user.firstName}} required>
     </div>
     <div class="form-item">
       <label for="user-email">Edit Email</label>
-      <input id="user-email"
-             name="email"
-             type="email"
-             value={{user.email}}
-             required>
+      <input class="input-small" id="user-email" name="email" type="email" value={{user.email}} required>
     </div>
     <div class="form-item">
       <label for="user-password">Edit Password</label>
-      <input id="user-password"
-             name="password"
-             type="password"
-             value={{user.password}}
-             required>
+      <input class="input-small" id="user-password" name="password" type="password" value={{user.password}} required>
     </div>
     <div class="form-item">
       <label for="user-picture">Edit Picture</label>
-      <input id="user-picture"
-             name="picture"
-             type="file">
+      <input id="user-picture" name="picture" type="file">
     </div>
     <div class="form-item">
       <label for="user-strava">Edit Strava profile link</label>
-      <input id="user-strava"
-             name="stravaLink"
-             type="url"
-             value={{user.stravaLink}}>
+      <input id="user-strava" name="stravaLink" type="url" value={{user.stravaLink}}>
     </div>
 
     <h3>Edit your favorite sports</h3>
@@ -70,9 +47,7 @@
 
 <div id="form-container">
 
-  <form action="/user/edit-account/{{user._id}}"
-        method="post"
-        enctype="multipart/form-data">
+  <form action="/user/edit-account/{{user._id}}" method="post" enctype="multipart/form-data">
 
     <h3>Add new sports to your list</h3>
 
@@ -80,11 +55,9 @@
 
     <button id="btn-add-sport">Add new sport</button>
 
+    <div class="btn-delete">
+      <a href="/user/confirm-delete/{{user._id}}">Delete Account</a>
+    </div>
   </form>
 
 </div>
-
-<form action="/user/confirm-delete/{{user._id}}"
-      method="get">
-  <button id="btn-delete-account">Delete Account</button>
-</form>

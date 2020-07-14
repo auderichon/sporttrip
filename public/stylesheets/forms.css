@@ -47,7 +47,6 @@ label {
   align-items: center;
   height: fit-content;
   width: 70%;
-  margin-left: 10px;
 }
 
 .input-small {
@@ -129,4 +128,23 @@ textarea {
 .input-sports:nth-child(2) {
   width: 60%;
   margin-left: 30px;
+}
+
+#user-strava {
+  width: 50%;
+}
+
+.btn-delete {
+  background: rgb(245, 167, 167);
+  border: red 2px solid;
+  border-radius: 10px;
+  width: 40%;
+  margin: 60px auto 20px;
+  height: 30px;
+}
+
+.btn-delete a {
+  color: red;
+  text-align: center;
+  display: block;
 }
