@@ -43,7 +43,7 @@ async function sendAllSeeds() {
     });
 
     const cleanUserList = await userModel.create(usersList);
-    console.log("CLEAN USERS LIST =====> ", cleanUserList);
+    // console.log("CLEAN USERS LIST =====> ", cleanUserList);
 
     reviewsList.forEach((review) => {
       //find the reviewed user
@@ -63,10 +63,11 @@ async function sendAllSeeds() {
     });
 
     const cleanReviewsList = await reviewModel.create(reviewsList);
-    console.log("CLEAN REVIEWS LIST =====> ", cleanReviewsList);
+    // console.log("CLEAN REVIEWS LIST =====> ", cleanReviewsList);
 
     activitiesList.forEach((activity) => {
       // find the sport ID
+      console.log("activity =====> ", activity);
       let filteredArraySports = allSports.filter((sport) => {
         return sport.name === activity.sport;
       });
@@ -83,14 +84,14 @@ async function sendAllSeeds() {
       // find all participants ID
 
       let activityParticipants = activity.participants;
-
-      activityParticipants.forEach((participant) => {
-        let filteredArray = cleanUserList.filter((user) => {
-          return user.firstName === participant.participantID;
+      if (activityParticipants)
+        activityParticipants.forEach((participant) => {
+          let filteredArray = cleanUserList.filter((user) => {
+            return user.firstName === participant.participantID;
+          });
+          let id3 = filteredArray[0].id;
+          participant.participantID = id3;
         });
-        let id3 = filteredArray[0].id;
-        participant.participantID = id3;
-      });
     });
     const cleanActivitiesList = await activityModel.create(activitiesList);
     console.log("CLEAN ACTIVITIES LIST =====> ", cleanActivitiesList);

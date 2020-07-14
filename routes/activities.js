@@ -27,7 +27,6 @@ router.get("/:id", (req, res, next) => {
   ])
     .then((dbRes) => {
       let activity = dbRes[0];
-      console.log("----------------- ACTIVITY" + activity.participants);
       res.render("activity/one-activity", {
         title: activity.activityName,
         activity,

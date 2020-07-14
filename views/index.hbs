@@ -22,14 +22,14 @@
         <div id="activity-list">
             {{#each activities}}
             <div class="each-activity">
-                <img src="{{ this.sport.picture }}" alt="">
+                <a href="/activity/{{ this._id }}"><img src="{{ this.sport.picture }}" alt=""></a>
                 <h4>{{ this.activityName }}</h4>
-                <div class="activity-creator">
-                    <a href="/profile/{{ this.creator._id }}">
+                <a href="/profile/{{ this.creator._id }}">
+                    <div class="activity-creator">
                         <p>with {{ this.creator.firstName }}</p>
-                    </a>
-                    <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
-                </div>
+                        <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
+                    </div>
+                </a>
                 <p>Level: {{ this.requiredLevel }}</p>
                 <div class="time">
                     <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>

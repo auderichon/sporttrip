@@ -85,6 +85,7 @@ h1 {
   width: 25%;
   border-radius: 50%;
   border: var(--color-main) 1px solid;
+  display: block;
 }
 
 .activity-button {

@@ -1,6 +1,6 @@
 // require("dotenv").config();
 // require("./../config/dbconfig");
-// const sportModel = require("./../models/Sports");
+// const UserModel = require("./../models/Users");
 
 const sportsList = [
   {
@@ -16,7 +16,7 @@ const sportsList = [
   {
     name: "Swimming / Diving",
     picture:
-      "https://res.cloudinary.com/sport-trip/image/upload/v1594537871/sports/diving_gzbpkq.jpg",
+      "https://res.cloudinary.com/sport-trip/image/upload/c_crop,h_2240,w_3360/v1594537871/sports/diving_gzbpkq.jpg",
   },
   {
     name: "Sailing",
@@ -36,7 +36,7 @@ const sportsList = [
   {
     name: "Triathlon",
     picture:
-      "https://res.cloudinary.com/sport-trip/image/upload/v1594538520/sports/triathlon_rah3rn.jpg",
+      "https://res.cloudinary.com/sport-trip/image/upload/c_crop,h_1100,w_1650/v1594538520/sports/triathlon_rah3rn.jpg",
   },
   {
     name: "Hiking",
@@ -55,7 +55,7 @@ const sportsList = [
   },
 ];
 
-module.exports = sportsList ;
+module.exports = sportsList;
 
 /* 
 sportModel
