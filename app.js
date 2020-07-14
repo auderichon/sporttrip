@@ -31,18 +31,17 @@ app.use(cookieParser());
 
 
 // SESSION SETUP
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    cookie: { maxAge: 60000 }, // in millisec
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection, // we store session infos in mongodb
-      ttl: 24 * 60 * 60, // 1 day
-    }),
-    saveUninitialized: true,
-    resave: true,
-  })
-);
+const sessionObj = session({
+  secret: process.env.SESSION_SECRET,
+  cookie: { maxAge: 60000 }, // in millisec
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection, // we store session infos in mongodb
+    ttl: 24 * 60 * 60, // 1 day
+  }),
+  saveUninitialized: true,
+  resave: true,
+})
+app.use(sessionObj);
 
 app.use(flash());
 
@@ -51,6 +50,12 @@ if (devMode === true) {
   app.use(require("./middlewares/devMode")); // triggers dev mode during dev phase
   app.use(require("./middlewares/debugSessionInfos")); // displays session debug
 }
+
+
+app.use(function(req,res,next) {
+  req.session.toto = "yolo"
+  next();
+})
 
 app.use(require("./middlewares/exposeLoginStatus"));
 //app.use(require("./middlewares/exposeFlashMessage"));
@@ -61,4 +66,4 @@ app.use("/auth", require("./routes/auth"));
 app.use("/activity", require("./routes/activities"));
 app.use("/user", require("./routes/users"));
 
-module.exports = app;
+module.exports = {app,sessionObj};

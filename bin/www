@@ -5,8 +5,9 @@
  */
 
 const http = require("http");
-const app = require("../app");
-
+const {app,sessionObj} = require("../app");
+const   sharedsession = require("express-socket.io-session");
+const router = require("../routes");
 /**
  * Create HTTP server.
  */
@@ -68,17 +69,30 @@ const toto = server.listen(process.env.PORT, () => {
 
 //SETUP CHAT
 const io = require('socket.io')(toto);
+io.use(sharedsession(sessionObj))
 const users = {}
+
+router.get("login",(req,res) => {
+  //feahiufahefieaae
+
+  req.session.currentUser = dbRes;
+
+
+})
 io.on('connection', socket => {
-  socket.on('new-user',name =>{
+  console.log('connecter');
+  console.log(socket.handshake.session)
     users[socket.id] = name
     socket.broadcast.emit('user-connected', name)
   
-})
+
 socket.on('send-chat-message',message =>{
+  // message BDD
+  console.log(socket.handshake.session.currentUser._id)
   socket.broadcast.emit('chat-message',{message:message, name:users[socket.id]})
 })
 socket.on('diconnect', () => {
+  console.log("i have been disconnected")
   socket.broadcast.emit('user-diconnected', users[socket.id])
   delete users [socket.id]
 })
