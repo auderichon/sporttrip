@@ -18,7 +18,10 @@ router.get("/account/:id", (req, res, next) => {
 		.findById(req.params.id)
 		.populate("sports.sport")
 		.then((user) => {
-			res.render("user/user-account", { user });
+			res.render("user/user-account", {
+				title: `${user.firstName}'s account`,
+				user,
+			});
 		})
 		.catch(next);
 });
@@ -30,7 +33,10 @@ router.get("/edit-account/:id", (req, res, next) => {
 		.findById(req.params.id)
 		.populate("sports.sport")
 		.then((user) => {
-			res.render("user/update-account", { user });
+			res.render("user/update-account", {
+				title: `Update ${user.firstName}'s account`,
+				user,
+			});
 		})
 		.catch(next);
 });
@@ -55,16 +61,14 @@ router.post(
 // DELETE USER ACCOUNT
 
 // ask for confirmation
-router.get(
-	"/confirm-delete/:id", (req, res, next) => {
-		userModel
-			.findById(req.params.id)
-			.then((user) => {
-			res.render("user/user-confirm-delete", { user });
-			})
-			.catch(next);
-	}
-);
+router.get("/confirm-delete/:id", (req, res, next) => {
+	userModel
+		.findById(req.params.id)
+		.then((user) => {
+			res.render("user/user-confirm-delete", { title: "Delete account", user });
+		})
+		.catch(next);
+});
 
 // delete for real
 router.post("/delete-account/:id", (req, res, next) => {
@@ -82,11 +86,8 @@ router.post("/delete-account/:id", (req, res, next) => {
 router.get("/profile/:id", (req, res, next) => {
 	Promise.all([
 		userModel.findById(req.params.id).populate("sports.sport"),
-		reviewModel.find().populate("reviewedUser"),//.populate("reviewerName"),
-		activityModel
-			.find()
-			.populate("participants.participantID")
-			//.populate("creator"),
+		reviewModel.find().populate("reviewedUser"), //.populate("reviewerName"),
+		activityModel.find().populate("creators participants"),
 	])
 		.then((dbRes) => {
 			console.log(dbRes[0]);
@@ -103,11 +104,13 @@ router.get("/profile/:id", (req, res, next) => {
 
 router.get("/activities/:id", (req, res, next) => {
 	Promise.all([
-		activityModel.find().populate("participants.participantID"),
 		userModel.findById(req.params.id),
+		activityModel.find().populate("participants creator"),
 	])
 		.then((dbRes) => {
+			console.log("DB RES USER ACTIVITIES ======> " , dbRes);
 			res.render("user/user-activities", {
+				title: `${dbRes[0].firstName}'s activities`,
 				activity: dbRes[0],
 				user: dbRes[1],
 			});

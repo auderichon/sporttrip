@@ -16,7 +16,10 @@ router.get("/signup", (req, res, next) => {
 	sportModel
 		.find()
 		.then((sports) => {
-			res.render("user/create-account", { sports });
+			res.render(
+				"user/create-account",
+				{ title: "Create account", sports }
+			);
 		})
 		.catch(next);
 });
@@ -50,7 +53,7 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 
 // LOG IN
 router.get("/signin", (req, res) => {
-	res.render("signin");
+	res.render("signin", { title: "Log In" });
 });
 
 router.post("/signin", (req, res, next) => {
