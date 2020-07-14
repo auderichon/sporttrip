@@ -2,7 +2,7 @@ const express = require("express"); // import express in this module
 const router = new express.Router(); // create an app sub-module (router)
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
-//const userModel = require("../models/Users");
+const userModel = require("../models/Users");
 
 // *********************************************
 // ALL THESE ROUTES ARE PREFIXED WITH "/activity"
@@ -18,9 +18,13 @@ router.get("/create", (req, res, next) => {
 });
 
 router.get("/:id", (req, res, next) => {
-  activityModel
-    .findById(req.params.id)
-    .then((activity) => {
+  Promise.all([
+    activityModel.findById(req.params.id).populate("sport").populate("user"),
+    sportModel.find(),
+    userModel.find(),
+  ])
+    .then((dbRes) => {
+      let activity = dbRes[0];
       res.render("activity/one-activity", {
         title: activity.activityName,
         activity,
@@ -36,11 +40,9 @@ router.get("/update/:id", (req, res, next) => {
   ])
     .then((dbRes) => {
       let activity = dbRes[0];
-      let sport = dbRes[1];
       res.render("activity/update-activity", {
         title: "Update " + activity.activityName,
         activity,
-        sport,
       });
     })
     .catch(next);
