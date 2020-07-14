@@ -94,12 +94,13 @@
 
         <div class="form-item">
             <label for="activity-description">Give the other athletes more details about your activity</label>
-            <textarea id="activity-description" name="description" type="textarea" value=""
+            <input class="textarea" id="activity-description" name="description" type="textarea" value=""
                 placeholder="Here describe your activity to other athletes, be specific of what you expect from them, if you have the possibility to lend them gear or if they should bring their own, if you are flexible in terms of dates and times... anything you think useful !"
                 value="{{ activity.description }}" required></textarea>
         </div>
 
         <button>Update activity</button>
+
         <div class="btn-delete">
             <a href="/activity/delete/{{activity._id}}">Delete Activity</a>
         </div>
