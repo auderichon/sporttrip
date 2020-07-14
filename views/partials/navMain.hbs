@@ -4,11 +4,13 @@
     <a href="/">SporTrip</a>
   </label>
   <ul>
-
+    {{#if isLoggedIn}}
     <li><a href="/activity/create">Create an activity</a></li>
     <li><a href="/user/activities/{{user._id}}">My Activities</a></li>
     <li><a href="/user/account/{{user._id}}">My account</a></li>
-    <li><a href="/user/signup">Sign Up</a></li>
-    <li><a href="/user/signin">Log In</a></li>
+     <li><a href="/auth/signout">logOut</a></li>
+    {{/if}}
+    <li><a href="/auth/signup">Sign Up</a></li>
+    <li><a href="/auth/signin">Log In</a></li>
   </ul>
 </nav>

@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-//SETUP CHAT
+
 
 
 // SESSION SETUP
