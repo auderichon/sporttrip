@@ -5,15 +5,39 @@
     <div id="home-listing">
         <div id="filters">
             <h4>Filters:</h4>
+            {{!-- <h5>Country</h5>
+            {{#each activities }}
+            <div>
+                <input type="checkbox" id="{{ this.location.country }}" name="country"
+                    value="{{ this.location.country }}">
+                <label for="{{ this.location.country }}">{{ this.location.country }}</label>
+            </div>
+            {{/each}}
+
+            <h5>Duration</h5>
+            {{#each activities}}
+            <p>{{ this.duration }}</p>
+            {{/each}} --}}
         </div>
         <div id="activity-list">
             {{#each activities}}
             <div class="each-activity">
                 <img src="{{ this.sport.picture }}" alt="">
                 <h4>{{ this.activityName }}</h4>
-                <p>with {{ this.creator.firstName }}</p>
-                {{!-- <p>by {{ this.user.name }}</p> --}}
-                <p>{{ format-date this.date }}</p>
+                <div class="activity-creator">
+                    <a href="">
+                        <p>with {{ this.creator.firstName }}</p>
+                    </a>
+                    <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
+                </div>
+                <p>Level: {{ this.requiredLevel }}</p>
+                <div class="time">
+                    <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>
+                    <p><i class="fas fa-calendar-day"></i> {{ format-date this.date }}</p>
+                </div>
+                <div class="activity-button">
+                    <a href="/activity/{{ this._id }}">Check it out!</a>
+                </div>
             </div>
             {{/each}}
         </div>

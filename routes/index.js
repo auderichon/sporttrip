@@ -13,21 +13,16 @@ router.get("/", (req, res, next) => {
       //   date: { $gte: today }, + classer par date
       // }
       ()
-      .populate("sport")
-      .populate("users"),
-    sportModel.find(),
+      .populate({ path: "creator", model: userModel })
+      .populate("sport"),
     userModel.find(),
+    sportModel.find(),
   ])
     .then((dbRes) => {
       let activities = dbRes[0];
-      let sports = dbRes[1];
-      let users = dbRes[2];
-
       res.render("index", {
         title: "SportTrip: find partners for your next sports trip",
         activities,
-        sports,
-        users,
       });
     })
     .catch(next);

@@ -33,13 +33,13 @@ const ActivitySchema = new Schema({
   maxNbParticipants: Number,
   creator: {
     type: Schema.Types.ObjectId,
-    ref: "user",
+    ref: "User",
   },
   participants: [
     {
       participantID: {
         type: Schema.Types.ObjectId,
-        ref: "user",
+        ref: "User",
       },
     },
   ],
