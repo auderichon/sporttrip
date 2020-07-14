@@ -1,0 +1,63 @@
+<h2>Update your account {{user.firstName}}</h2>
+
+<div id="form-container">
+  <form action="/user/edit-account/{{user._id}}" method="post" enctype="multipart/form-data">
+
+    <h3>Personal infos</h3>
+
+    <div class="form-item">
+      <label for="user-lastname">Edit Lastname</label>
+      <input class="input-small" id="user-lastname" name="lastName" type="text" value={{user.lastName}} required>
+    </div>
+    <div class="form-item">
+      <label for="user-firstname">Edit Firstname</label>
+      <input class="input-small" id="user-firstname" name="firstName" type="text" value={{user.firstName}} required>
+    </div>
+    <div class="form-item">
+      <label for="user-email">Edit Email</label>
+      <input class="input-small" id="user-email" name="email" type="email" value={{user.email}} required>
+    </div>
+    <div class="form-item">
+      <label for="user-password">Edit Password</label>
+      <input class="input-small" id="user-password" name="password" type="password" value={{user.password}} required>
+    </div>
+    <div class="form-item">
+      <label for="user-picture">Edit Picture</label>
+      <input id="user-picture" name="picture" type="file">
+    </div>
+    <div class="form-item">
+      <label for="user-strava">Edit Strava profile link</label>
+      <input id="user-strava" name="stravaLink" type="url" value={{user.stravaLink}}>
+    </div>
+
+    <h3>Edit your favorite sports</h3>
+
+    {{#each user.sports}}
+    <ul>
+      <li> {{this.sport.name}} <br> Level : {{this.level}} </li>
+    </ul>
+    {{/each}}
+
+    <button id="btn-edit-account">Edit !</button>
+
+
+  </form>
+
+</div>
+
+<div id="form-container">
+
+  <form action="/user/edit-account/{{user._id}}" method="post" enctype="multipart/form-data">
+
+    <h3>Add new sports to your list</h3>
+
+    {{> user_sports_choices}}
+
+    <button id="btn-add-sport">Add new sport</button>
+
+    <div class="btn-delete">
+      <a href="/user/confirm-delete/{{user._id}}">Delete Account</a>
+    </div>
+  </form>
+
+</div>

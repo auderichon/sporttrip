@@ -30,7 +30,7 @@ app.use(cookieParser());
 
 
 
-// SESSION SETUP
+// SESSION SETUP HEAD
 const sessionObj = session({
   secret: process.env.SESSION_SECRET,
   cookie: { maxAge: 60000 }, // in millisec
@@ -42,7 +42,6 @@ const sessionObj = session({
   resave: true,
 })
 app.use(sessionObj);
-
 app.use(flash());
 
 // MIDDLEWARES

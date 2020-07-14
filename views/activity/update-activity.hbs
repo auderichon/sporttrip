@@ -10,8 +10,8 @@
 
         <div class="form-item">
             <label for="activity-name">Activity name</label>
-            <input id="activity-name" name="activityName" type="text" placeholder="Your activity's name"
-                value="{{ activity.activityName }}" required>
+            <input class="input-small" id="activity-name" name="activityName" type="text"
+                placeholder="Your activity's name" value="{{ activity.activityName }}" required>
         </div>
 
         <div class="form-item">
@@ -21,7 +21,7 @@
         </div>
 
         <div class="check-input-row">
-            <div>
+            <div id="input-activity-city">
                 <label for="activity-city">Meeting point</label>
                 <input id="activity-city" name="city" type="text" placeholder="Starting point of your activity"
                     value="{{ activity.location.city }}" required>
@@ -34,41 +34,43 @@
             </div>
         </div>
 
-        <div class="form-item">
-            <p>Sport: {{ activity.sport.name }}</p>
-        </div>
+        <div class="input-sports">
+            <div>
+                <p>Sport: {{ activity.sport.name }}</p>
+            </div>
 
-        <div class="check-input-row">
-            <p>Level required from the participants: </p>
+            <div class="check-input-row">
+                <p>Level required from the participants: </p>
 
-            {{!-- précocher {{ this.level }}  --}}
-            <div class="checkbox-list">
-                <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-all" name="requiredLevel" value="all">
-                    <label for="level-all">all levels accepted</label>
-                </div>
-                <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-beginner" name="requiredLevel" value="beginner">
-                    <label for="level-beginner">beginner</label>
-                </div>
-                <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-intermediate" name="requiredLevel"
-                        value="intermediate">
-                    <label for="level-intermediate">intermediate</label>
-                </div>
-                <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-experienced" name="requiredLevel"
-                        value="experienced">
-                    <label for="level-experienced">experienced</label>
-                </div>
-                <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-professional" name="requiredLevel"
-                        value="professional">
-                    <label for="level-professional">professional</label>
+                {{!-- précocher {{ this.level }}  --}}
+                <div class="checkbox-list">
+                    <div class="checkbox-group">
+                        <input class="checkbox" type="checkbox" id="level-all" name="requiredLevel" value="all">
+                        <label class="checkbox-label" for="level-all">all levels accepted</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input class="checkbox" type="checkbox" id="level-beginner" name="requiredLevel"
+                            value="beginner">
+                        <label class="checkbox-label" for="level-beginner">beginner</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input class="checkbox" type="checkbox" id="level-intermediate" name="requiredLevel"
+                            value="intermediate">
+                        <label class="checkbox-label" for="level-intermediate">intermediate</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input class="checkbox" type="checkbox" id="level-experienced" name="requiredLevel"
+                            value="experienced">
+                        <label class="checkbox-label" for="level-experienced">experienced</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input class="checkbox" type="checkbox" id="level-professional" name="requiredLevel"
+                            value="professional">
+                        <label class="checkbox-label" for="level-professional">professional</label>
+                    </div>
                 </div>
             </div>
         </div>
-
         {{!-- préselect {{ this.duration }}  --}}
         <div class="form-item">
             <label for="activity-duration">Activity duration:</label>
@@ -98,7 +100,9 @@
         </div>
 
         <button>Update activity</button>
+        <div class="btn-delete">
+            <a href="/activity/delete/{{activity._id}}">Delete Activity</a>
+        </div>
     </form>
 
 </div>
-<a href="/activity/delete/{{activity._id}}">Delete activity</a>

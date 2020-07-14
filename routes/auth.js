@@ -7,12 +7,19 @@ const sportModel = require("../models/Sports");
 const userModel = require("../models/Users");
 const reviewModel = require("../models/Reviews");
 
+// **************************************
+// ALL ROUTES ARE PREFIXED WITH /AUTH
+// **************************************
+
 // SIGN UP create user account  ===> à protéger
 router.get("/signup", (req, res, next) => {
 	sportModel
 		.find()
 		.then((sports) => {
-			res.render("user/create-account", { sports });
+			res.render(
+				"user/create-account",
+				{ title: "Create account", sports }
+			);
 		})
 		.catch(next);
 });
@@ -46,7 +53,7 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 
 // LOG IN
 router.get("/signin", (req, res) => {
-	res.render("signin");
+	res.render("signin", { title: "Log In" });
 });
 
 router.post("/signin", (req, res, next) => {
@@ -74,6 +81,7 @@ router.post("/signin", (req, res, next) => {
 				delete clone.password; // remove password from clone
 
 				req.session.currentUser = clone; // user is now in session... until session.destroy
+				console.log(clone.id);
 				return res.redirect("/");
 			} else {
 				// encrypted password match failed
