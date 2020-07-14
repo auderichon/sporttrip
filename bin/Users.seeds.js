@@ -15,7 +15,7 @@ const UsersList = [
       },
       {
         sport: "Running / Trail", // Running
-        level: "pro",
+        level: "professional",
       },
     ],
     birthday: "1980-01-01",

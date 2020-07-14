@@ -27,7 +27,7 @@ const UserSchema = new Schema({
          },
          level: {
             type: String,
-            enum: ["beginner", "intermediate", "experienced", "pro"],
+            enum: ["beginner", "intermediate", "experienced", "professional"],
             required: true,
          },
       },
