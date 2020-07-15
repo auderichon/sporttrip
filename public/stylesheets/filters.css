@@ -1,0 +1,14 @@
+.activity-filter {
+  margin-top: 20px;
+}
+
+.activity-filter p {
+  font-weight: bold;
+  display: block;
+  padding-bottom: 5px;
+}
+
+.select-filter select {
+  height: 100px;
+  width: 120px;
+}

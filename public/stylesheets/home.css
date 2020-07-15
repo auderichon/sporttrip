@@ -33,10 +33,11 @@ h1 {
 #filters {
   width: 20%;
   max-width: 250px;
-  height: 1000px; /*à changer quand on aura rempli les filtres */
+  height: fit-content;
   background-color: var(--color-main);
   padding: 10px 15px 10px;
   color: var(--color-secondary);
+  padding-bottom: 50px;
 }
 
 #filters h4 {

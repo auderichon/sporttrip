@@ -55,11 +55,22 @@
         <div class="btn-update">
             <a href="/activity/update/{{ activity._id }}">Update activity</a>
         </div>
+        <div id="validate-participants">
+            <p>Participants waiting for approval: </p>
+            {{#each activity.participantsToApprove }}
+            <p><a href="/user/profile/{{ this.participantID._id }}">{{ this.participantID.firstName }}
+                    {{ this.participantID.lastName }}</a></p>
+            {{/each}}
+
+            {{#unless activity.participantsToApprove}}
+            <p>None</p>
+            {{/unless}}
+        </div>
         {{/compare}}
 
         {{#compare activity.creator._id currentUser._id operator="!="}}
         <div class="btn-register">
-            <a href="/activity/register/{{ activity._id }}">Register for this activity</a>
+            <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
         </div>
         {{/compare}}
 

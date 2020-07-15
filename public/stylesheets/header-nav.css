@@ -6,7 +6,7 @@
   background-color: var(--color-main);
   height: var(--nav-height);
   width: 100%;
-  color: whitesmoke;
+  color: var(--color-secondary);
 }
 
 label.logo {

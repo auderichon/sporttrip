@@ -48,6 +48,6 @@
 
 .btn-update a,
 .btn-register a {
-  color: whitesmoke;
+  color: var(--color-secondary);
   font-weight: 500;
 }
