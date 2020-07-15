@@ -86,7 +86,7 @@ router.post("/delete-account/:id", (req, res, next) => {
 router.get("/profile/:id", (req, res, next) => {
 	Promise.all([
 		userModel.findById(req.params.id).populate("sports.sport"),
-		reviewModel.find().populate("reviewedUser"), //.populate("reviewerName"),
+		reviewModel.find().populate("reviewedUser reviewerName"),
 		activityModel.find().populate("creators participants"),
 	])
 		.then((dbRes) => {
@@ -103,12 +103,15 @@ router.get("/profile/:id", (req, res, next) => {
 // USER ACTIVITIES ===> PROTECT
 
 router.get("/activities/:id", (req, res, next) => {
-	console.log("je suis ici");
 	Promise.all([
 		userModel.findById(req.params.id),
-		//activityModel.find().populate("participants creator sport"),
 		activityModel
-			.find({ "participants.participantID": req.params.id })
+			.find({
+				$or: [
+					{ "participants.participantID": req.params.id },
+					{ creator: req.params.id },
+				],
+			})
 			.populate("participants.participantID creator sport"),
 	])
 		.then((dbRes) => {
@@ -123,4 +126,13 @@ router.get("/activities/:id", (req, res, next) => {
 
 module.exports = router;
 
-// { $or: [ { <expression1> }, { <expression2> }, ...  { <expressionN> } ] }
+/* FONCTIONNE BIEN :
+
+	activityModel
+			.find({ "participants.participantID": req.params.id })
+			.populate("participants.participantID creator sport"),
+		activityModel
+			.find({ "creator": req.params.id })
+			.populate("participants.participantID creator sport"),
+
+*/

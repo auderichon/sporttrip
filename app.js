@@ -29,14 +29,14 @@ app.use(cookieParser());
 
 // SESSION SETUP HEAD
 const sessionObj = session({
-  secret: process.env.SESSION_SECRET,
-  cookie: { maxAge: 60000 }, // in millisec
-  store: new MongoStore({
-    mongooseConnection: mongoose.connection, // we store session infos in mongodb
-    ttl: 24 * 60 * 60, // 1 day
-  }),
-  saveUninitialized: true,
-  resave: true,
+	secret: process.env.SESSION_SECRET,
+	cookie: { maxAge: 3600000 }, // in millisec
+	store: new MongoStore({
+		mongooseConnection: mongoose.connection, // we store session infos in mongodb
+		ttl: 24 * 60 * 60, // 1 day
+	}),
+	saveUninitialized: true,
+	resave: true,
 });
 app.use(sessionObj);
 app.use(flash());

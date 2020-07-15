@@ -8,6 +8,8 @@
   </label>
   <ul>
     {{#if isLoggedIn}}
+
+    <li>Hello {{currentUser.firstName}}</li>
     <li><a href="/activity/create">Create an activity</a></li>
     <li><a href="/user/activities/{{currentUser._id}}">My Activities</a></li>
     <li><a href="/user/account/{{currentUser._id}}">My account</a></li>
