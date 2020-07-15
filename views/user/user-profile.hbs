@@ -26,16 +26,6 @@
     </tr>
 
     <tr>
-      <th>Email</th>
-      <td>{{user.email}}</td>
-    </tr>
-
-    <tr>
-      <th>Birth date</th>
-      <td>{{format-date user.birthday}}</td>
-    </tr>
-
-    <tr>
       <th>Strava profile link</th>
       <td>{{user.stravaLink}}</td>
     </tr>
@@ -44,10 +34,10 @@
 
 
   <h3>{{user.firstName}}'s' reviews</h3>
-  {{!-- 
-{{#unless reviews.reviewedUser === user._id}}
+
+  {{#unless reviews.reviewedUser === user._id}}
   no reviews yet !
-{{/unless}} 
---}}
+  {{/unless}}
+
 
 </div>
