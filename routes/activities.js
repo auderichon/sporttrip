@@ -57,6 +57,13 @@ router.get("/delete/:id", (req, res, next) => {
     .catch(next);
 });
 
+// router.get("/register/:id", (req, res, next) => {
+//   activityModel
+//     .findByIdAndUdpate(req.params.id)
+//     .then(() => res.redirect("/user/account")) //(res.redirect my-activities)
+//     .catch(next);
+// });
+
 router.post("/create", (req, res, next) => {
   const {
     activityName,

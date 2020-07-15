@@ -17,6 +17,7 @@
         <div class="form-item">
             <label for="activity-date">Starting date</label>
             <input class="input-small" id="activity-date" name="date" type="datetime-local"
+                value="{{ format-date-input activity.activityDate }}"
                 {{!-- value="{{ format-date-input activity.date }}" --}}required>
         </div>
 
@@ -92,11 +93,11 @@
                 value="{{ activity.maxNbParticipants }}" required>
         </div>
 
-        <div class="form-item">
+        <div>
             <label for="activity-description">Give the other athletes more details about your activity</label>
-            <input class="textarea" id="activity-description" name="description" type="textarea" value=""
+            <textarea id="activity-description" name="description" value=""
                 placeholder="Here describe your activity to other athletes, be specific of what you expect from them, if you have the possibility to lend them gear or if they should bring their own, if you are flexible in terms of dates and times... anything you think useful !"
-                value="{{ activity.description }}" required></textarea>
+                required>{{ activity.description }}</textarea>
         </div>
 
         <button>Update activity</button>

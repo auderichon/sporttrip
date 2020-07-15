@@ -77,5 +77,5 @@ hbs.registerHelper("format-time", function (time) {
 });
 
 hbs.registerHelper("format-date-input", function (time) {
-  return moment(time).format("yyyy-MM-ddThh:mm");
+  return moment(time).format("yyyy-MM-DDThh:mm");
 });

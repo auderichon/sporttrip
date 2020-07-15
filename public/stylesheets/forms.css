@@ -55,7 +55,7 @@ label {
 textarea {
   display: block;
   width: 100%;
-  height: 110px;
+  height: 120px;
   overflow: auto;
   line-height: 1.5;
   font-size: 14px;
@@ -72,7 +72,7 @@ textarea {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
-  margin-top: 5%;
+  margin-top: calc(3% + 110px);
 }
 
 .checkbox {
