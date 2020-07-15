@@ -21,7 +21,7 @@ h1 {
   text-align: center;
   background: rgba(0, 0, 0, 0.25);
   z-index: 1;
-  color: whitesmoke;
+  color: var(--color-secondary);
 }
 
 #home-listing {
@@ -36,6 +36,7 @@ h1 {
   height: 1000px; /*à changer quand on aura rempli les filtres */
   background-color: var(--color-main);
   padding: 10px 15px 10px;
+  color: var(--color-secondary);
 }
 
 #filters h4 {
@@ -51,7 +52,6 @@ h1 {
 }
 
 .each-activity {
-  color: var(--color-main);
   border: var(--color-main) 1px solid;
   padding: 5px;
   width: 100%;
@@ -89,7 +89,7 @@ h1 {
 }
 
 .activity-button {
-  color: whitesmoke;
+  color: var(--color-secondary);
   background-color: var(--color-main);
   padding: 5px 10px 5px;
   width: 50%;
@@ -99,7 +99,7 @@ h1 {
 }
 
 .activity-button a {
-  color: whitesmoke;
+  color: var(--color-secondary);
 }
 
 @media (max-width: 1000px) {

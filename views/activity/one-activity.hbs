@@ -12,8 +12,8 @@
                 <tr>
                     <td>Organiser:</td>
                     <td class="activity-details"><a
-                            href="/user/profile/{{ activity.creator._id}}"></a>{{ activity.creator.firstName }}
-                        {{ activity.creator.lastName }}</td>
+                            href="/user/profile/{{ activity.creator._id}}">{{ activity.creator.firstName }}
+                            {{ activity.creator.lastName }}</a></td>
                 </tr>
                 <tr>
                     <td>Starting date:</td>
@@ -51,11 +51,12 @@
             </div>
         </div>
         {{!-- accessible only if logged user.id === creator --}}
-        {{#compare activity.creator._id currentUser._id operator="==="}}
+        {{#compare activity.creator._id currentUser._id operator="=="}}
         <div class="btn-update">
             <a href="/activity/update/{{ activity._id }}">Update activity</a>
         </div>
         {{/compare}}
+
         {{#compare activity.creator._id currentUser._id operator="!="}}
         <div class="btn-register">
             <a href="/activity/register/{{ activity._id }}">Register for this activity</a>

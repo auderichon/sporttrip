@@ -2,7 +2,6 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  color: var(--color-main);
 }
 
 form {
@@ -69,7 +68,7 @@ textarea {
   margin-top: 20px;
   border-radius: 10px;
   background-color: var(--color-main);
-  color: whitesmoke;
+  color: var(--color-secondary);
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
