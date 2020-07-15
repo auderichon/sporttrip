@@ -58,11 +58,41 @@ router.get("/delete/:id", (req, res, next) => {
 });
 
 router.get("/register/:activityid/:userid", (req, res, next) => {
-  console.log("REQ PARAMS ++++++++++", req.params);
   let user = req.params.userid;
   activityModel
     .findByIdAndUpdate(req.params.activityid, {
       $push: { participantsToApprove: { participantID: user } },
+    })
+    .then(() => res.redirect("/"))
+    .catch(next);
+});
+
+router.get("/validate/:id/:actid", (req, res, next) => {
+  let user = req.params.id;
+  console.log("=========this is the user", user);
+  activityModel
+    .findByIdAndUpdate(req.params.actid, {
+      $push: {
+        participants: { participantID: user },
+      },
+    })
+    .then(() =>
+      activityModel
+        .findByIdAndUpdate(req.params.actid, {
+          $pull: { participantsToApprove: { participantID: user } },
+        })
+        .then(() => res.redirect("/"))
+        .catch(next)
+    )
+    .catch(next);
+});
+
+router.get("/decline/:id/:actid", (req, res, next) => {
+  let user = req.params.id;
+  console.log("=========this is the user", user);
+  activityModel
+    .findByIdAndUpdate(req.params.actid, {
+      $pull: { participantsToApprove: { participantID: user } },
     })
     .then(() => res.redirect("/"))
     .catch(next);
