@@ -6,8 +6,8 @@
 
 
 <div id="form-container">
-    <form action="/message/{{recipient._id}}" method="post">        
-        <h3>Send message to {{recipient.firstName}}</h3>
+    <form action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">        
+        <h3>Send message to {{activity.creator.firstName}}</h3>
           <div class="form-item">
             <label for="user-lastname">Message</label>
             <input class="" id="user-message" name="content" type="text" placeholder="Your message"
