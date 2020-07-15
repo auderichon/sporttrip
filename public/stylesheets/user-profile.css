@@ -26,7 +26,7 @@
 }
 
 .reviews-box {
-	border-bottom: 1px solid var(--color-secondary);
+	width: 70%;
 }
 
 p.avg-rate {
@@ -34,17 +34,23 @@ p.avg-rate {
 	color: #00b7ff;
 }
 
-
 p.review-date {
 	font-size: 10px;
 	margin-top: 10px;
 }
 
 p.review-content {
+	border-bottom: 1.5px solid var(--color-secondary);
 	margin-top: 0px;
-	color: grey;
+	color: darkgrey;
 }
 
-p.review-add {
+.review-add {
 	margin-top: 20px;
+	font-size: 14px;
+}
+
+#rate,
+#reviewContent {
+	color: #00b7ff;
 }
