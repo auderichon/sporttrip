@@ -2,6 +2,11 @@ const express = require("express");
 const router = express.Router();
 const uploader = require("./../config/cloudinary");
 const bcrypt = require("bcrypt"); // npm i bcrypt
+
+const protectPrivateRoute = require("./../middlewares/protectPrivateRoute");
+const exposeFlashMessage = require("./../middlewares/exposeFlashMessage");
+
+
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
 const userModel = require("../models/Users");
@@ -11,21 +16,34 @@ const reviewModel = require("../models/Reviews");
 // ALL ROUTES ARE PREFIXED WITH /AUTH
 // **************************************
 
-// SIGN UP create user account  ===> à protéger
+// SIGN UP
 router.get("/signup", (req, res, next) => {
 	sportModel
 		.find()
 		.then((sports) => {
-			res.render(
-				"user/create-account",
-				{ title: "Create account", sports }
-			);
+			res.render("user/create-account", { title: "Create account", sports });
 		})
 		.catch(next);
 });
 
 router.post("/signup", uploader.single("picture"), (req, res, next) => {
-	const newUser = req.body;
+	/* 
+	const {
+		firstName,
+		lastName,
+		email,
+		password,
+		sports: [
+			{ sport: sport1, level: level1 },
+			{ sport: sport2, level: level2 },
+		],
+		picture,
+		birthday,
+		stravaLink,
+	} = req.body;
+ */
+	newUser = req.body ;
+
 	if (req.file) newUser.picture = req.file.path;
 
 	if (!newUser.email || !newUser.password) {
@@ -70,7 +88,6 @@ router.post("/signin", (req, res, next) => {
 		.then((dbRes) => {
 			if (!dbRes) {
 				// no user found with this email
-				console.log("no user")
 				req.flash("error", "wrong credentials");
 				return res.redirect("/auth/signin");
 			}
@@ -78,14 +95,10 @@ router.post("/signin", (req, res, next) => {
 			if (bcrypt.compareSync(user.password, dbRes.password)) {
 				// encryption says : password match success
 				const { _doc: clone } = { ...dbRes }; // make a clone of db user
-
 				delete clone.password; // remove password from clone
-					console.log("ici")
 				req.session.currentUser = clone; // user is now in session... until session.destroy
-				console.log(clone.id);
 				return res.redirect("/");
 			} else {
-				console.log("no")
 				// encrypted password match failed
 				req.flash("error", "wrong credentials");
 				return res.redirect("/auth/signin");

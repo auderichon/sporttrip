@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 const uploader = require("./../config/cloudinary");
 const protectPrivateRoute = require("./../middlewares/protectPrivateRoute");
+const exposeFlashMessage = require("./../middlewares/exposeFlashMessage");
 
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
@@ -14,7 +15,7 @@ const reviewModel = require("../models/Reviews");
 
 // ACCESS USER ACCOUNT  ===> PROTECT
 
-router.get("/account/:id", protectPrivateRoute, (req, res, next) => {
+router.get("/account/:id", protectPrivateRoute,  (req, res, next) => {
 	userModel
 		.findById(req.params.id)
 		.populate("sports.sport")
@@ -113,7 +114,6 @@ router.post("/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
 		})
 		.then((newReview) => {
 			req.flash("success", "review added");
-			console.log("NEW REVIEW SENT ====>", newReview);
 			res.redirect(`/user/profile/${req.params.id}`);
 		})
 		.catch(next);

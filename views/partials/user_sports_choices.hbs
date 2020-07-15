@@ -1,7 +1,7 @@
 <div class="input-sports">
     <div>
         <label for="user-sport">Sport</label>
-        <select class="user-sport" id="user-sport" name="sport" required>
+        <select class="user-sport" id="user-sport" name="sport{{@index}}" required>
             <option selected>Choose...</option>
             {{#each sports}}
             <option value="{{ this._id }}">{{ this.name }}</option>
@@ -13,22 +13,23 @@
         <p>Level: </p>
         <div class="checkbox-list">
             <div class="checkbox-group">
-                <input class="checkbox" type="checkbox" id="level-beginner" name="level" value="beginner" checked>
+                <input class="checkbox" type="radio" id="level-beginner" name="level{{@index}}" value="beginner" checked>
                 <label class="checkbox-label" for="level-beginner">beginner</label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="checkbox" id="level-intermediate" name="level" value="intermediate">
+                <input class="checkbox" type="radio" id="level-intermediate" name="level{{@index}}" value="intermediate">
                 <label class="checkbox-label" for="level-intermediate">intermediate</label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="checkbox" id="level" name="level" value="experienced">
+                <input class="checkbox" type="radio" id="level" name="level{{@index}}" value="experienced">
                 <label class="checkbox-label" for="level-experienced">experienced</label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="checkbox" id="level-professional" name="level" value="professional">
+                <input class="checkbox" type="radio" id="level-professional" name="level{{@index}}" value="professional">
                 <label class="checkbox-label" for="level-professional">professional</label>
             </div>
         </div>
     </div>
 </div>
-<div> <b>FAIRE APPARAITRE LE NOM DU SPORT+LEVEL EN AJAX ICI ==> CSS A REVOIR</b></div>
+
+<div id="selected-sport"></div>

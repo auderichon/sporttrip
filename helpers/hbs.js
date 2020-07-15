@@ -1,5 +1,7 @@
 const hbs = require("hbs");
 const moment = require("moment");
+const repeat = require("handlebars-helper-repeat");
+
 
 // CUSTOM HELPERS
 
@@ -79,3 +81,7 @@ hbs.registerHelper("format-time", function (time) {
 hbs.registerHelper("format-date-input", function (time) {
   return moment(time).format("yyyy-MM-DDThh:mm");
 });
+
+
+/* helper to repeat some code and get a new index each time */
+hbs.registerHelper("repeat", require("handlebars-helper-repeat"));

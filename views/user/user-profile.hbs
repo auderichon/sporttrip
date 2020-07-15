@@ -42,8 +42,8 @@
 
     <p class="review-date">{{format-date this.reviewDate}}</p>
     <p class="reviewer">Review from :
-      <a href="/user/profile/{{this.reviewerName._id}}"> {{this.reviewerName.firstName}} </a>
-    </p>
+      <a href="/user/profile/{{this.reviewerName._id}}"> {{this.reviewerName.firstName}} </a> </p>
+    <p class="">rate : {{this.rate}}</p>
     <p class="review-content">{{this.reviewContent}}</p>
 
     {{/compare}}
