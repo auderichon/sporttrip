@@ -3,10 +3,12 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: var(--color-main);
   height: var(--nav-height);
   width: 100%;
   color: var(--color-secondary);
+  box-shadow: black 1px 1px 5px;
 }
 
 label.logo {

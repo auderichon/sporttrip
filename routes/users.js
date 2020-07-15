@@ -100,19 +100,24 @@ router.get("/profile/:id", (req, res, next) => {
 });
 
 // SEND USER REVIEWS
-router.post("/user/reviews-from-:id/to-:reviewee", protectPrivateRoute, (req, res, next) => {
-	
-// {reviewedUser : req.params.reviewee, reviewerName : req.params.id}
+router.post("/user/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
+	const { reviewContent, rate } = req.body;
 
 	reviewModel
-		.create(req.params.id)
-		.then((dbRes) => {
-			req.flash("success", "account successfully deleted");
-			res.redirect("/auth/signout");
+		.create({
+			reviewedUser: req.params.id,
+			reviewerName: req.session.currentUser._id,
+			reviewContent,
+			rate,
+			date: Date(),
+		})
+		.then((newReview) => {
+			req.flash("success", "review added");
+			console.log("NEW REVIEW SENT ====>", newReview);
+			res.redirect(`/user/profile/${req.params.id}`);
 		})
 		.catch(next);
 });
-
 
 // USER ACTIVITIES ===> PROTECT
 
@@ -137,8 +142,6 @@ router.get("/activities/:id", protectPrivateRoute, (req, res, next) => {
 		})
 		.catch(next);
 });
-
-
 
 module.exports = router;
 
