@@ -70,6 +70,7 @@ router.post("/signin", (req, res, next) => {
 		.then((dbRes) => {
 			if (!dbRes) {
 				// no user found with this email
+				console.log("no user")
 				req.flash("error", "wrong credentials");
 				return res.redirect("/auth/signin");
 			}
@@ -79,11 +80,12 @@ router.post("/signin", (req, res, next) => {
 				const { _doc: clone } = { ...dbRes }; // make a clone of db user
 
 				delete clone.password; // remove password from clone
-
+					console.log("ici")
 				req.session.currentUser = clone; // user is now in session... until session.destroy
 				console.log(clone.id);
 				return res.redirect("/");
 			} else {
+				console.log("no")
 				// encrypted password match failed
 				req.flash("error", "wrong credentials");
 				return res.redirect("/auth/signin");
