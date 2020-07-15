@@ -24,7 +24,7 @@
             <div class="each-activity">
                 <a href="/activity/{{ this._id }}"><img src="{{ this.sport.picture }}" alt=""></a>
                 <h4>{{ this.activityName }}</h4>
-                <a href="/profile/{{ this.creator._id }}">
+                <a href="/user/profile/{{ this.creator._id }}">
                     <div class="activity-creator">
                         <p>with {{ this.creator.firstName }}</p>
                         <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">

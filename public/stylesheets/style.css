@@ -12,7 +12,7 @@
 body {
   padding: var(--padding-body);
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
-  color: whitesmoke;
+  color: var(--color-main);
 }
 
 a {

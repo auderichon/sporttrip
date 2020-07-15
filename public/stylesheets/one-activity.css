@@ -35,7 +35,8 @@
   justify-content: center;
 }
 
-.btn-update {
+.btn-update,
+.btn-register {
   margin: 40px auto 20px;
   width: 30%;
   background: var(--color-main);
@@ -45,7 +46,8 @@
   justify-self: center;
 }
 
-.btn-update a {
+.btn-update a,
+.btn-register a {
   color: whitesmoke;
   font-weight: 500;
 }

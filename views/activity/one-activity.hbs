@@ -12,7 +12,7 @@
                 <tr>
                     <td>Organiser:</td>
                     <td class="activity-details"><a
-                            href="/profile/{{ activity.creator._id}}"></a>{{ activity.creator.firstName }}
+                            href="/user/profile/{{ activity.creator._id}}"></a>{{ activity.creator.firstName }}
                         {{ activity.creator.lastName }}</td>
                 </tr>
                 <tr>
@@ -39,7 +39,7 @@
                     <td>Registered participants:</td>
                     <td class="activity-details">
                         {{#each activity.participants }}
-                        <p><a href="/profile/{{ this.participantID._id }}">{{ this.participantID.firstName }}
+                        <p><a href="/user/profile/{{ this.participantID._id }}">{{ this.participantID.firstName }}
                                 {{ this.participantID.lastName }}</a></p>
                         {{/each}}
                     </td>
@@ -54,6 +54,11 @@
         {{#compare activity.creator._id currentUser._id operator="==="}}
         <div class="btn-update">
             <a href="/activity/update/{{ activity._id }}">Update activity</a>
+        </div>
+        {{/compare}}
+        {{#compare activity.creator._id currentUser._id operator="!="}}
+        <div class="btn-register">
+            <a href="/activity/register/{{ activity._id }}">Register for this activity</a>
         </div>
         {{/compare}}
 
