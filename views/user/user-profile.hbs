@@ -33,11 +33,51 @@
   </table>
 
 
-  <h3>{{user.firstName}}'s' reviews</h3>
+  <h3 class="review-title">{{user.firstName}}'s' reviews</h3>
 
-  {{#unless reviews.reviewedUser === user._id}}
-  no reviews yet !
-  {{/unless}}
+  <p class="avg-rate">Average rate : </p>
 
+  <div class="reviews-box">
+    {{#each review}}
+    {{#compare this.reviewedUser._id ../user.id operator="=="}}
+    <p class="review-date">{{format-date this.reviewDate}}</p>
+    <p class="reviewer">Review from :
+      <a href="/user/profile/{{this.reviewerName._id}}"> {{this.reviewerName.firstName}} </a>
+    </p>
+    <p class="review-content">{{this.reviewContent}}</p>
+
+    {{/compare}}
+    {{/each}}
+
+  </div>
+
+
+  {{!-- TO MOVE IN ONE-ACTIVITY PAGE --------------------}}
+
+  {{#compare currentUser._id user._id operator="!="}}
+  <p class="review-add">Add your review</p>
+
+  <form action="/user/reviews-from-{{currentUser._id}}/to-{{user.id}}"
+        method="post">
+
+    <label for="reviewContent"></label>
+    <input type="text"
+           id="reviewContent"
+           name="reviewContent"
+           placeholder="Give us some feedback about {{user.firstName}} and his activity."
+           required />
+    <label for="rate">Give {{user.firstName}} a note !</label>
+    <input type="number"
+           id="rate"
+           name="rate"
+           value="3"
+           
+           min="0"
+           max="5"
+           required />
+    <button class="btn-update">Send</button>
+  </form>
+
+  {{/compare}}
 
 </div>

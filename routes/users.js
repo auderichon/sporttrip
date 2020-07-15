@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const uploader = require("./../config/cloudinary");
+const protectPrivateRoute = require("./../middlewares/protectPrivateRoute");
 
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
@@ -13,7 +14,7 @@ const reviewModel = require("../models/Reviews");
 
 // ACCESS USER ACCOUNT  ===> PROTECT
 
-router.get("/account/:id", (req, res, next) => {
+router.get("/account/:id", protectPrivateRoute, (req, res, next) => {
 	userModel
 		.findById(req.params.id)
 		.populate("sports.sport")
@@ -28,7 +29,7 @@ router.get("/account/:id", (req, res, next) => {
 
 // UPDATE USER ACCOUNT  ===> PROTECT
 
-router.get("/edit-account/:id", (req, res, next) => {
+router.get("/edit-account/:id", protectPrivateRoute, (req, res, next) => {
 	userModel
 		.findById(req.params.id)
 		.populate("sports.sport")
@@ -43,6 +44,7 @@ router.get("/edit-account/:id", (req, res, next) => {
 
 router.post(
 	"/edit-account/:id",
+	protectPrivateRoute,
 	uploader.single("picture"),
 	(req, res, next) => {
 		const updatedUser = req.body;
@@ -61,7 +63,7 @@ router.post(
 // DELETE USER ACCOUNT
 
 // ask for confirmation
-router.get("/confirm-delete/:id", (req, res, next) => {
+router.get("/confirm-delete/:id", protectPrivateRoute, (req, res, next) => {
 	userModel
 		.findById(req.params.id)
 		.then((user) => {
@@ -71,7 +73,7 @@ router.get("/confirm-delete/:id", (req, res, next) => {
 });
 
 // delete for real
-router.post("/delete-account/:id", (req, res, next) => {
+router.post("/delete-account/:id", protectPrivateRoute, (req, res, next) => {
 	userModel
 		.findByIdAndDelete(req.params.id)
 		.then((dbRes) => {
@@ -85,24 +87,36 @@ router.post("/delete-account/:id", (req, res, next) => {
 
 router.get("/profile/:id", (req, res, next) => {
 	Promise.all([
-		userModel.findById(req.params.id).populate("sports.sport"),
+		userModel.findById(req.params.id),
 		reviewModel.find().populate("reviewedUser reviewerName"),
-		activityModel.find().populate("creators participants"),
 	])
 		.then((dbRes) => {
-			console.log(dbRes[0]);
 			res.render("user/user-profile", {
 				user: dbRes[0],
 				review: dbRes[1],
-				activity: dbRes[2],
 			});
 		})
 		.catch(next);
 });
 
+// SEND USER REVIEWS
+router.post("/user/reviews-from-:id/to-:reviewee", protectPrivateRoute, (req, res, next) => {
+	
+// {reviewedUser : req.params.reviewee, reviewerName : req.params.id}
+
+	reviewModel
+		.create(req.params.id)
+		.then((dbRes) => {
+			req.flash("success", "account successfully deleted");
+			res.redirect("/auth/signout");
+		})
+		.catch(next);
+});
+
+
 // USER ACTIVITIES ===> PROTECT
 
-router.get("/activities/:id", (req, res, next) => {
+router.get("/activities/:id", protectPrivateRoute, (req, res, next) => {
 	Promise.all([
 		userModel.findById(req.params.id),
 		activityModel
@@ -114,7 +128,7 @@ router.get("/activities/:id", (req, res, next) => {
 			})
 			.populate("participants.participantID creator sport"),
 	])
-	.then((dbRes) => {
+		.then((dbRes) => {
 			res.render("user/user-activities", {
 				title: `${dbRes[0].firstName}'s activities`,
 				user: dbRes[0],
@@ -123,6 +137,8 @@ router.get("/activities/:id", (req, res, next) => {
 		})
 		.catch(next);
 });
+
+
 
 module.exports = router;
 

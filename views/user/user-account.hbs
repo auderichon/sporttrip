@@ -1,58 +1,65 @@
+{{#compare currentUser._id user._id operator="=="}}
+{{!-- SECURE THE ACCOUNT PATH --}}
+
 <h2>{{user.firstName}} {{user.lastName}}'s account</h2>
 
 <div class="profile-container">
 
 
-{{#if user.picture}}
+  {{#if user.picture}}
   <img class="profile-picture"
        src="{{user.picture}}"
        alt="Picture of {{user.firstName}}">
-{{/if}}
-{{#unless user.picture}}
+  {{/if}}
+  {{#unless user.picture}}
   <h3>No profile picture yet.</h3>
-{{/unless}}
+  {{/unless}}
 
 
-<table class="profile-infos table">
-  <tr>
-    <th>SporTrip profile</th>
-    <td><a href="/user/profile/{{user._id}}">http://localhost:3000/user/profile/{{user._id}}</a></td>
-  </tr>
+  <table class="profile-infos table">
+    <tr>
+      <th>SporTrip profile</th>
+      <td><a href="/user/profile/{{user._id}}">http://localhost:3000/user/profile/{{user._id}}</a></td>
+    </tr>
 
-  <tr>
-    <th>Your sports</th>
-    <td>
-      {{#each user.sports}}
-      <ul>
-        <li> {{this.sport.name}} -- Level : {{this.level}}</li>
-      </ul>
-      {{/each}}
-    </td>
-  </tr>
+    <tr>
+      <th>Your sports</th>
+      <td>
+        {{#each user.sports}}
+        <ul>
+          <li> {{this.sport.name}} -- Level : {{this.level}}</li>
+        </ul>
+        {{/each}}
+      </td>
+    </tr>
 
-  <tr>
-    <th>Email</th>
-    <td>{{user.email}}</td>
-  </tr>
+    <tr>
+      <th>Email</th>
+      <td>{{user.email}}</td>
+    </tr>
 
-  <tr>
-    <th>Birth date</th>
-    <td>{{format-date user.birthday}}</td>
-  </tr>
+    <tr>
+      <th>Birth date</th>
+      <td>{{format-date user.birthday}}</td>
+    </tr>
 
-  <tr>
-    <th>Strava profile link</th>
-    <td>{{user.stravaLink}}</td>
-  </tr>
+    <tr>
+      <th>Strava profile link</th>
+      <td>{{user.stravaLink}}</td>
+    </tr>
 
-  <tr>
-    <th>Edit account</th>
-    <td>
-      <a class="link fas fa-pen"
-         href="/user/edit-account/{{currentUser._id}}"></a>
-    </td>
-  </tr>
+    <tr>
+      <th>Edit account</th>
+      <td>
+        <a class="link fas fa-pen"
+           href="/user/edit-account/{{currentUser._id}}"></a>
+      </td>
+    </tr>
 
-</table>
+  </table>
 
 </div>
+
+{{else }}
+Forbidden path !
+{{/compare}}

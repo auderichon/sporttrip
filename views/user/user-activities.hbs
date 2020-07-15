@@ -1,3 +1,6 @@
+{{#compare currentUser._id user._id operator="=="}}
+{{!-- SECURE THE ACCOUNT PATH --}}
+
 <h2>All my activities</h2>
 
 <h3>Activities that I created </h3>
@@ -13,7 +16,7 @@
          alt="">
     <h4>{{ this.activityName }}</h4>
     <div class="activity-creator">
-      <a href="/profile/{{ this.creator._id }}">
+      <a href="/user/profile/{{ this.creator._id }}">
         <p>with {{ this.creator.firstName }}</p>
       </a>
       <img src="{{ this.creator.picture }}"
@@ -27,12 +30,13 @@
     <div class="activity-button">
       <a href="/activity/{{ this._id }}">See details</a>
     </div>
+
   </div>
+
+  {{/compare}}
+  {{/each}}
+
 </div>
-
-{{/compare}}
-{{/each}}
-
 
 <h3>Activities I participated to</h3>
 
@@ -48,7 +52,7 @@
          alt="">
     <h4>{{ ../this.activityName }}</h4>
     <div class="activity-creator">
-      <a href="/profile/{{ ../this.creator._id }}">
+      <a href="/user/profile/{{ ../this.creator._id }}">
         <p>with {{ ../this.creator.firstName }}</p>
       </a>
       <img src="{{ ../this.creator.picture }}"
@@ -70,3 +74,7 @@
   {{/each}}
 
 </div>
+
+{{else }}
+Forbidden path !
+{{/compare}}
