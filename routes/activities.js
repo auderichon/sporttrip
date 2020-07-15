@@ -57,9 +57,12 @@ router.get("/delete/:id", (req, res, next) => {
     .catch(next);
 });
 
-// router.get("/register/:id", (req, res, next) => {
+// router.get("/register/:id/:userid", (req, res, next) => {
+//   console.log("REQ BODY:", req.body);
 //   activityModel
-//     .findByIdAndUdpate(req.params.id)
+//     .findByIdAndUdpate(req.params.id[0], req.params.id[1] => {
+
+//     })
 //     .then(() => res.redirect("/user/account")) //(res.redirect my-activities)
 //     .catch(next);
 // });

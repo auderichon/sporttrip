@@ -1,3 +1,6 @@
+{{#compare currentUser._id user._id operator="=="}}
+{{!-- SECURE THE ACCOUNT PATH --}}
+
 <h2>Update your account {{user.firstName}}</h2>
 
 <div id="form-container">
@@ -61,3 +64,7 @@
   </form>
 
 </div>
+
+{{else }}
+Forbidden path !
+{{/compare}}

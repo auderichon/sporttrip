@@ -1,21 +1,50 @@
 #user-profile {
-  display: flex;
+	display: flex;
 }
 
 .profile-container {
-  width: 80%;
-  margin: auto;
+	width: 80%;
+	margin: auto;
 }
 
 .profile-picture {
-  height : 200px;
-  margin-bottom: 20px;
+	height: 200px;
+	margin-bottom: 20px;
 }
 
 .profile-infos.table tr {
-  height: 35px;
+	height: 35px;
 }
+
 .profile-infos.table th {
-  text-align: left;
-  padding-right: 20px;
+	text-align: left;
+	padding-right: 20px;
+}
+
+.review-title {
+	margin-bottom: 10px;
+}
+
+.reviews-box {
+	border-bottom: 1px solid var(--color-secondary);
+}
+
+p.avg-rate {
+	margin-bottom: 10px;
+	color: #00b7ff;
+}
+
+
+p.review-date {
+	font-size: 10px;
+	margin-top: 10px;
+}
+
+p.review-content {
+	margin-top: 0px;
+	color: grey;
+}
+
+p.review-add {
+	margin-top: 20px;
 }

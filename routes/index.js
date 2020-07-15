@@ -18,9 +18,32 @@ router.get("/", (req, res, next) => {
   ])
     .then((dbRes) => {
       let activities = dbRes[0];
+
+      let arrC = [];
+      for (let i = 0; i < activities.length; i++) {
+        arrC.push(activities[i].location.country);
+      }
+      let countries = [...new Set(arrC)];
+      countries.pop();
+
+      let arrS = [];
+      for (let i = 0; i < activities.length; i++) {
+        arrS.push(activities[i].sport);
+      }
+      let sports = [...new Set(arrS)];
+
+      // let arrD = [];
+      // for (let i = 0; i < activities.length; i++) {
+      //   arrD.push(activities[i].duration);
+      // }
+      // let durations = [...new Set(arrD)];
+
       res.render("index", {
         title: "SporTrip: find partners for your next sports trip",
         activities,
+        sports,
+        countries,
+        // durations,
       });
     })
     .catch(next);

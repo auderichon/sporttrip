@@ -5,19 +5,60 @@
     <div id="home-listing">
         <div id="filters">
             <h4>Filters:</h4>
-            {{!-- <h5>Country</h5>
-            {{#each activities }}
-            <div>
-                <input type="checkbox" id="{{ this.location.country }}" name="country"
-                    value="{{ this.location.country }}">
-                <label for="{{ this.location.country }}">{{ this.location.country }}</label>
+            <div class="activity-filter">
+                <p>Country:</p>
+                {{#each countries }}
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="{{ this }}" name="country" value="{{ this }}">
+                    <label class="checkbox-label" for="{{ this }}">{{ this }}</label>
+                </div>
+                {{/each}}
             </div>
-            {{/each}}
-
-            <h5>Duration</h5>
-            {{#each activities}}
-            <p>{{ this.duration }}</p>
-            {{/each}} --}}
+            <div class="activity-filter select-filter">
+                <p>Sport:</p>
+                <select multiple>
+                    <option selected>Choose...</option>
+                    {{#each sports}}
+                    <option value={{ this.name }}>{{ this.name }}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="activity-filter select-filter">
+                <p>Duration:</p>
+                {{!-- <label for="activity-duration">Activity duration:</label> --}}
+                <select multiple id="activity-duration" name="duration" required>
+                    <option selected>Choose...</option>
+                    <option value="1/2 day">1/2 day</option>
+                    <option value="full day">full day</option>
+                    <option value="2 days">2 days</option>
+                    <option value="3 days">3 days</option>
+                    <option value="4 to 6 days">4 to 6 days</option>
+                    <option value="1 week">1 week</option>
+                    <option value=">1 week">>1 week</option>
+                </select>
+            </div>
+            <div class="activity-filter">
+                <p>Level required:</p>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-beginner" name="requiredLevel" value="beginner">
+                    <label class="checkbox-label" for="level-beginner">beginner</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-intermediate" name="requiredLevel"
+                        value="intermediate">
+                    <label class="checkbox-label" for="level-intermediate">intermediate</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-experienced" name="requiredLevel"
+                        value="experienced">
+                    <label class="checkbox-label" for="level-experienced">experienced</label>
+                </div>
+                <div class="checkbox-group">
+                    <input class="checkbox" type="checkbox" id="level-professional" name="requiredLevel"
+                        value="professional">
+                    <label class="checkbox-label" for="level-professional">professional</label>
+                </div>
+            </div>
         </div>
         <div class="activity-list">
             {{#each activities}}

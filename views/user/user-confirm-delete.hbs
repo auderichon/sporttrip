@@ -1,3 +1,6 @@
+{{#compare currentUser._id user._id operator="=="}}
+{{!-- SECURE THE ACCOUNT PATH --}}
+
 <h2>Delete your account ? </h2>
 
 <h3>{{user.firstName}}, do you really want to leave us ? </h3>
@@ -6,3 +9,7 @@
       method="post">
   <button id="btn-confirm-delete">Yes, delete my account</button>
 </form>
+
+{{else }}
+Forbidden path !
+{{/compare}}
