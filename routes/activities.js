@@ -57,15 +57,16 @@ router.get("/delete/:id", (req, res, next) => {
     .catch(next);
 });
 
-// router.get("/register/:id/:userid", (req, res, next) => {
-//   console.log("REQ BODY:", req.body);
-//   activityModel
-//     .findByIdAndUdpate(req.params.id[0], req.params.id[1] => {
-
-//     })
-//     .then(() => res.redirect("/user/account")) //(res.redirect my-activities)
-//     .catch(next);
-// });
+router.get("/register/:activityid/:userid", (req, res, next) => {
+  console.log("REQ PARAMS ++++++++++", req.params);
+  let user = req.params.userid;
+  activityModel
+    .findByIdAndUpdate(req.params.activityid, {
+      $push: { participantsToApprove: { participantID: user } },
+    })
+    .then(() => res.redirect("/"))
+    .catch(next);
+});
 
 router.post("/create", (req, res, next) => {
   const {

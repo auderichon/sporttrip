@@ -72,7 +72,7 @@ textarea {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
   font-size: 1.2rem;
   font-weight: 500;
-  margin-top: calc(3% + 110px);
+  margin-top: 100px;
 }
 
 .checkbox {
