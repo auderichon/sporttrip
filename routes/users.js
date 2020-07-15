@@ -100,7 +100,7 @@ router.get("/profile/:id", (req, res, next) => {
 });
 
 // SEND USER REVIEWS
-router.post("/user/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
+router.post("/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
 	const { reviewContent, rate } = req.body;
 
 	reviewModel
@@ -109,7 +109,7 @@ router.post("/user/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
 			reviewerName: req.session.currentUser._id,
 			reviewContent,
 			rate,
-			date: Date(),
+			date: Date.now,
 		})
 		.then((newReview) => {
 			req.flash("success", "review added");
