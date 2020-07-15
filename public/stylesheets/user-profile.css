@@ -1,0 +1,21 @@
+#user-profile {
+  display: flex;
+}
+
+.profile-container {
+  width: 80%;
+  margin: auto;
+}
+
+.profile-picture {
+  height : 200px;
+  margin-bottom: 20px;
+}
+
+.profile-infos.table tr {
+  height: 35px;
+}
+.profile-infos.table th {
+  text-align: left;
+  padding-right: 20px;
+}

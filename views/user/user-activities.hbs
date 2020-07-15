@@ -2,20 +2,22 @@
 
 <h3>Activities that I created </h3>
 
-{{#each activity}}
-
-  {{#compare activity.creator._id currentUser._id operator="=="}}
+<div class="activity-list">
+  {{#each activity}}
+  {{!-- accessible only if logged user === creator ;
+"../" allows to escape the scope of the EACH --}}
+  {{#compare this.creator._id ../currentUser._id operator="=="}}
 
   <div class="each-activity">
     <img src="{{ this.sport.picture }}"
-        alt="">
+         alt="">
     <h4>{{ this.activityName }}</h4>
     <div class="activity-creator">
       <a href="/profile/{{ this.creator._id }}">
         <p>with {{ this.creator.firstName }}</p>
       </a>
       <img src="{{ this.creator.picture }}"
-          alt="{{ this.creator.firstName }} pic">
+           alt="{{ this.creator.firstName }} pic">
     </div>
     <p>Level: {{ this.requiredLevel }}</p>
     <div class="time">
@@ -26,44 +28,45 @@
       <a href="/activity/{{ this._id }}">See details</a>
     </div>
   </div>
+</div>
 
-  {{else}}
-  <p>You have not created an activity yet !</p>
-
-  {{/compare }}
-
+{{/compare}}
 {{/each}}
+
 
 <h3>Activities I participated to</h3>
 
-{{#each activity}}
+<div class="activity-list">
+  {{#each activity}}
+  {{#each this.participants}}
 
-  {{#compare this.participants.participantID._id currentUser._id operator="=="}}
+  {{#compare this.participantID._id ../../currentUser._id operator="=="}}
+  {{!-- there are 2 else so use ../ twice to get out of their scope --}}
 
   <div class="each-activity">
-    <img src="{{ this.sport.picture }}"
-        alt="">
-    <h4>{{ this.activityName }}</h4>
+    <img src="{{ ../this.sport.picture }}"
+         alt="">
+    <h4>{{ ../this.activityName }}</h4>
     <div class="activity-creator">
-      <a href="/profile/{{ this.creator._id }}">
-        <p>with {{ this.creator.firstName }}</p>
+      <a href="/profile/{{ ../this.creator._id }}">
+        <p>with {{ ../this.creator.firstName }}</p>
       </a>
-      <img src="{{ this.creator.picture }}"
-          alt="{{ this.creator.firstName }} pic">
+      <img src="{{ ../this.creator.picture }}"
+           alt="{{ ../this.creator.firstName }} pic">
     </div>
-    <p>Level: {{ this.requiredLevel }}</p>
+    <p>Level: {{ ../this.requiredLevel }}</p>
     <div class="time">
-      <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>
-      <p><i class="fas fa-calendar-day"></i> {{ format-date this.date }}</p>
+      <p><i class="fas fa-stopwatch"></i> {{ ../this.duration }}</p>
+      <p><i class="fas fa-calendar-day"></i> {{ format-date ../this.date }}</p>
     </div>
     <div class="activity-button">
-      <a href="/activity/{{ this._id }}">See details</a>
+      <a href="/activity/{{ ../this._id }}">See details</a>
     </div>
   </div>
 
-  {{else}}
-  <p>You have not participated in an activity yet !</p>
-
   {{/compare }}
 
-{{/each}}
+  {{/each}}
+  {{/each}}
+
+</div>

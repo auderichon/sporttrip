@@ -114,7 +114,7 @@ router.get("/activities/:id", (req, res, next) => {
 			})
 			.populate("participants.participantID creator sport"),
 	])
-		.then((dbRes) => {
+	.then((dbRes) => {
 			res.render("user/user-activities", {
 				title: `${dbRes[0].firstName}'s activities`,
 				user: dbRes[0],

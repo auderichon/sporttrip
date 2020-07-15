@@ -1,25 +1,28 @@
 <h2>{{user.firstName}} {{user.lastName}}'s profile</h2>
 
-<div id="profile-container">
+
+<div class="profile-container">
+
   {{#if user.picture}}
-  <h3>Profile picture</h3>
-  <img class="" src="{{user.picture}}" alt="{{user.firstName}} picture">
+  <img class="profile-picture"
+       src="{{user.picture}}"
+       alt="Picture of {{user.firstName}}">
   {{/if}}
   {{#unless user.picture}}
   <h3>No profile picture yet.</h3>
   {{/unless}}
 
-  <table class="table account">
+  <table class="profile-infos table">
 
     <tr>
       <th>Your sports</th>
-      {{#each user.sports}}
       <td>
+        {{#each user.sports}}
         <ul>
-          <li> {{this.sport.name}} <br> Level : {{this.level}} </li>
+          <li> {{this.sport.name}} -- Level : {{this.level}}</li>
         </ul>
+        {{/each}}
       </td>
-      {{/each}}
     </tr>
 
     <tr>
@@ -40,7 +43,7 @@
   </table>
 
 
-  <h3>{{user.firstName}} reviews</h3>
+  <h3>{{user.firstName}}'s' reviews</h3>
   {{!-- 
 {{#unless reviews.reviewedUser === user._id}}
   no reviews yet !

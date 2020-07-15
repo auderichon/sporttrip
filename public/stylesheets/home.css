@@ -43,7 +43,7 @@ h1 {
   font-weight: bold;
 }
 
-#activity-list {
+.activity-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
@@ -106,7 +106,7 @@ h1 {
   #home header {
     height: 350px;
   }
-  #activity-list {
+  .activity-list {
     grid-template-columns: repeat(2, 1fr);
   }
   h1 {
@@ -115,7 +115,7 @@ h1 {
 }
 
 @media (max-width: 750px) {
-  #activity-list {
+  .activity-list {
     grid-template-columns: 1fr;
   }
   h1 {

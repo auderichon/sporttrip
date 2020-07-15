@@ -1,48 +1,58 @@
 <h2>{{user.firstName}} {{user.lastName}}'s account</h2>
 
-<div id="user-account">
-    {{#if user.picture}}
-    <h3>Profile picture</h3>
-    <img class="" src="{{user.picture}}" alt="{{user.firstName}}'s picture">
-    {{/if}}
-    {{#unless user.picture}}
-    <h3>No profile picture yet.</h3>
-    {{/unless}}
+<div class="profile-container">
 
-    <table class="table account">
 
-        <tr>
-            <th>Your sports</th>
-            {{#each user.sports}}
-            <td>
-                <ul>
-                    <li> {{this.sport.name}} <br> Level : {{this.level}} </li>
-                </ul>
-            </td>
-            {{/each}}
-        </tr>
+{{#if user.picture}}
+  <img class="profile-picture"
+       src="{{user.picture}}"
+       alt="Picture of {{user.firstName}}">
+{{/if}}
+{{#unless user.picture}}
+  <h3>No profile picture yet.</h3>
+{{/unless}}
 
-        <tr>
-            <th>Email</th>
-            <td>{{user.email}}</td>
-        </tr>
 
-        <tr>
-            <th>Birth date</th>
-            <td>{{format-date user.birthday}}</td>
-        </tr>
+<table class="profile-infos table">
+  <tr>
+    <th>SporTrip profile</th>
+    <td><a href="/user/profile/{{user._id}}">http://localhost:3000/user/profile/{{user._id}}</a></td>
+  </tr>
 
-        <tr>
-            <th>Strava profile link</th>
-            <td><a href="{{user.stravaLink}}">Strava</a></td>
-        </tr>
+  <tr>
+    <th>Your sports</th>
+    <td>
+      {{#each user.sports}}
+      <ul>
+        <li> {{this.sport.name}} -- Level : {{this.level}}</li>
+      </ul>
+      {{/each}}
+    </td>
+  </tr>
 
-        <tr rowspan="2">
-            <th>Edit account</th>
-            <td>
-                <a class="link fas fa-pen" href="/user/edit-account/{{user._id}}"></a>
-            </td>
-        </tr>
+  <tr>
+    <th>Email</th>
+    <td>{{user.email}}</td>
+  </tr>
 
-    </table>
+  <tr>
+    <th>Birth date</th>
+    <td>{{format-date user.birthday}}</td>
+  </tr>
+
+  <tr>
+    <th>Strava profile link</th>
+    <td>{{user.stravaLink}}</td>
+  </tr>
+
+  <tr>
+    <th>Edit account</th>
+    <td>
+      <a class="link fas fa-pen"
+         href="/user/edit-account/{{currentUser._id}}"></a>
+    </td>
+  </tr>
+
+</table>
+
 </div>
