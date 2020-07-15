@@ -57,13 +57,15 @@ router.get("/delete/:id", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/register/:id/:userId", (req, res, next) => {
-  console.log("REQ BODY:", req.body);
-  activityModel
-    .findByIdAndUdpate(req.params.id)
-    .then(() => res.redirect("/user/account")) //(res.redirect my-activities)
-    .catch(next);
-});
+// router.get("/register/:id/:userid", (req, res, next) => {
+//   console.log("REQ BODY:", req.body);
+//   activityModel
+//     .findByIdAndUdpate(req.params.id[0], req.params.id[1] => {
+
+//     })
+//     .then(() => res.redirect("/user/account")) //(res.redirect my-activities)
+//     .catch(next);
+// });
 
 router.post("/create", (req, res, next) => {
   const {
