@@ -4,9 +4,7 @@
 <div class="profile-container">
 
   {{#if user.picture}}
-  <img class="profile-picture"
-       src="{{user.picture}}"
-       alt="Picture of {{user.firstName}}">
+  <img class="profile-picture" src="{{user.picture}}" alt="Picture of {{user.firstName}}">
   {{/if}}
   {{#unless user.picture}}
   <h3>No profile picture yet.</h3>
@@ -58,9 +56,9 @@
 
   {{/if}}
 
+  {{#compare user._id currentUser._id operator="!="}}
   <div id="form-container">
-    <form action="/message/{{user._id}}/{{currentUser._id}}"
-          method="post">
+    <form action="/message/{{user._id}}/{{currentUser._id}}" method="post">
       <h3>Send a message to {{user.firstName}}</h3>
       <div>
         <label for="user-lastname">Message</label>
@@ -71,6 +69,7 @@
     </form>
 
   </div>
+  {{/compare}}
 </div>
 
 
