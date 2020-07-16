@@ -1,0 +1,17 @@
+#footer {
+	height: 45px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	font-size: 12px;
+  margin-top: 15px;
+  padding: 10px;
+  background-color: var(--color-secondary);
+}
+
+
+.ironhackers a {
+  margin-left: 40px;
+}

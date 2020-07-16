@@ -81,6 +81,8 @@
 
         {{!-- ADD REVIEWS SECTION ---}}
 
+        {{#compare activity.date today operator="<"}}
+
         {{#compare currentUser._id activity.creator._id operator="!="}}
         <p class="review-add">{{currentUser.firstName}}, it seems that you participated. <br>
             Please, give us some feedback about {{activity.creator.firstName}}'s activity !</p>
@@ -109,6 +111,7 @@
                 <button class="btn-update">Send</button>
             </form>
 
+            {{/compare}}
             {{/compare}}
 
 
