@@ -8,12 +8,9 @@ const conversationModel = require("../models/Conversation");
 router.get("/", (req, res, next) => {
   console.log("++++++++++++++", req.session.currentUser._id);
   const user = req.session.currentUser._id;
-  Promise.all([
-    conversationModel
-      .find({ users: { $elemMatch: { user } } })
-      .populate("users"),
-    userModel.find(),
-  ])
+  conversationModel
+    .find({ users: user })
+    .populate("users messages.user")
     .then((conversations) => {
       console.log("====================", conversations);
 
@@ -67,7 +64,7 @@ router.post("/:user1id/:user2id", (req, res, next) => {
           })
           .then(
             req.flash("success", "Message successfully added"),
-            res.redirect("/")
+            res.redirect("/message")
           )
           .catch(next);
       }

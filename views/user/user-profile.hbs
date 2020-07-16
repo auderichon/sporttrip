@@ -33,7 +33,7 @@
 
   <h3 class="review-title">{{user.firstName}}'s reviews</h3>
 
-  <p class="avg-rate">Average rate : </p>
+  <p class="avg-rate">Average rate: </p>
 
   <div class="reviews-box">
 
@@ -70,17 +70,17 @@
 
     {{/compare}}
     <div id="form-container">
-    <form action="/message/{{user._id}}/{{currentUser._id}}" method="post">        
-        <h3>Send message to {{user.firstName}}</h3>
-          <div class="form-item">
-            <label for="user-lastname">Message</label>
-            <textarea name="content">its just a test so please chill</textarea>
+      <form action="/message/{{user._id}}/{{currentUser._id}}" method="post">
+        <h3>Send a message to {{user.firstName}}</h3>
+        <div>
+          <label for="user-lastname">Message</label>
+          <textarea name="content">its just a test so please chill</textarea>
         </div>
 
-        <button id="send-mgs">Send</button>
-    </form>
+        <button class="send-msg">Send</button>
+      </form>
 
-</div>
+    </div>
   </div>
 
 

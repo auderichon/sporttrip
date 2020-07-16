@@ -1,0 +1,28 @@
+.message-content {
+  border-radius: 10px;
+  border: 1px solid var(--color-main);
+  padding: 10px 5px 10px;
+  width: fit-content;
+}
+
+.message-sender {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#conv-page {
+  width: 80%;
+  margin: 20px auto 20px;
+}
+
+.message-content.blue {
+  background-color: rgb(247, 210, 248);
+}
+
+.message-content.green {
+  background-color: rgb(226, 248, 226);
+}
+
+.with-whom {
+  font-weight: bold;
+}
