@@ -3,6 +3,8 @@ const router = new express.Router(); // create an app sub-module (router)
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
 const userModel = require("../models/Users");
+const reviewModel = require("../models/Reviews");
+
 const protectPrivateRoute = require("../middlewares/protectPrivateRoute");
 
 // *********************************************
@@ -141,5 +143,30 @@ router.post("/update/:id", (req, res, next) => {
     })
     .catch(next);
 });
+
+
+// SEND REVIEWS ON USER/ACTIVITY
+
+router.post("/:activityID/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
+	const { reviewContent, rate } = req.body;
+
+	reviewModel
+		.create({
+			reviewedUser: req.params.id,
+			reviewerName: req.session.currentUser._id,
+			reviewContent,
+			rate,
+			date: Date.now,
+		})
+		.then((newReview) => {
+      req.flash("success", "review added");
+      
+			console.log("NEW REVIEW SENT ====>", newReview);
+			res.redirect(`/activity/${req.params.activityID}`);
+		})
+		.catch(next);
+});
+
+
 
 module.exports = router;

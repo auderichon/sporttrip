@@ -122,37 +122,24 @@ router.post("/delete-account/:id", protectPrivateRoute, (req, res, next) => {
 
 // USER PROFILE
 
-router.get("/profile/:id", (req, res, next) => {
+router.get("/profile/:id", protectPrivateRoute, (req, res, next) => {
 	Promise.all([
-		userModel.findById(req.params.id),
+		userModel.findById(req.params.id).populate("sports.sport"),
 		reviewModel.find().populate("reviewedUser reviewerName"),
 	])
 		.then((dbRes) => {
+			let user = dbRes[0];
+
+			let reviews = dbRes[1];
+
+			let userReviews = reviews.filter(
+				(review) => review.reviewedUser._id == req.params.id
+			);
+
 			res.render("user/user-profile", {
-				user: dbRes[0],
-				review: dbRes[1],
+				user,
+				userReviews,
 			});
-		})
-		.catch(next);
-});
-
-// SEND USER REVIEWS
-
-router.post("/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
-	const { reviewContent, rate } = req.body;
-
-	reviewModel
-		.create({
-			reviewedUser: req.params.id,
-			reviewerName: req.session.currentUser._id,
-			reviewContent,
-			rate,
-			date: Date.now,
-		})
-		.then((newReview) => {
-			req.flash("success", "review added");
-			console.log("NEW REVIEW SENT ====>", newReview);
-			res.redirect(`/user/profile/${req.params.id}`);
 		})
 		.catch(next);
 });

@@ -2,7 +2,9 @@
 
 <div id="activity-container">
     <div id="one-activity-page">
-        <img id="one-activity-img" src="{{ activity.sport.picture }}" alt="{{ activity.sport.name }}">
+        <img id="one-activity-img"
+             src="{{ activity.sport.picture }}"
+             alt="{{ activity.sport.name }}">
         <div id="one-activity-content">
             <table>
                 <tr>
@@ -12,7 +14,7 @@
                 <tr>
                     <td>Organiser:</td>
                     <td class="activity-details"><a
-                            href="/user/profile/{{ activity.creator._id}}">{{ activity.creator.firstName }}
+                           href="/user/profile/{{ activity.creator._id}}">{{ activity.creator.firstName }}
                             {{ activity.creator.lastName }}</a></td>
                 </tr>
                 <tr>
@@ -62,17 +64,54 @@
             <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
         </div>
         <div id="form-container">
-            <form action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">
+            <form action="/message/{{activity.creator._id}}/{{currentUser._id}}"
+                  method="post">
                 <h3>Send a message to {{activity.creator.firstName}}</h3>
                 <div>
                     <label for="user-lastname">Message</label>
-                    <textarea class="textarea" id="user-message" name="content"
-                        placeholder="Ask for details about the activity if you want to know more !">Hey ! I'd like to know more about your activity !</textarea>
+                    <textarea class="textarea"
+                              id="user-message"
+                              name="content"
+                              placeholder="Ask for details about the activity if you want to know more !">Hey ! I'd like to know more about your activity !</textarea>
                 </div>
                 <button class="btn-send">Send</button>
             </form>
         </div>
         {{/compare}}
 
+        {{!-- ADD REVIEWS SECTION ---}}
+
+        {{#compare currentUser._id activity.creator._id operator="!="}}
+        <p class="review-add">{{currentUser.firstName}}, it seems that you participated. <br>
+            Please, give us some feedback about {{activity.creator.firstName}}'s activity !</p>
+
+        <div class="reviews-box">
+
+            <form action="/activity/{{activity.id}}/reviews-for-{{activity.creator._id}}"
+                  method="post"
+                  class="review-form">
+
+                <label for="reviewContent"></label>
+                <input type="text"
+                       id="reviewContent"
+                       name="reviewContent"
+                       placeholder="Write your comment here."
+                       required />
+                <label for="rate"
+                       class="review-add">Give {{activity.creator.firstName}} a note !</label>
+                <input type="number"
+                       id="rate"
+                       name="rate"
+                       value="3"
+                       min="0"
+                       max="5"
+                       required />
+                <button class="btn-update">Send</button>
+            </form>
+
+            {{/compare}}
+
+
+
+        </div>
     </div>
-</div>
