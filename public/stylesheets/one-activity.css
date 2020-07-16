@@ -51,3 +51,15 @@
   color: var(--color-secondary);
   font-weight: 500;
 }
+
+#activity-more-details {
+  display: flex;
+}
+
+#description {
+  margin-bottom: 30px;
+}
+
+.btn-send {
+  margin-top: 10px;
+}

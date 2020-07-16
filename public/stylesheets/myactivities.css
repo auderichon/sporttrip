@@ -1,0 +1,38 @@
+#my-activities {
+  width: 90%;
+  margin: 20px auto 20px;
+}
+
+.participants-approval {
+  margin-bottom: 10px;
+}
+
+.participants-approval a {
+  padding: 5px 10px 0 10px;
+  margin: 0 10px 0;
+  border-radius: 10px;
+  display: block;
+}
+
+#validate {
+  color: green;
+  border: green 1px solid;
+}
+
+#decline {
+  color: red;
+  border: red 1px solid;
+}
+
+.participants-approval p {
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+
+.single-participant {
+  display: flex;
+}
+
+.single-participant p {
+  display: block;
+}

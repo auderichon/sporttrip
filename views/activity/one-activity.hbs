@@ -44,7 +44,7 @@
                         {{/each}}
                     </td>
                 </tr>
-                    <a href="/message/{{ activity.creator._id}}" target="_self">Send Message</a> 
+                <a href="/message/{{ activity.creator._id}}" target="_self">Send Message</a>
             </table>
             <div id="description">
                 <p>More details about this {{ activity.sport.name }} event:</p>
@@ -56,20 +56,10 @@
         <div class="btn-update">
             <a href="/activity/update/{{ activity._id }}">Update activity</a>
         </div>
-        <div id="validate-participants">
-            <p>Participants waiting for approval: </p>
-            {{#each activity.participantsToApprove }}
-            <p><a href="/user/profile/{{ this.participantID._id }}">{{ this.participantID.firstName }}
-                    {{ this.participantID.lastName }}</a></p>
-            {{/each}}
-
-            {{#unless activity.participantsToApprove}}
-            <p>None</p>
-            {{/unless}}
-        </div>
         {{/compare}}
 
         {{#compare activity.creator._id currentUser._id operator="!="}}
+<<<<<<< HEAD
         <div id="form-container">
     <form action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">        
         <h3>Send message to {{activity.creator.firstName}}</h3>
@@ -82,8 +72,21 @@
     </form>
 
 </div>
+=======
+>>>>>>> e6fd47f94a4fb1d9dd843bb8b3b2adc844a9e300
         <div class="btn-register">
             <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
+        </div>
+        <div id="form-container">
+            <form action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">
+                <h3>Send a message to {{activity.creator.firstName}}</h3>
+                <div>
+                    <label for="user-lastname">Message</label>
+                    <textarea class="textarea" id="user-message" name="content"
+                        placeholder="Ask for details about the activity if you want to know more !">Hey ! I'd like to know more about your activity !</textarea>
+                </div>
+                <button class="btn-send">Send</button>
+            </form>
         </div>
         {{/compare}}
 
