@@ -8,7 +8,6 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const hbs = require("hbs");
-const repeat = require("handlebars-helper-repeat");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -54,7 +53,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(require("./middlewares/exposeLoginStatus"));
-app.use(require("./middlewares/exposeFlashMessage"));
+//app.use(require("./middlewares/exposeFlashMessage"));
 
 // routers
 app.use("/", require("./routes/index"));
@@ -62,5 +61,6 @@ app.use("/auth", require("./routes/auth"));
 app.use("/activity", require("./routes/activities"));
 app.use("/user", require("./routes/users"));
 app.use("/message", require("./routes/messages"));
+
 
 module.exports = { app, sessionObj };
