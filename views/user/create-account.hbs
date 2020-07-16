@@ -43,6 +43,7 @@
                    id="user-birthday"
                    name="birthday"
                    type="date"
+                   value="2000-05-05"
                    required>
         </div>
         <div class="form-item">
@@ -70,7 +71,7 @@
 
         <h3>Select your 3 favorite sports</h3>
 
-        {{#repeat count=2 start=1}}
+        {{#repeat count=3 start=1}}
         <span># {{@index}}</span>
         {{> user_sports_choices }}
         {{/repeat}}

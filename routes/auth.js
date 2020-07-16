@@ -6,7 +6,6 @@ const bcrypt = require("bcrypt"); // npm i bcrypt
 const protectPrivateRoute = require("./../middlewares/protectPrivateRoute");
 const exposeFlashMessage = require("./../middlewares/exposeFlashMessage");
 
-
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
 const userModel = require("../models/Users");
@@ -27,22 +26,24 @@ router.get("/signup", (req, res, next) => {
 });
 
 router.post("/signup", uploader.single("picture"), (req, res, next) => {
-	/* 
-	const {
+	console.log("REQ BODY ??", req.body);
+	let {
 		firstName,
 		lastName,
 		email,
 		password,
-		sports: [
-			{ sport: sport1, level: level1 },
-			{ sport: sport2, level: level2 },
-		],
 		picture,
 		birthday,
 		stravaLink,
+		sport1,
+		level1,
+		sport2,
+		level2,
+		sport3,
+		level3,
 	} = req.body;
- */
-	newUser = req.body ;
+
+	newUser = req.body;
 
 	if (req.file) newUser.picture = req.file.path;
 
@@ -63,7 +64,16 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 				// generates a unique random hashed password
 				newUser.password = hashed; // new user is ready for db
 
-				userModel.create(newUser).then(() => res.redirect("/auth/signin"));
+				newUser.sports = [
+					{ sport: sport1, level: level1 },
+					{ sport: sport2, level: level2 },
+					{ sport: sport3, level: level3 },
+				];
+
+				userModel.create(newUser).then((dbRes2) => {
+					console.log("USER IN DATABASE ========== ", dbRes2);
+					res.redirect("/auth/signin");
+				});
 			})
 			.catch(next);
 	}

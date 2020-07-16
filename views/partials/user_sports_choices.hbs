@@ -2,7 +2,7 @@
     <div>
         <label for="user-sport">Sport</label>
         <select class="user-sport" id="user-sport" name="sport{{@index}}" required>
-            <option selected>Choose...</option>
+            <option required >Choose...</option>
             {{#each sports}}
             <option value="{{ this._id }}">{{ this.name }}</option>
             {{/each}}
@@ -13,19 +13,19 @@
         <p>Level: </p>
         <div class="checkbox-list">
             <div class="checkbox-group">
-                <input class="checkbox" type="radio" id="level-beginner" name="level{{@index}}" value="beginner" checked>
+                <input class="checkbox" type="radio" id="level-beginner{{@index}}" name="level{{@index}}" value="beginner" checked>
                 <label class="checkbox-label" for="level-beginner">beginner</label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="radio" id="level-intermediate" name="level{{@index}}" value="intermediate">
+                <input class="checkbox" type="radio" id="level-intermediate{{@index}}" name="level{{@index}}" value="intermediate">
                 <label class="checkbox-label" for="level-intermediate">intermediate</label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="radio" id="level" name="level{{@index}}" value="experienced">
+                <input class="checkbox" type="radio" id="level-experienced{{@index}}" name="level{{@index}}" value="experienced">
                 <label class="checkbox-label" for="level-experienced">experienced</label>
             </div>
             <div class="checkbox-group">
-                <input class="checkbox" type="radio" id="level-professional" name="level{{@index}}" value="professional">
+                <input class="checkbox" type="radio" id="level-professional{{@index}}" name="level{{@index}}" value="professional">
                 <label class="checkbox-label" for="level-professional">professional</label>
             </div>
         </div>

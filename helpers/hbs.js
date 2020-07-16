@@ -73,7 +73,9 @@ hbs.registerHelper("compare", function (lvalue, rvalue, options) {
 hbs.registerHelper("format-date", function (date) {
   return moment(date).format("DD-MM-YYYY");
 });
-
+hbs.registerHelper("format-date-birth", function (date) {
+  return moment(date).format("YYYY-MM-DD");
+});
 hbs.registerHelper("format-time", function (time) {
   return moment(time).format("hh:mm");
 });
