@@ -2,7 +2,6 @@
 
 <div id="conv-page">
     {{#each conversations }}
-<<<<<<< Updated upstream
     <div class="conv-per-user">
         <div class="conv-block">
             {{#compare this.users.0._id ../currentUser._id operator="=="}}
@@ -43,7 +42,6 @@
                 <button>Send</button>
             </form>
         </div>
-=======
     <p>
         {{#each this.users }}
         <span>>> {{ this.firstName }} {{ this.lastName }}</span>
@@ -70,7 +68,6 @@
             </div>
             <button>Send</button>
         </form>
->>>>>>> Stashed changes
     </div>
     {{/each}}
 </div>
