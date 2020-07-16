@@ -63,7 +63,7 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 				const hashed = bcrypt.hashSync(newUser.password, salt);
 				// generates a unique random hashed password
 				newUser.password = hashed; // new user is ready for db
-
+				console.log(sport1);
 				newUser.sports = [
 					{ sport: sport1, level: level1 },
 					{ sport: sport2, level: level2 },

@@ -4,70 +4,155 @@
 <h2>Update your account {{user.firstName}}</h2>
 
 <div id="form-container">
-  <form action="/user/edit-account/{{user._id}}" method="post" enctype="multipart/form-data">
+
+  <form action="/user/edit-account/{{user._id}}"
+        method="post"
+        enctype="multipart/form-data">
 
     <h3>Personal infos</h3>
 
     <div class="form-item">
       <label for="user-lastname">Edit Lastname</label>
-      <input class="input-small" id="user-lastname" name="lastName" type="text" value={{user.lastName}}>
+      <input class="input-small"
+             id="user-lastname"
+             name="lastName"
+             type="text"
+             value={{user.lastName}}>
     </div>
     <div class="form-item">
       <label for="user-firstname">Edit Firstname</label>
-      <input class="input-small" id="user-firstname" name="firstName" type="text" value={{user.firstName}}>
+      <input class="input-small"
+             id="user-firstname"
+             name="firstName"
+             type="text"
+             value={{user.firstName}}>
     </div>
     <div class="form-item">
       <label for="user-email">Edit Email</label>
-      <input class="input-small" id="user-email" name="email" type="email" value={{user.email}} >
+      <input class="input-small"
+             id="user-email"
+             name="email"
+             type="email"
+             value={{user.email}}>
     </div>
     <div class="form-item">
       <label for="user-birthday">Edit Birth date</label>
-      <input class="input-small" id="user-birthday" name="birthday" type="date" value={{ format-date-birth user.birthday }}>
+      <input class="input-small"
+             id="user-birthday"
+             name="birthday"
+             type="date"
+             value={{ format-date-birth user.birthday }}>
     </div>
     <div class="form-item">
       <label for="user-password">Edit Password</label>
-      <input class="input-small" id="user-password" name="password" type="password" value={{user.password}}>
+      <input class="input-small"
+             id="user-password"
+             name="password"
+             type="password"
+             value={{user.password}}>
     </div>
     <div class="form-item">
       <label for="user-picture">Edit Picture</label>
-      <input id="user-picture" name="picture" type="file">
+      <input id="user-picture"
+             name="picture"
+             type="file">
     </div>
     <div class="form-item">
       <label for="user-strava">Edit Strava profile link</label>
-      <input id="user-strava" name="stravaLink" type="url" value={{user.stravaLink}}>
+      <input id="user-strava"
+             name="stravaLink"
+             type="url"
+             value={{user.stravaLink}}>
     </div>
 
     <h3>Edit your favorite sports</h3>
 
+
     {{#each user.sports}}
-    <ul>
-      <li> {{this.sport.name}} <br> Level : {{this.level}} </li>
-    </ul>
+
+    <div class="input-sports">
+
+      <select class="user-sport"
+              id="user-sport"
+              name="sport{{@index}}"
+              required>
+
+        {{#each ../allSports }}
+
+        <option {{#compareSports this._id ../this.sport._id
+                }}{{/compareSports}}
+                value="{{ this._id }}">
+          {{ this.name }}
+        </option>
+
+        {{/each}}
+
+      </select>
+
+    </div>
+
+    <div class="check-input-row">
+      <p>Level: </p>
+      
+      <div class="checkbox-list">
+        <div class="checkbox-group">
+          <input class="checkbox"
+                 type="radio"
+                 id="level-beginner{{@index}}"
+                 name="level{{@index}}"
+                 value="beginner"
+                 {{#compare "beginner" this.level operator="=="}}
+                 checked
+                 {{/compare}}>
+          <label class="checkbox-label"
+                 for="level-beginner">beginner</label>
+        </div>
+        <div class="checkbox-group">
+          <input class="checkbox"
+                 type="radio"
+                 id="level-intermediate{{@index}}"
+                 name="level{{@index}}"
+                 value="intermediate"
+                 {{#compare "intermediate" this.level operator="=="}}
+                 checked
+                 {{/compare}}>
+          <label class="checkbox-label"
+                 for="level-intermediate">intermediate</label>
+        </div>
+        <div class="checkbox-group">
+          <input class="checkbox"
+                 type="radio"
+                 id="level-experienced{{@index}}"
+                 name="level{{@index}}"
+                 value="experienced"
+                 {{#compare "experienced" this.level operator="=="}}
+                 checked
+                 {{/compare}}>
+          <label class="checkbox-label"
+                 for="level-experienced">experienced</label>
+        </div>
+        <div class="checkbox-group">
+          <input class="checkbox"
+                 type="radio"
+                 id="level-professional{{@index}}"
+                 name="level{{@index}}"
+                 value="professional"
+                 {{#compare "professional" this.level operator="=="}}
+                 checked
+                 {{/compare}}>
+          <label class="checkbox-label"
+                 for="level-professional">professional</label>
+        </div>
+      </div>
+    </div>
     {{/each}}
 
     <button id="btn-edit-account">Edit !</button>
 
 
   </form>
-
 </div>
 
-<div id="form-container">
-
-  <form action="/user/edit-account/{{user._id}}" method="post" enctype="multipart/form-data">
-
-    <h3>Add new sports to your list</h3>
-
-    {{> user_sports_choices}}
-
-    <button id="btn-add-sport">Add new sport</button>
-
-    <div class="btn-delete">
-      <a href="/user/confirm-delete/{{user._id}}">Delete Account</a>
-    </div>
-  </form>
-
-</div>
 
 {{else }}
 Forbidden path !

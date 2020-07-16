@@ -13,7 +13,7 @@
   <table class="profile-infos table">
 
     <tr>
-      <th>Your sports</th>
+      <th>{{user.firstName}}'sports</th>
       <td>
         {{#each user.sports}}
         <ul>
@@ -69,6 +69,8 @@
     </form>
 
     {{/compare}}
+
+
     <div id="form-container">
       <form action="/message/{{user._id}}/{{currentUser._id}}" method="post">
         <h3>Send a message to {{user.firstName}}</h3>
