@@ -5,21 +5,23 @@
     <div id="home-listing">
         <div id="filters">
             <h4>Filters:</h4>
+            <form id="filter-form">
             <div class="activity-filter">
                 <p>Country:</p>
                 {{#each countries }}
                 <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="{{ this }}" name="country" value="{{ this }}">
+                    <input class="checkbox checkbox-country" type="checkbox" id="{{ this }}" name="country" value="{{ this }}">
                     <label class="checkbox-label" for="{{ this }}">{{ this }}</label>
                 </div>
                 {{/each}}
             </div>
             <div class="activity-filter select-filter">
                 <p>Sport:</p>
-                <select multiple>
-                    <option selected>Choose...</option>
+                <select multiple name="sport" class="sport-choice" >
+                    <option   disabled>Choose...</option>
+              
                     {{#each sports}}
-                    <option value={{ this.name }}>{{ this.name }}</option>
+                    <option value="{{ this._id }}">{{ this.name }}</option>
                     {{/each}}
                 </select>
             </div>
@@ -27,7 +29,7 @@
                 <p>Duration:</p>
                 {{!-- <label for="activity-duration">Activity duration:</label> --}}
                 <select multiple id="activity-duration" name="duration" required>
-                    <option selected>Choose...</option>
+                    <option disabled >Choose...</option>
                     <option value="1/2 day">1/2 day</option>
                     <option value="full day">full day</option>
                     <option value="2 days">2 days</option>
@@ -40,25 +42,26 @@
             <div class="activity-filter">
                 <p>Level required:</p>
                 <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-beginner" name="requiredLevel" value="beginner">
+                    <input class="checkbox checkbox-level" type="checkbox" id="level-beginner" name="requiredLevel" value="beginner">
                     <label class="checkbox-label" for="level-beginner">beginner</label>
                 </div>
                 <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-intermediate" name="requiredLevel"
+                    <input class="checkbox checkbox-level" type="checkbox" id="level-intermediate" name="requiredLevel"
                         value="intermediate">
                     <label class="checkbox-label" for="level-intermediate">intermediate</label>
                 </div>
                 <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-experienced" name="requiredLevel"
+                    <input class="checkbox checkbox-level" type="checkbox" id="level-experienced" name="requiredLevel"
                         value="experienced">
                     <label class="checkbox-label" for="level-experienced">experienced</label>
                 </div>
                 <div class="checkbox-group">
-                    <input class="checkbox" type="checkbox" id="level-professional" name="requiredLevel"
+                    <input class="checkbox checkbox-level" type="checkbox" id="level-professional" name="requiredLevel"
                         value="professional">
                     <label class="checkbox-label" for="level-professional">professional</label>
                 </div>
             </div>
+        </form>
         </div>
         <div class="activity-list">
             {{#each activities}}

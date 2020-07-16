@@ -61,6 +61,6 @@ app.use("/auth", require("./routes/auth"));
 app.use("/activity", require("./routes/activities"));
 app.use("/user", require("./routes/users"));
 app.use("/message", require("./routes/messages"));
-
+app.use("/toto",require("./routes/ajax.activities"))
 
 module.exports = { app, sessionObj };
