@@ -40,8 +40,10 @@ label a {
 
 a.active,
 a:hover {
-  background-color: lightgrey;
+  background-color: white;
+  opacity: 0.7;
   transition: 0.5s;
+  ba
 }
 .checkbtn {
   font-size: 30px;
@@ -55,7 +57,7 @@ a:hover {
 #check {
   display: none;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   label.logo {
     font-size: 27px;
     padding-left: 25px;
@@ -64,17 +66,35 @@ a:hover {
     font-size: 14px;
   }
 }
-@media (max-width: 952px) {
+@media (max-width: 1148px) {
   label.logo {
-    font-size: 24px;
-    padding-left: 21px;
+    font-size: 21px;
+    padding-left: 16px;
   }
   nav ul li a {
     font-size: 12px;
   }
 }
+@media (max-width: 1038px) {
+  label.logo {
+    font-size: 18px;
+    padding-left: 12px;
+  }
+  nav ul li a {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1021px) {
+  label.logo {
+    font-size: 16px;
+    padding-left: 10px;
+  }
+  nav ul li a {
+    font-size: 11px;
+  }
+}
 
-@media (max-width: 890px) {
+@media (max-width: 980px) {
   .checkbtn {
     display: block;
     margin-right: 40px;
