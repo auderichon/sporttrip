@@ -10,19 +10,23 @@
 
     <div class="form-item">
       <label for="user-lastname">Edit Lastname</label>
-      <input class="input-small" id="user-lastname" name="lastName" type="text" value={{user.lastName}} required>
+      <input class="input-small" id="user-lastname" name="lastName" type="text" value={{user.lastName}}>
     </div>
     <div class="form-item">
       <label for="user-firstname">Edit Firstname</label>
-      <input class="input-small" id="user-firstname" name="firstName" type="text" value={{user.firstName}} required>
+      <input class="input-small" id="user-firstname" name="firstName" type="text" value={{user.firstName}}>
     </div>
     <div class="form-item">
       <label for="user-email">Edit Email</label>
-      <input class="input-small" id="user-email" name="email" type="email" value={{user.email}} required>
+      <input class="input-small" id="user-email" name="email" type="email" value={{user.email}} >
+    </div>
+    <div class="form-item">
+      <label for="user-birthday">Edit Birth date</label>
+      <input class="input-small" id="user-birthday" name="birthday" type="date" value={{ format-date-birth user.birthday }}>
     </div>
     <div class="form-item">
       <label for="user-password">Edit Password</label>
-      <input class="input-small" id="user-password" name="password" type="password" value={{user.password}} required>
+      <input class="input-small" id="user-password" name="password" type="password" value={{user.password}}>
     </div>
     <div class="form-item">
       <label for="user-picture">Edit Picture</label>
