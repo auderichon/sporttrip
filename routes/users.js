@@ -139,19 +139,39 @@ router.get("/activities/:id", protectPrivateRoute, (req, res, next) => {
   ])
     .then((dbRes) => {
       let user = dbRes[0];
-      console.log("------------User", user);
+      // console.log("------------User", user);
       let activity = dbRes[1];
-      console.log("------------Activity", activity);
+      // console.log("------------Activity", activity);
       let toApp = activity.filter(
         (act) => act.participantsToApprove.length > 0
       );
-      console.log("------------Participants to approve", toApp);
+      // console.log("------------Participants to approve", toApp);
+
+      let toAppByMe = toApp.filter(
+        (act) => act.creator._id.toString() === req.params.id
+      );
+      // console.log("------------Participants to approve by me", toAppByMe);
+
+      let toBeApp = toApp.filter((act) => {
+        for (let i = 0; i < act.participantsToApprove.length; i++) {
+          return (
+            act.participantsToApprove[i].participantID._id.toString() ===
+            req.params.id
+          );
+        }
+      });
+
+      // console.log(
+      //   "------------Activities for which I wait for approval",
+      //   toBeApp
+      // );
 
       res.render("user/user-activities", {
         title: `${dbRes[0].firstName}'s activities`,
         user,
         activity,
-        toApp,
+        toAppByMe,
+        toBeApp,
       });
     })
     .catch(next);

@@ -5,13 +5,11 @@
 
 <div id="my-activities">
 
-
-  {{#each toApp}}
-  {{#each this.participantsToApprove}}
-  {{!-- accessible only if logged user === creator ;
-"../" allows to escape the scope of the EACH --}}
-  {{!-- {{#compare ../this.creator._id ../currentUser._id operator="=="}} --}}
+  {{#if toAppByMe}}
   <h3>Participants to approve</h3>
+  {{/if}}
+  {{#each toAppByMe}}
+  {{#each this.participantsToApprove}}
   <div class="participants-approval">
     <p>{{ ../this.activityName }}</p>
 
@@ -22,12 +20,21 @@
       <a id="decline" href="/activity/decline/{{ this.participantID._id }}/{{ ../this._id }}">Decline</a>
     </div>
   </div>
-  {{!-- {{/compare}} --}}
   {{/each}}
   {{/each}}
 
+  {{#if toBeApp}}
+  <h3>Waiting for approval by the organizer</h3>
+  {{/if}}
+  {{#each toBeApp}}
+  {{#each this.participantsToApprove}}
+  <div class="participants-approval">
+    <p>{{ ../this.activityName }}</p>
+  </div>
+  {{/each}}
+  {{/each}}
 
-  <h3>Activities that I created </h3>
+  <h3>Activities I created </h3>
 
   <div class="activity-list">
     {{#each activity}}
@@ -60,7 +67,7 @@
 
   </div>
 
-  <h3>Activities I participated in</h3>
+  <h3>Activities I registered to</h3>
 
   <div class="activity-list">
     {{#each activity}}
