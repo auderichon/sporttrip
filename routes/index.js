@@ -10,7 +10,8 @@ router.get("/", (req, res, next) => {
 
   Promise.all([
     activityModel
-      .find({ date: { $gte: today } }) // { sort : { date: 1}}) //+ classer par date
+      .find({ date: { $gte: today } })
+      .sort({ date: 1 })
       .populate({ path: "creator", model: userModel })
       .populate("sport"),
     userModel.find(),
