@@ -25,7 +25,7 @@ router.get("/", (req, res, next) => {
         arrC.push(activities[i].location.country);
       }
       let countries = [...new Set(arrC)];
-      countries.pop();
+      countries = countries.filter((country) => country !== undefined);
 
       let arrS = [];
       for (let i = 0; i < activities.length; i++) {
