@@ -15,19 +15,6 @@ const reviewModel = require("../models/Reviews");
 
 // ACCESS USER ACCOUNT  ===> PROTECT
 
-<<<<<<< HEAD
-router.get("/account/:id", protectPrivateRoute,  (req, res, next) => {
-	userModel
-		.findById(req.params.id)
-		.populate("sports.sport")
-		.then((user) => {
-			res.render("user/user-account", {
-				title: `${user.firstName}'s account`,
-				user,
-			});
-		})
-		.catch(next);
-=======
 router.get("/account/:id", protectPrivateRoute, (req, res, next) => {
   userModel
     .findById(req.params.id)
@@ -39,7 +26,6 @@ router.get("/account/:id", protectPrivateRoute, (req, res, next) => {
       });
     })
     .catch(next);
->>>>>>> validation of participants on my activities
 });
 
 // UPDATE USER ACCOUNT  ===> PROTECT
@@ -116,23 +102,6 @@ router.get("/profile/:id", (req, res, next) => {
 
 // SEND USER REVIEWS
 router.post("/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
-<<<<<<< HEAD
-	const { reviewContent, rate } = req.body;
-
-	reviewModel
-		.create({
-			reviewedUser: req.params.id,
-			reviewerName: req.session.currentUser._id,
-			reviewContent,
-			rate,
-			date: Date.now,
-		})
-		.then((newReview) => {
-			req.flash("success", "review added");
-			res.redirect(`/user/profile/${req.params.id}`);
-		})
-		.catch(next);
-=======
   const { reviewContent, rate } = req.body;
 
   reviewModel
@@ -149,7 +118,6 @@ router.post("/reviews-for-:id", protectPrivateRoute, (req, res, next) => {
       res.redirect(`/user/profile/${req.params.id}`);
     })
     .catch(next);
->>>>>>> validation of participants on my activities
 });
 
 // USER ACTIVITIES ===> PROTECT
