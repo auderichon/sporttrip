@@ -66,7 +66,7 @@ router.get("/register/:activityid/:userid", (req, res, next) => {
     .findByIdAndUpdate(req.params.activityid, {
       $push: { participantsToApprove: { participantID: user } },
     })
-    .then(() => res.redirect("/"))
+    .then(() => res.redirect(`/user/activities/${user}`))
     .catch(next);
 });
 
