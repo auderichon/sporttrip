@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 form {
@@ -132,7 +133,6 @@ textarea {
 #user-strava {
   width: 50%;
 }
-
 
 .btn-delete {
   background: rgb(245, 191, 191);

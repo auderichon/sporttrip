@@ -11,18 +11,40 @@
 }
 
 #conv-page {
-  width: 80%;
+  width: 90%;
   margin: 20px auto 20px;
 }
 
-.message-content.blue {
-  background-color: rgb(247, 210, 248);
+.message-content.yellow {
+  background-color: rgb(248, 247, 177);
 }
 
 .message-content.green {
-  background-color: rgb(226, 248, 226);
+  background-color: rgb(216, 250, 216);
 }
 
 .with-whom {
   font-weight: bold;
+}
+
+.message-sender span {
+  font-weight: normal;
+  font-size: small;
+}
+
+.conv-per-user {
+  display: flex;
+  border-bottom: 1px solid var(--color-main);
+}
+
+.conv-block {
+  width: 150%;
+  max-height: 350px;
+  overflow: auto;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.other-user {
+  margin-left: 50px;
 }
