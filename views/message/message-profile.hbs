@@ -2,6 +2,7 @@
 
 <div id="conv-page">
     {{#each conversations }}
+<<<<<<< Updated upstream
     <div class="conv-per-user">
         <div class="conv-block">
             {{#compare this.users.0._id ../currentUser._id operator="=="}}
@@ -42,6 +43,34 @@
                 <button>Send</button>
             </form>
         </div>
+=======
+    <p>
+        {{#each this.users }}
+        <span>>> {{ this.firstName }} {{ this.lastName }}</span>
+        {{/each}}
+    </p>
+    {{#each this.messages }}
+    {{#compare this.user._id currentUser._id operator="!="}}
+    <p class="message-sender">{{ this.user.firstName }}</p>
+    <p class="message-content">{{ this.content }}</p><br>
+    {{/compare}}
+    {{#compare this.user._id currentUser._id operator="=="}}
+    <p class="message-sender">{{ this.user.firstName }}</p>
+    <p class="message-content green">{{ this.content }}</p><br>
+    {{/compare}}
+    {{/each}}
+
+    <div id="form-container">
+        <form action="/message{{#each this.users }}/{{ this._id }}{{/each}}" method="post">
+            <h3>Continue the conversation</h3>
+            <div>
+                <label for="user-lastname">Message</label>
+                <textarea name="content"> just a test</textarea>
+
+            </div>
+            <button>Send</button>
+        </form>
+>>>>>>> Stashed changes
     </div>
     {{/each}}
 </div>
