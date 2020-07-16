@@ -35,26 +35,28 @@ form.onchange = function (event) {
       activityList.innerHTML = "";
       console.log("===============RESPONSE", response.data);
 
-      for (let i = 0; i < response.data.length; i++) {
+      response.data.forEach(res => {
+
         activityList.innerHTML += `<div class="each-activity">
-          <a href="/activity/${response.data._id} "><img src=" ${response.data.sport.picture} " alt=""></a>
-          <h4> ${response.data.activityName} </h4>
-          <a href="/user/profile/ ${response.data.creator._id} ">
+          <a href="/activity/${res._id} "><img src=" ${res.sport.picture} " alt=""></a>
+          <h4> ${res.activityName} </h4>
+          <a href="/user/profile/ ${res.creator._id} ">
               <div class="activity-creator">
-                  <p>with  ${response.data.creator.firstName} </p>
-                  <img src=" ${response.data.creator.picture} " alt=" ${response.data.creator.firstName}  pic">
+                  <p>with  ${res.creator.firstName} </p>
+                  <img src=" ${res.creator.picture} " alt=" ${res.creator.firstName}  pic">
               </div>
           </a>
-          <p>Level:  ${response.data.requiredLevel} </p>
+          <p>Level:  ${res.requiredLevel} </p>
           <div class="time">
-              <p><i class="fas fa-stopwatch"></i>  ${response.data.duration} </p>
-              <p><i class="fas fa-calendar-day"></i>  format-date ${response.data.date} </p>
+              <p><i class="fas fa-stopwatch"></i>  ${res.duration} </p>
+              <p><i class="fas fa-calendar-day"></i>${res.date} </p>
           </div>
           <div class="activity-button"
-              <a href="/activity/ ${response.data._id} ">Check it out!</a>
+              <a href="/activity/ ${res._id} ">Check it out!</a>
           </div>
       </div>`;
-      }
+
+      })
     })
     .catch((error) => console.log(error));
 };
