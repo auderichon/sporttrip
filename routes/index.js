@@ -44,6 +44,7 @@ router.get("/", (req, res, next) => {
         activities,
         sports,
         countries,
+        js: "filter",
         // durations,
       });
     })

@@ -66,11 +66,11 @@ const ActivitiesList = [
       "Hey ! I want to go to Montpellier for my first triathlon by night and I am looking for an athlete partner as experienced as I am.",
   },
   {
-    activityName: "Walking in Danmark",
+    activityName: "Walking in Denmark",
     date: "2020-09-09",
     location: {
       city: "Aarhus",
-      country: "Danmark",
+      country: "Denmark",
     },
     sport: "Nordic walking",
     requiredLevel: ["beginner", "intermediate"],

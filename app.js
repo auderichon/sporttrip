@@ -29,14 +29,14 @@ app.use(cookieParser());
 
 // SESSION SETUP HEAD
 const sessionObj = session({
-	secret: process.env.SESSION_SECRET,
-	cookie: { maxAge: 3600000 }, // in millisec
-	store: new MongoStore({
-		mongooseConnection: mongoose.connection, // we store session infos in mongodb
-		ttl: 24 * 60 * 60, // 1 day
-	}),
-	saveUninitialized: true,
-	resave: true,
+  secret: process.env.SESSION_SECRET,
+  cookie: { maxAge: 3600000 }, // in millisec
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection, // we store session infos in mongodb
+    ttl: 24 * 60 * 60, // 1 day
+  }),
+  saveUninitialized: true,
+  resave: true,
 });
 app.use(sessionObj);
 app.use(flash());
@@ -61,6 +61,6 @@ app.use("/auth", require("./routes/auth"));
 app.use("/activity", require("./routes/activities"));
 app.use("/user", require("./routes/users"));
 app.use("/message", require("./routes/messages"));
-app.use("/toto",require("./routes/ajax.activities"))
+app.use("/filter", require("./routes/ajax.activities"));
 
 module.exports = { app, sessionObj };
