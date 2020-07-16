@@ -1,7 +1,7 @@
 <h2>Update activity</h2>
 
 <div id="form-container">
-    <form action="/activity/update/{{ activity._id }}" method="post">
+    <form class="form-all" action="/activity/update/{{ activity._id }}" method="post">
         {{!-- message if problem in creation (lack of info for instance) --}}
         {{!-- {{#if msg}}
     <p class="msg {{msg.status}}">{{msg.txt}}</p>

@@ -5,13 +5,13 @@
   margin-bottom: 10px;
 }
 
-form {
+.form-all {
   width: 70%;
   display: flex;
   flex-direction: column;
 }
 
-form div {
+.form-all div {
   height: 60px;
 }
 

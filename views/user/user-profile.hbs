@@ -58,7 +58,7 @@
 
   {{#compare user._id currentUser._id operator="!="}}
   <div id="form-container">
-    <form action="/message/{{user._id}}/{{currentUser._id}}" method="post">
+    <form class="form-all" action="/message/{{user._id}}/{{currentUser._id}}" method="post">
       <h3>Send a message to {{user.firstName}}</h3>
       <div>
         <label for="user-lastname">Message</label>
