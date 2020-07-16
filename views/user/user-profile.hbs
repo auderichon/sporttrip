@@ -69,6 +69,18 @@
     </form>
 
     {{/compare}}
+    <div id="form-container">
+    <form action="/message/{{user._id}}/{{currentUser._id}}" method="post">        
+        <h3>Send message to {{user.firstName}}</h3>
+          <div class="form-item">
+            <label for="user-lastname">Message</label>
+            <textarea name="content">its just a test so please chill</textarea>
+        </div>
+
+        <button class="send-mgs">Send your message</button>
+    </form>
+
+</div>
   </div>
 
 

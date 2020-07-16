@@ -3,15 +3,16 @@
 <h3> {{this.user}} </h3>
 <p>{{this.message}}</p>
 {{/each}}
+<h1>{{activity.creator._id}}</h1>
 
 
 <div id="form-container">
-    <form action="/message/{{activity.creator._id}}"/{{currentUser._id}}" method="post">        
+    <form action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">        
         <h3>Send message to {{activity.creator.firstName}}</h3>
           <div class="form-item">
             <label for="user-lastname">Message</label>
-            <input class="" id="user-message" name="content" type="text" placeholder="Your message"
-                value="everithyng is just a test" required >
+            <textarea name="content" > just a test</textarea>
+              
         </div>
 
         <button>Send your message</button>
