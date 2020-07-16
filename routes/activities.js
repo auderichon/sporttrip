@@ -3,6 +3,7 @@ const router = new express.Router(); // create an app sub-module (router)
 const activityModel = require("../models/Activities");
 const sportModel = require("../models/Sports");
 const userModel = require("../models/Users");
+const protectPrivateRoute = require("../middlewares/protectPrivateRoute");
 
 // *********************************************
 // ALL THESE ROUTES ARE PREFIXED WITH "/activity"
@@ -17,7 +18,7 @@ router.get("/create", (req, res, next) => {
     .catch(next);
 });
 
-router.get("/:id", (req, res, next) => {
+router.get("/:id", protectPrivateRoute, (req, res, next) => {
   Promise.all([
     activityModel
       .findById(req.params.id)

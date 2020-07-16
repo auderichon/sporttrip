@@ -10,7 +10,7 @@
   {{#each this.participantsToApprove}}
   {{!-- accessible only if logged user === creator ;
 "../" allows to escape the scope of the EACH --}}
-  {{#compare ../this.creator._id ../currentUser._id operator="=="}}
+  {{!-- {{#compare ../this.creator._id ../currentUser._id operator="=="}} --}}
   <h3>Participants to approve</h3>
   <div class="participants-approval">
     <p>{{ ../this.activityName }}</p>
@@ -22,7 +22,7 @@
       <a id="decline" href="/activity/decline/{{ this.participantID._id }}/{{ ../this._id }}">Decline</a>
     </div>
   </div>
-  {{/compare}}
+  {{!-- {{/compare}} --}}
   {{/each}}
   {{/each}}
 

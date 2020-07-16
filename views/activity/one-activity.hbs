@@ -59,21 +59,6 @@
         {{/compare}}
 
         {{#compare activity.creator._id currentUser._id operator="!="}}
-<<<<<<< HEAD
-        <div id="form-container">
-    <form action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">        
-        <h3>Send message to {{activity.creator.firstName}}</h3>
-          <div class="form-item">
-            <label for="user-lastname">Message</label>
-            <textarea class="textarea" id="user-message" name="content" >"everithyng is just a test" required </textarea>
-        </div>
-
-        <button>Send your message</button>
-    </form>
-
-</div>
-=======
->>>>>>> e6fd47f94a4fb1d9dd843bb8b3b2adc844a9e300
         <div class="btn-register">
             <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
         </div>
