@@ -1,7 +1,7 @@
 <div class="input-sports">
     <div>
-        <label for="user-sport">Sport</label>
-        <select class="user-sport" id="user-sport" name="sport{{@index}}" required>
+        <label for="user-sport{{@index}}">Sport</label>
+        <select class="user-sport" id="user-sport{{@index}}" name="sport{{@index}}" required>
             <option >Choose...</option>
             {{#each sports}}
             <option value="{{ this._id }}">{{ this.name }}</option>
@@ -13,7 +13,7 @@
         <p>Level: </p>
         <div class="checkbox-list">
             <div class="checkbox-group">
-                <input class="checkbox" type="radio" id="level-beginner{{@index}}" name="level{{@index}}" value="beginner" checked>
+                <input class="checkbox" type="radio" id="level-beginner{{@index}}" name="level{{@index}}" value="beginner">
                 <label class="checkbox-label" for="level-beginner">beginner</label>
             </div>
             <div class="checkbox-group">

@@ -53,7 +53,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(require("./middlewares/exposeLoginStatus"));
-//app.use(require("./middlewares/exposeFlashMessage"));
+app.use(require("./middlewares/exposeFlashMessage"));
 
 // routers
 app.use("/", require("./routes/index"));

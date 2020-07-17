@@ -48,7 +48,7 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 	if (req.file) newUser.picture = req.file.path;
 
 	if (!newUser.email || !newUser.password) {
-		req.flash("error", "no empty fields here please");
+		req.flash("error", "Fill in mandatory fields please");
 		return res.redirect("/auth/signup");
 	} else {
 		userModel
@@ -72,6 +72,8 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 
 				userModel.create(newUser).then((dbRes2) => {
 					console.log("USER IN DATABASE ========== ", dbRes2);
+					req.flash("success", "Account created.");
+
 					res.redirect("/auth/signin");
 				});
 			})
@@ -89,7 +91,7 @@ router.post("/signin", (req, res, next) => {
 
 	if (!user.email || !user.password) {
 		// one or more field is missing
-		req.flash("error", "wrong credentials");
+		req.flash("error", "wrong credentials !");
 		return res.redirect("/auth/signin");
 	}
 
@@ -98,7 +100,7 @@ router.post("/signin", (req, res, next) => {
 		.then((dbRes) => {
 			if (!dbRes) {
 				// no user found with this email
-				req.flash("error", "wrong credentials");
+				req.flash("error", "wrong credentials !");
 				return res.redirect("/auth/signin");
 			}
 			// user has been found in DB !
@@ -107,10 +109,12 @@ router.post("/signin", (req, res, next) => {
 				const { _doc: clone } = { ...dbRes }; // make a clone of db user
 				delete clone.password; // remove password from clone
 				req.session.currentUser = clone; // user is now in session... until session.destroy
+				req.flash("success", "logged in !");
+
 				return res.redirect("/");
 			} else {
 				// encrypted password match failed
-				req.flash("error", "wrong credentials");
+				req.flash("error", "wrong credentials !");
 				return res.redirect("/auth/signin");
 			}
 		})

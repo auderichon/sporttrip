@@ -1,0 +1,27 @@
+.msg.success {
+	color: var(--color-main);
+	background: rgba(245, 245, 245, 0.8);
+	box-shadow: -0.3px 0.1px 2.4px 0.1px #1c55aa;
+	position: absolute;
+	top: 20%;
+	right:35%;
+	height: 100px;
+	width: 250px;
+  font-size: 25px;
+  font-weight: bold;
+	display: flex;
+	align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.msg.error {
+	color:#ad1f28;
+	margin: auto;
+	height: 100px;
+	width: 250px;
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
