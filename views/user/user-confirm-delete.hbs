@@ -1,13 +1,16 @@
 {{#compare currentUser._id user._id operator="=="}}
 {{!-- SECURE THE ACCOUNT PATH --}}
+<div class="container">
 
-<h2>Delete your account ? </h2>
+  <h2>{{user.firstName}}, do you really want to leave us ?</h2>
 
-<h3>{{user.firstName}}, do you really want to leave us ? </h3>
+  <form class="form-all"
+        action="/user/delete-account/{{user._id}}"
+        method="post">
+    <button class="btn-delete delete-acc" >Yes, delete my account</button>
+  </form>
 
-<form class="form-all" action="/user/delete-account/{{user._id}}" method="post">
-  <button id="btn-confirm-delete">Yes, delete my account</button>
-</form>
+</div>
 
 {{else }}
 Forbidden path !

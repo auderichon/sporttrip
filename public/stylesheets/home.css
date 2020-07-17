@@ -27,7 +27,8 @@ h1 {
 #home-listing {
 	display: flex;
 	justify-content: space-between;
-	margin: 20px 0px 0px;
+  margin: 20px 0px 0px;
+  height: fit-content;
 }
 
 #filters {
@@ -38,7 +39,6 @@ h1 {
 	padding: 3%;
 	border-radius: 0px 5px 5px 0px;
 	box-shadow: rgb(138, 137, 137) 0px 0.5px 4px;
-	margin-bottom: 70px;
 }
 
 #filters h4 {
@@ -51,7 +51,6 @@ h1 {
 	grid-gap: 2.5rem;
 	width: 90%;
 	padding: 0 0.7% 0 2%;
-	margin-bottom: 70px
 }
 
 .each-activity {

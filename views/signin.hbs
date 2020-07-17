@@ -1,19 +1,33 @@
-<h2>Sign in</h2>
+<div class="container sign">
 
-<div id="form-container">
-  <form class="form-all" action="/auth/signin" method="post">
+  <h2>Sign in</h2>
 
-    <div class="form-item">
-      <label for="user-email">Email</label>
-      <input id="user-email" name="email" type="email" placeholder="Your email" value="" required>
-    </div>
+  <div id="form-container">
+    <form class="form-all"
+          action="/auth/signin"
+          method="post">
 
-    <div class="form-item">
-      <label for="user-password">Password</label>
-      <input id="user-password" name="password" type="password" value="" required>
-    </div>
+      <div class="form-item">
+        <label for="user-email">Email</label>
+        <input id="user-email"
+               name="email"
+               type="email"
+               placeholder="Your email"
+               value=""
+               required>
+      </div>
 
-    <button>Log in</button>
-  </form>
+      <div class="form-item">
+        <label for="user-password">Password</label>
+        <input id="user-password"
+               name="password"
+               type="password"
+               value=""
+               required>
+      </div>
 
+      <button class="activity-button" >Log in</button>
+    </form>
+
+  </div>
 </div>

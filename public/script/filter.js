@@ -38,9 +38,9 @@ form.onchange = function (event) {
       response.data.forEach((res) => {
         let formattedDate = res.date.slice(0, 10);
         activityList.innerHTML += `<div class="each-activity">
-          <a href="/activity/${res._id}"><img src="${res.sport.picture}" alt=""></a>
+          <a href="/activity/${res._id}"><img class="img-sport-picture" src="${res.sport.picture}" alt=""></a>
           <h4>${res.activityName}</h4>
-          <a href="/user/profile/${res.creator._id}">
+          <a class="activity-creator-link" href="/user/profile/${res.creator._id}">
               <div class="activity-creator">
                   <p>with ${res.creator.firstName}</p>
                   <img src="${res.creator.picture}" alt="${res.creator.firstName} pic">

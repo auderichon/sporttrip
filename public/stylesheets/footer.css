@@ -1,8 +1,4 @@
 
-footer {
-  position: absolute;
-  bottom: 0px;
-}
 
 #footer {
 	height: var(--footer-height);
@@ -15,6 +11,9 @@ footer {
   margin-top: 15px;
   padding: 10px;
   background-color: var(--color-secondary);
+
+  position: absolute;
+  bottom: -var(var(--footer-height));
 }
 
 

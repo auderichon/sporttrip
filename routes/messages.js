@@ -47,7 +47,7 @@ router.post("/:user1id/:user2id", (req, res, next) => {
             ],
           })
           .then(
-            req.flash("success", "Conversation successfully created"),
+            // req.flash("success", "Conversation successfully created"),
             res.redirect("/")
           )
           .catch(next);
@@ -63,7 +63,7 @@ router.post("/:user1id/:user2id", (req, res, next) => {
             },
           })
           .then(
-            req.flash("success", "Message successfully added"),
+            // req.flash("success", "Message successfully added"),
             res.redirect("/message")
           )
           .catch(next);

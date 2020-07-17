@@ -1,76 +1,83 @@
-<h2>{{user.firstName}} {{user.lastName}}'s profile</h2>
+<div class="container">
+
+  <h2>{{user.firstName}} {{user.lastName}}'s profile</h2>
 
 
-<div class="profile-container">
+  <div class="profile-container">
 
-  {{#if user.picture}}
-  <img class="profile-picture" src="{{user.picture}}" alt="Picture of {{user.firstName}}">
-  {{/if}}
-  {{#unless user.picture}}
-  <h3>No profile picture yet.</h3>
-  {{/unless}}
+    {{#if user.picture}}
+    <img class="profile-picture"
+         src="{{user.picture}}"
+         alt="Picture of {{user.firstName}}">
+    {{/if}}
+    {{#unless user.picture}}
+    <h3>No profile picture yet.</h3>
+    {{/unless}}
 
-  <table class="profile-infos table">
+    <table class="profile-infos table">
 
-    <tr>
-      <th>{{user.firstName}}'sports</th>
-      <td>
-        {{#each user.sports}}
-        <ul>
-          <li> {{this.sport.name}} -- Level : {{this.level}}</li>
-        </ul>
-        {{/each}}
-      </td>
-    </tr>
+      <tr>
+        <th>{{user.firstName}}'sports</th>
+        <td>
+          {{#each user.sports}}
+          <ul>
+            <li> {{this.sport.name}} -- Level : {{this.level}}</li>
+          </ul>
+          {{/each}}
+        </td>
+      </tr>
 
-    <tr>
-      <th>Strava profile</th>
-      <td><a href="{{user.stravaLink}}">{{user.stravaLink}}</a></td>
-    </tr>
+      <tr>
+        <th>Strava profile</th>
+        <td><a href="{{user.stravaLink}}">{{user.stravaLink}}</a></td>
+      </tr>
 
-  </table>
+    </table>
 
 
-  <h3 class="review-title">{{user.firstName}}'s reviews</h3>
+    <h3 class="review-title">{{user.firstName}}'s reviews</h3>
 
-  {{#if userReviews}}
+    {{#if userReviews}}
 
-  <p class="avg-rate">Average rate: </p>
+    <p class="avg-rate">Average rate: </p>
 
-  <div class="reviews-box">
+    <div class="reviews-box">
 
-    {{#each userReviews}}
+      {{#each userReviews}}
 
-    <p class="review-date">{{format-date this.reviewDate}}</p>
-    <p class="reviewer">Review from :
-      <a href="/user/profile/{{this.reviewerName._id}}"> {{this.reviewerName.firstName}} </a> </p>
-    <p class="">rate : {{this.rate}}</p>
-    <p class="review-content">{{this.reviewContent}}</p>
+      <p class="review-date">{{format-date this.reviewDate}}</p>
+      <p class="reviewer">Review from :
+        <a href="/user/profile/{{this.reviewerName._id}}"> {{this.reviewerName.firstName}} </a> </p>
+      <p class="">rate : {{this.rate}}</p>
+      <p class="review-content">{{this.reviewContent}}</p>
 
-    {{/each}}
+      {{/each}}
 
+    </div>
+
+    {{else}}
+    <p> No reviews yet :) </p>
+
+    {{/if}}
+
+    {{#compare user._id currentUser._id operator="!="}}
+    <div id="form-container">
+      <form class="form-all"
+            action="/message/{{user._id}}/{{currentUser._id}}"
+            method="post">
+        <h3>Send a message to {{user.firstName}}</h3>
+        <div>
+          <label for="user-lastname">Message</label>
+          <textarea name="content">its just a test so please chill</textarea>
+        </div>
+
+        <button class="send-msg">Send</button>
+      </form>
+
+    </div>
+    {{/compare}}
   </div>
 
-  {{else}}
-  <p> No reviews yet :) </p>
 
-  {{/if}}
-
-  {{#compare user._id currentUser._id operator="!="}}
-  <div id="form-container">
-    <form class="form-all" action="/message/{{user._id}}/{{currentUser._id}}" method="post">
-      <h3>Send a message to {{user.firstName}}</h3>
-      <div>
-        <label for="user-lastname">Message</label>
-        <textarea name="content">its just a test so please chill</textarea>
-      </div>
-
-      <button class="send-msg">Send</button>
-    </form>
-
-  </div>
-  {{/compare}}
 </div>
-
-
 </div>
