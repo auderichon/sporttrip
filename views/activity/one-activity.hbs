@@ -60,26 +60,26 @@
             </div>
             {{/compare}}
 
-            {{#compare activity.creator._id currentUser._id operator="!="}}
-            <div class="btn-register">
-                <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
-            </div>
-            <div id="form-container">
-                <form class="form-all"
-                      action="/message/{{activity.creator._id}}/{{currentUser._id}}"
-                      method="post">
-                    <h3>Send a message to {{activity.creator.firstName}}</h3>
-                    <div>
-                        <label for="user-lastname">Message</label>
-                        <textarea class="textarea"
-                                  id="user-message"
-                                  name="content"
-                                  placeholder="Ask for details about the activity if you want to know more !">Hey ! I'd like to know more about your activity !</textarea>
-                    </div>
-                    <button class="btn-send">Send</button>
-                </form>
-            </div>
-            {{/compare}}
+        {{#compare activity.creator._id currentUser._id operator="!="}}
+
+        {{#unless partiFull }}
+        <div class="btn-register">
+            <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
+        </div>
+        {{/unless}}
+
+        <div id="form-container">
+            <form class="form-all" action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">
+                <h3>Send a message to {{activity.creator.firstName}}</h3>
+                <div>
+                    <label for="user-lastname">Message</label>
+                    <textarea class="textarea" id="user-message" name="content"
+                        placeholder="Ask for details about the activity if you want to know more !">Hey ! I'd like to know more about your activity !</textarea>
+                </div>
+                <button class="btn-send">Send</button>
+            </form>
+        </div>
+        {{/compare}}
 
             {{!-- ADD REVIEWS SECTION ---}}
 

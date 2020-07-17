@@ -62,11 +62,16 @@ router.get("/:id", protectPrivateRoute, (req, res, next) => {
     .then((dbRes) => {
       let activity = dbRes[0];
       let today = new Date();
+      let partiFull = activity.participants.length;
+      partiFull === activity.maxNbParticipants
+        ? (partiFull = true)
+        : (partiFull = false);
 
       res.render("activity/one-activity", {
         title: activity.activityName,
         activity,
         today,
+        partiFull,
       });
     })
     .catch(next);
