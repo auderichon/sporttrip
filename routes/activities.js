@@ -12,146 +12,143 @@ const protectPrivateRoute = require("../middlewares/protectPrivateRoute");
 // *********************************************
 
 router.get("/create", (req, res, next) => {
-	sportModel
-		.find()
-		.then((sports) => {
-			res.render("activity/create-activity", { title: "New activity", sports });
-		})
-		.catch(next);
+  sportModel
+    .find()
+    .then((sports) => {
+      res.render("activity/create-activity", { title: "New activity", sports });
+    })
+    .catch(next);
 });
 
 router.get("/all", (req, res, next) => {
-  
-		activityModel
-			.find()
-			.sort({ date: -1 })
-			.populate("creator")
-			.populate("sport")
+  activityModel
+    .find()
+    .sort({ date: -1 })
+    .populate("creator")
+    .populate("sport")
 
-			.then((activities) => {
-				res.render("activity/all-activities", {
-					title: "All existing activities",
-					activities,
-				});
-			})
-			.catch(next);
+    .then((activities) => {
+      res.render("activity/all-activities", {
+        title: "All existing activities",
+        activities,
+      });
+    })
+    .catch(next);
 });
 
 router.get("/:id", protectPrivateRoute, (req, res, next) => {
-	Promise.all([
-		activityModel
-			.findById(req.params.id)
-			.populate("participants.participantID creator sport"),
-		sportModel.find(),
-		userModel.find(),
-	])
-		.then((dbRes) => {
-			let activity = dbRes[0];
-			let today = new Date();
+  Promise.all([
+    activityModel
+      .findById(req.params.id)
+      .populate("participants.participantID creator sport"),
+  ])
+    .then((dbRes) => {
+      let activity = dbRes[0];
+      let today = new Date();
 
-			res.render("activity/one-activity", {
-				title: activity.activityName,
-				activity,
-				today,
-			});
-		})
-		.catch(next);
+      res.render("activity/one-activity", {
+        title: activity.activityName,
+        activity,
+        today,
+      });
+    })
+    .catch(next);
 });
 
 router.get("/update/:id", (req, res, next) => {
-	Promise.all([
-		activityModel.findById(req.params.id).populate("sport"),
-		sportModel.find(),
-	])
-		.then((dbRes) => {
-			let activity = dbRes[0];
-			res.render("activity/update-activity", {
-				title: "Update " + activity.activityName,
-				activity,
-			});
-		})
-		.catch(next);
+  Promise.all([
+    activityModel.findById(req.params.id).populate("sport"),
+    sportModel.find(),
+  ])
+    .then((dbRes) => {
+      let activity = dbRes[0];
+      res.render("activity/update-activity", {
+        title: "Update " + activity.activityName,
+        activity,
+      });
+    })
+    .catch(next);
 });
 
 router.get("/delete/:id", (req, res, next) => {
-	activityModel
-		.findByIdAndRemove(req.params.id)
-		.then(() => res.redirect("/")) //(res.redirect my-activities)
-		.catch(next);
+  activityModel
+    .findByIdAndRemove(req.params.id)
+    .then(() => res.redirect("/")) //(res.redirect my-activities)
+    .catch(next);
 });
 
 router.get("/register/:activityid/:userid", (req, res, next) => {
-	let user = req.params.userid;
-	activityModel
-		.findByIdAndUpdate(req.params.activityid, {
-			$push: { participantsToApprove: { participantID: user } },
-		})
-		.then(() => res.redirect(`/user/activities/${user}`))
-		.catch(next);
+  let user = req.params.userid;
+  activityModel
+    .findByIdAndUpdate(req.params.activityid, {
+      $push: { participantsToApprove: { participantID: user } },
+    })
+    .then(() => res.redirect(`/user/activities/${user}`))
+    .catch(next);
 });
 
 router.get("/validate/:id/:actid", (req, res, next) => {
-	let user = req.params.id;
-	console.log("=========this is the user", user);
-	activityModel
-		.findByIdAndUpdate(req.params.actid, {
-			$push: {
-				participants: { participantID: user },
-			},
-		})
-		.then(() =>
-			activityModel
-				.findByIdAndUpdate(req.params.actid, {
-					$pull: { participantsToApprove: { participantID: user } },
-				})
-				.then(() => res.redirect("/"))
-				.catch(next)
-		)
-		.catch(next);
+  let user = req.params.id;
+  console.log("=========this is the user", user);
+  activityModel
+    .findByIdAndUpdate(req.params.actid, {
+      $push: {
+        participants: { participantID: user },
+      },
+    })
+    .then(() =>
+      activityModel
+        .findByIdAndUpdate(req.params.actid, {
+          $pull: { participantsToApprove: { participantID: user } },
+        })
+        .then(() => res.redirect("/"))
+        .catch(next)
+    )
+    .catch(next);
 });
 
 router.get("/decline/:id/:actid", (req, res, next) => {
-	let user = req.params.id;
-	console.log("=========this is the user", user);
-	activityModel
-		.findByIdAndUpdate(req.params.actid, {
-			$pull: { participantsToApprove: { participantID: user } },
-		})
-		.then(() => res.redirect("/"))
-		.catch(next);
+  let user = req.params.id;
+  console.log("=========this is the user", user);
+  activityModel
+    .findByIdAndUpdate(req.params.actid, {
+      $pull: { participantsToApprove: { participantID: user } },
+    })
+    .then(() => res.redirect("/"))
+    .catch(next);
 });
 
 router.post("/create", (req, res, next) => {
-	const {
-		activityName,
-		date,
-		city,
-		country,
-		sport,
-		requiredLevel,
-		duration,
-		maxNbParticipants,
-		description,
-	} = req.body;
+  const {
+    activityName,
+    date,
+    city,
+    country,
+    sport,
+    requiredLevel,
+    duration,
+    maxNbParticipants,
+    description,
+  } = req.body;
 
-	activityModel
-		.create({
-			activityName,
-			date,
-			city,
-			country,
-			sport,
-			requiredLevel,
-			duration,
-			maxNbParticipants,
-			description,
-			creator: req.session.currentUser._id,
-		})
-		.then(() => {
-			req.flash("success", "activity successfully created");
-			res.redirect("/");
-		})
-		.catch(next);
+  activityModel
+    .create({
+      activityName,
+      date,
+      city,
+      country,
+      sport,
+      requiredLevel,
+      duration,
+      maxNbParticipants,
+      description,
+      creator: req.session.currentUser._id,
+    })
+    .then(() => {
+      req.flash("success", "activity successfully created");
+      res.redirect("/");
+    })
+    .catch(next);
 });
 
 router.post("/update/:id", (req, res, next) => {
@@ -167,26 +164,26 @@ router.post("/update/:id", (req, res, next) => {
 // SEND REVIEWS ON USER/ACTIVITY
 
 router.post(
-	"/:activityID/reviews-for-:id",
-	protectPrivateRoute,
-	(req, res, next) => {
-		const { reviewContent, rate } = req.body;
+  "/:activityID/reviews-for-:id",
+  protectPrivateRoute,
+  (req, res, next) => {
+    const { reviewContent, rate } = req.body;
 
-		reviewModel
-			.create({
-				reviewedUser: req.params.id,
-				reviewerName: req.session.currentUser._id,
-				reviewContent,
-				rate,
-				date: Date.now,
-			})
-			.then((newReview) => {
-				req.flash("success", "review added");
-				console.log("NEW REVIEW SENT ====>", newReview);
-				res.redirect(`/activity/${req.params.activityID}`);
-			})
-			.catch(next);
-	}
+    reviewModel
+      .create({
+        reviewedUser: req.params.id,
+        reviewerName: req.session.currentUser._id,
+        reviewContent,
+        rate,
+        date: Date.now,
+      })
+      .then((newReview) => {
+        req.flash("success", "review added");
+        console.log("NEW REVIEW SENT ====>", newReview);
+        res.redirect(`/activity/${req.params.activityID}`);
+      })
+      .catch(next);
+  }
 );
 
 module.exports = router;
