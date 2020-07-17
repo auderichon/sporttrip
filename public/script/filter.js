@@ -36,6 +36,7 @@ form.onchange = function (event) {
       console.log("===============RESPONSE", response.data);
 
       response.data.forEach((res) => {
+        let formattedDate = dateFormat(res.date);
         activityList.innerHTML += `<div class="each-activity">
           <a href="/activity/${res._id}"><img src="${res.sport.picture}" alt=""></a>
           <h4>${res.activityName}</h4>
@@ -48,7 +49,7 @@ form.onchange = function (event) {
           <p>Level: ${res.requiredLevel}</p>
           <div class="time">
               <p><i class="fas fa-stopwatch"></i>${res.duration}</p>
-              <p><i class="fas fa-calendar-day"></i>${res.date}</p>
+              <p><i class="fas fa-calendar-day"></i>${formattedDate}</p>
           </div>
           <div class="activity-button"
               <a href="/activity/ ${res._id} ">Check it out!</a>
@@ -72,4 +73,18 @@ function getSelectValues(select) {
     }
   }
   return result;
+}
+
+function dateFormat(date) {
+  let dd = date.getDate();
+  let mm = date.getMonth() + 1;
+  let yyyy = date.getFullYear();
+  if (dd < 10) {
+    dd = "0" + dd;
+  }
+  if (mm < 10) {
+    mm = "0" + mm;
+  }
+  let formattedDate = dd + "-" + mm + "-" + yyyy;
+  return formattedDate;
 }
