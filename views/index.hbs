@@ -4,21 +4,27 @@
     </header>
     <div id="home-listing">
         <div id="filters">
-            <h4>Filters:</h4>
+            <h4 class="filter-title">Filters</h4>
             <form id="filter-form">
                 <div class="activity-filter">
-                    <p>Country:</p>
+                    <p class="filter-name">Country :</p>
                     {{#each countries }}
                     <div class="checkbox-group">
-                        <input class="checkbox checkbox-country" type="checkbox" id="{{ this }}" name="country"
-                            value="{{ this }}">
-                        <label class="checkbox-label" for="{{ this }}">{{ this }}</label>
+                        <input class="checkbox checkbox-country"
+                               type="checkbox"
+                               id="{{ this }}"
+                               name="country"
+                               value="{{ this }}">
+                        <label class="checkbox-label"
+                               for="{{ this }}">{{ this }}</label>
                     </div>
                     {{/each}}
                 </div>
                 <div class="activity-filter select-filter">
-                    <p>Sport:</p>
-                    <select multiple name="sport" class="sport-choice">
+                    <p class="filter-name">Sport :</p>
+                    <select multiple
+                            name="sport"
+                            class="sport-choice">
                         <option disabled>Choose...</option>
 
                         {{#each sports}}
@@ -27,9 +33,12 @@
                     </select>
                 </div>
                 <div class="activity-filter select-filter">
-                    <p>Duration:</p>
+                    <p class="filter-name">Duration :</p>
                     {{!-- <label for="activity-duration">Activity duration:</label> --}}
-                    <select multiple id="activity-duration" name="duration" required>
+                    <select multiple
+                            id="activity-duration"
+                            name="duration"
+                            required>
                         <option disabled>Choose...</option>
                         <option value="1/2 day">1/2 day</option>
                         <option value="full day">full day</option>
@@ -41,42 +50,65 @@
                     </select>
                 </div>
                 <div class="activity-filter">
-                    <p>Level required:</p>
+                    <p class="filter-name">Level required :</p>
                     <div class="checkbox-group">
-                        <input class="checkbox checkbox-level" type="checkbox" id="level-beginner" name="requiredLevel"
-                            value="beginner">
-                        <label class="checkbox-label" for="level-beginner">beginner</label>
+                        <input class="checkbox checkbox-level"
+                               type="checkbox"
+                               id="level-beginner"
+                               name="requiredLevel"
+                               value="beginner">
+                        <label class="checkbox-label"
+                               for="level-beginner">beginner</label>
                     </div>
                     <div class="checkbox-group">
-                        <input class="checkbox checkbox-level" type="checkbox" id="level-intermediate"
-                            name="requiredLevel" value="intermediate">
-                        <label class="checkbox-label" for="level-intermediate">intermediate</label>
+                        <input class="checkbox checkbox-level"
+                               type="checkbox"
+                               id="level-intermediate"
+                               name="requiredLevel"
+                               value="intermediate">
+                        <label class="checkbox-label"
+                               for="level-intermediate">intermediate</label>
                     </div>
                     <div class="checkbox-group">
-                        <input class="checkbox checkbox-level" type="checkbox" id="level-experienced"
-                            name="requiredLevel" value="experienced">
-                        <label class="checkbox-label" for="level-experienced">experienced</label>
+                        <input class="checkbox checkbox-level"
+                               type="checkbox"
+                               id="level-experienced"
+                               name="requiredLevel"
+                               value="experienced">
+                        <label class="checkbox-label"
+                               for="level-experienced">experienced</label>
                     </div>
                     <div class="checkbox-group">
-                        <input class="checkbox checkbox-level" type="checkbox" id="level-professional"
-                            name="requiredLevel" value="professional">
-                        <label class="checkbox-label" for="level-professional">professional</label>
+                        <input class="checkbox checkbox-level"
+                               type="checkbox"
+                               id="level-professional"
+                               name="requiredLevel"
+                               value="professional">
+                        <label class="checkbox-label"
+                               for="level-professional">professional</label>
                     </div>
                 </div>
             </form>
+            <p id="see-more-link"><a 
+                   href="/activity/all">See all activities</a></p>
         </div>
-        <div class="activity-list" id="home-activities">
+        <div class="activity-list"
+             id="home-activities">
             {{#each activities}}
             <div class="each-activity">
-                <a href="/activity/{{ this._id }}"><img src="{{ this.sport.picture }}" alt=""></a>
+                <a href="/activity/{{ this._id }}"><img class="img-sport-picture"
+                         src="{{ this.sport.picture }}"
+                         alt=""></a>
                 <h4>{{ this.activityName }}</h4>
-                <a href="/user/profile/{{ this.creator._id }}">
+                <a class="activity-creator-link"
+                   href="/user/profile/{{ this.creator._id }}">
                     <div class="activity-creator">
                         <p>with {{ this.creator.firstName }}</p>
-                        <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
+                        <img src="{{ this.creator.picture }}"
+                             alt="{{ this.creator.firstName }} pic">
                     </div>
                 </a>
-                <p>Level: {{ this.requiredLevel }}</p>
+                <p>Level : {{ this.requiredLevel }}</p>
                 <div class="time">
                     <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>
                     <p><i class="fas fa-calendar-day"></i> {{ format-date this.date }}</p>
@@ -90,5 +122,5 @@
 
 
     </div>
-        <p><a id="see-more-link" href="/activity/all">See more ...</a></p>
+
 </div>

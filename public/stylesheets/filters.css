@@ -2,13 +2,25 @@
   margin-top: 20px;
 }
 
-.activity-filter p {
-  font-weight: bold;
-  display: block;
-  padding-bottom: 5px;
-}
-
 .select-filter select {
   height: 100px;
   width: 120px;
+}
+
+.filter-title {
+ font-size: 20px;
+}
+
+.filter-name {
+  font-weight: bold;
+  font-size: 15px;
+  display: block;
+  padding: 8px 0px;
+}
+
+#see-more-link {
+  margin-top: 35%;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: underline;
 }

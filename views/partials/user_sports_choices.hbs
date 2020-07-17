@@ -2,7 +2,7 @@
     <div>
         <label for="user-sport{{@index}}">Sport</label>
         <select class="user-sport" id="user-sport{{@index}}" name="sport{{@index}}" required>
-            <option >Choose...</option>
+            <option unselected >Choose...</option>
             {{#each sports}}
             <option value="{{ this._id }}">{{ this.name }}</option>
             {{/each}}

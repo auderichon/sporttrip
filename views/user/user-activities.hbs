@@ -43,14 +43,16 @@
     {{#compare this.creator._id ../currentUser._id operator="=="}}
 
     <div class="each-activity">
-      <img src="{{ this.sport.picture }}" alt="">
+      <img class="img-sport-picture" src="{{ this.sport.picture }}" alt="">
       <h4>{{ this.activityName }}</h4>
-      <div class="activity-creator">
-        <a href="/user/profile/{{ this.creator._id }}">
+      <a class="activity-creator-link"
+         href="/user/profile/{{ this.creator._id }}">
+        <div class="activity-creator">
           <p>with {{ this.creator.firstName }}</p>
-        </a>
-        <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
-      </div>
+          <img src="{{ this.creator.picture }}"
+               alt="{{ this.creator.firstName }} pic">
+        </div>
+      </a>
       <p>Level: {{ this.requiredLevel }}</p>
       <div class="time">
         <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>

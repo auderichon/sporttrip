@@ -47,6 +47,31 @@ router.post("/signup", uploader.single("picture"), (req, res, next) => {
 
 	if (req.file) newUser.picture = req.file.path;
 
+	function check_date_of_birth(value) {
+		var dateOfBirth = value;
+		var arr_dateText1 = dateOfBirth.split("T");
+		var arr_dateText = arr_dateText1[0].split("-");
+		year = arr_dateText[0];
+		month = arr_dateText[1];
+		day = arr_dateText[2];
+
+		var mydate = new Date();
+		mydate.setFullYear(year, month - 1, day);
+
+		var maxDate = new Date();
+		maxDate.setYear(maxDate.getFullYear() - 18);
+
+		if (maxDate < mydate) {
+			return false;
+		}
+		return true;
+	}
+
+	if (!check_date_of_birth(birthday)) {
+		req.flash("error", "Sorry, you have to be at least 18 to register !");
+		return res.redirect("/auth/signup");
+	}
+
 	if (!newUser.email || !newUser.password) {
 		req.flash("error", "Fill in mandatory fields please");
 		return res.redirect("/auth/signup");
@@ -109,7 +134,7 @@ router.post("/signin", (req, res, next) => {
 				const { _doc: clone } = { ...dbRes }; // make a clone of db user
 				delete clone.password; // remove password from clone
 				req.session.currentUser = clone; // user is now in session... until session.destroy
-				req.flash("success", "logged in !");
+				// req.flash("success", "logged in !");
 
 				return res.redirect("/");
 			} else {

@@ -1,8 +1,9 @@
 :root {
   --nav-height: 70px;
-  --padding-body: 50px;
+  /* --padding-body: 50px; */
   --color-main: rgb(57, 97, 138);
   --color-secondary: whitesmoke;
+  --footer-height: 45px;
 }
 
 @media (max-width: 1000px) {

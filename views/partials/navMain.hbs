@@ -1,6 +1,6 @@
 <nav class="nav">
   <label class="logo">
-    <a href="/">SporTrip</a>
+    <a id="sportrip-title" href="/">SporTrip</a>
   </label>
   <input type="checkbox" id="check">
   <label for="check" class="checkbtn">
@@ -12,11 +12,11 @@
     <li>Hello {{currentUser.firstName}}</li>
     <li><a class="a-nav" href="/activity/create">Create an activity</a></li>
     <li><a class="a-nav" href="/user/activities/{{currentUser._id}}">My Activities</a></li>
-    <li><a class="a-nav" href="/user/account/{{currentUser._id}}">My account</a></li>
     <li><a class="a-nav" href="/message">My messages</a></li>
+    <li><a class="a-nav" href="/user/account/{{currentUser._id}}">My account</a></li>
      <li><a class="a-nav" href="/auth/signout">log Out</a></li>
      {{else}}
-    <li><a href="/auth/signup">Sign Up</a></li>
+    <li><a id="signup-link" href="/auth/signup">Sign Up</a></li>
     <li><a href="/auth/signin">Log In</a></li>
     {{/if}}
   </ul>

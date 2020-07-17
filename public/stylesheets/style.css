@@ -10,10 +10,10 @@
 }
 
 body {
-  padding: var(--padding-body);
+  /* padding: var(--padding-body); */
   font-family: "Montserrat", Helvetica, Arial, sans-serif;
   color: var(--color-main);
-  min-height: 95vh;
+  min-height: 100vh;
   margin: auto;
   position: relative;
 }
@@ -27,7 +27,7 @@ h3 {
 }
 
 h2 {
-  margin: 30px 100px 20px;
+  margin: 30px 30px 20px;
 }
 
 header,
@@ -36,7 +36,6 @@ body {
   top: var(--padding-body);
 }
 
-footer {
-  position: absolute;
-  bottom: 0px;
+main {
+  margin-bottom: var(--footer-height);
 }
