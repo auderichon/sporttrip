@@ -1,4 +1,2 @@
 node_modules
-
-# don't forget to uncomment:
-# .env
+.env

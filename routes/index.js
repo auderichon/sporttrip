@@ -33,19 +33,12 @@ router.get("/", (req, res, next) => {
       }
       let sports = [...new Set(arrS)];
 
-      // let arrD = [];
-      // for (let i = 0; i < activities.length; i++) {
-      //   arrD.push(activities[i].duration);
-      // }
-      // let durations = [...new Set(arrD)];
-
       res.render("index", {
         title: "SporTrip: find partners for your next sports trip",
         activities,
         sports,
         countries,
         js: "filter",
-        // durations,
       });
     })
     .catch(next);

@@ -101,7 +101,9 @@ router.get("/validate/:id/:actid", (req, res, next) => {
         .findByIdAndUpdate(req.params.actid, {
           $pull: { participantsToApprove: { participantID: user } },
         })
-        .then(() => res.redirect("/"))
+        .then(() =>
+          res.redirect(`/user/activities/${req.session.currentUser._id}`)
+        )
         .catch(next)
     )
     .catch(next);
@@ -114,7 +116,7 @@ router.get("/decline/:id/:actid", (req, res, next) => {
     .findByIdAndUpdate(req.params.actid, {
       $pull: { participantsToApprove: { participantID: user } },
     })
-    .then(() => res.redirect("/"))
+    .then(() => res.redirect(`/user/activities/${req.session.currentUser._id}`))
     .catch(next);
 });
 
@@ -146,7 +148,7 @@ router.post("/create", (req, res, next) => {
     })
     .then(() => {
       req.flash("success", "activity successfully created");
-      res.redirect("/");
+      res.redirect(`/user/activities/${req.session.currentUser._id}`);
     })
     .catch(next);
 });
@@ -156,7 +158,7 @@ router.post("/update/:id", (req, res, next) => {
     .findByIdAndUpdate(req.params.id, req.body)
     .then(() => {
       req.flash("success", "activity successfully updated");
-      res.redirect("/");
+      res.redirect(`/user/activities/${req.session.currentUser._id}`);
     })
     .catch(next);
 });

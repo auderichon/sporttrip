@@ -1,49 +1,39 @@
 #!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
-
 const http = require("http");
-const {app,sessionObj} = require("../app");
-const   sharedsession = require("express-socket.io-session");
+const { app, sessionObj } = require("../app");
+// const sharedsession = require("express-socket.io-session");
 const router = require("../routes");
 /**
  * Create HTTP server.
  */
-
 const server = http.createServer(app);
-
 /**
  * Log errors.
  */
-
 app.use((err, req, res, next) => {
   // always log the error
   console.error("error", req.method, req.path, err);
-
   // only render if the error ocurred before sending the response
   if (!res.headersSent) {
     res.status(500);
     res.render("error", { error: err });
   }
-
   // catch 404 and render a not-found.hbs template
   if (res.headersSent) {
     res.status(404);
     res.render("error", { error: err });
   }
 });
-
 /**
  * Event listener for HTTP server "error" event.
  */
-
 server.on("error", (error) => {
   if (error.syscall !== "listen") {
     throw error;
   }
-
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case "EACCES":
@@ -58,13 +48,9 @@ server.on("error", (error) => {
       throw error;
   }
 });
-
 /**
  * Listen on provided port.
  */
-
 const toto = server.listen(process.env.PORT, () => {
   console.log(`Listening on http://localhost:${process.env.PORT}`);
 });
-
-

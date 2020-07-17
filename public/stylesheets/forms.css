@@ -11,10 +11,6 @@
   flex-direction: column;
 }
 
-.form-all div {
-  height: 60px;
-}
-
 .form-item {
   display: flex;
   flex-direction: column;
