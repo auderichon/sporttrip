@@ -36,7 +36,7 @@ form.onchange = function (event) {
       console.log("===============RESPONSE", response.data);
 
       response.data.forEach((res) => {
-        let formattedDate = dateFormat(res.date);
+        let formattedDate = res.date.slice(0, 11);
         activityList.innerHTML += `<div class="each-activity">
           <a href="/activity/${res._id}"><img src="${res.sport.picture}" alt=""></a>
           <h4>${res.activityName}</h4>
@@ -75,16 +75,14 @@ function getSelectValues(select) {
   return result;
 }
 
-function dateFormat(date) {
-  let dd = date.getDate();
-  let mm = date.getMonth() + 1;
-  let yyyy = date.getFullYear();
-  if (dd < 10) {
-    dd = "0" + dd;
-  }
-  if (mm < 10) {
-    mm = "0" + mm;
-  }
-  let formattedDate = dd + "-" + mm + "-" + yyyy;
-  return formattedDate;
-}
+// function dateFormat(date) {
+//   date.slice(0, 11);
+//   if (dd < 10) {
+//     dd = "0" + dd;
+//   }
+//   if (mm < 10) {
+//     mm = "0" + mm;
+//   }
+//   let formattedDate = dd + "-" + mm + "-" + yyyy;
+//   return formattedDate;
+// }
