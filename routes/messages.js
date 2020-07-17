@@ -40,7 +40,7 @@ router.post("/:user1id/:user2id", (req, res, next) => {
             users,
             messages: [
               {
-                user: req.params.user2id,
+                user: req.session.currentUser._id,
                 content: req.body.content,
                 date: Date.now(),
               },
