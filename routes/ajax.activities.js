@@ -6,7 +6,7 @@ router.get("/search", (req, res, next) => {
   console.log(req.query);
   activityModel
     .find(req.query)
-    .sort({ date: 1 })
+    .sort({ date: -1 })
     .populate("sport creator")
     .then((dbResult) => {
       console.log("DB RESULT ========> ", dbResult);
