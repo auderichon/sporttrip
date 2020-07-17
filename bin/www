@@ -4,7 +4,7 @@
  */
 const http = require("http");
 const { app, sessionObj } = require("../app");
-const sharedsession = require("express-socket.io-session");
+// const sharedsession = require("express-socket.io-session");
 const router = require("../routes");
 /**
  * Create HTTP server.
