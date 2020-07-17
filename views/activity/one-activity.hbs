@@ -58,9 +58,15 @@
         {{/compare}}
 
         {{#compare activity.creator._id currentUser._id operator="!="}}
+        {{!-- {{#each activity.participants }}
+        {{#compare this.participantID._id ../../currentUser._id operator="!="}} --}}
+        {{#unless partiFull }}
         <div class="btn-register">
             <a href="/activity/register/{{ activity._id }}/{{ currentUser._id }}">Register for this activity</a>
         </div>
+        {{/unless}}
+        {{!-- {{/compare}}
+        {{/each}} --}}
         <div id="form-container">
             <form class="form-all" action="/message/{{activity.creator._id}}/{{currentUser._id}}" method="post">
                 <h3>Send a message to {{activity.creator.firstName}}</h3>

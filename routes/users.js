@@ -136,9 +136,18 @@ router.get("/profile/:id", protectPrivateRoute, (req, res, next) => {
         (review) => review.reviewedUser._id == req.params.id
       );
 
+      let avg = 0;
+      if (userReviews.length > 0) {
+        for (let i = 0; i < userReviews.length; i++) {
+          avg += userReviews[i].rate;
+        }
+        avg = Math.round(avg / userReviews.length);
+      }
+
       res.render("user/user-profile", {
         user,
         userReviews,
+        avg,
       });
     })
     .catch(next);
