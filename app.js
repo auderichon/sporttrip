@@ -13,7 +13,6 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const devMode = false;
 const logger = require("morgan");
-// const io = require('socket.io')(app);
 
 // config logger (for debug)
 app.use(logger("dev"));
