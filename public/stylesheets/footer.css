@@ -1,30 +1,22 @@
-
-
 #footer {
-	height: var(--footer-height);
-	width: 100%;
-	display: flex;
-	justify-content: center;
-	flex-direction: row;
-	align-items: center;
-	font-size: 12px;
-  margin-top: 15px;
+  height: var(--footer-height);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  font-size: 12px;
   padding: 10px;
   background-color: var(--color-secondary);
-
   position: absolute;
-  bottom: -var(var(--footer-height));
 }
-
 
 .ironhackers a {
   margin-left: 40px;
 }
 
-
 @media (max-width: 700px) {
-	footer * {
-		font-size: 0.9em;
-	}
+  footer * {
+    font-size: 0.9em;
+  }
 }
-
