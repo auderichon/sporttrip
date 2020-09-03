@@ -19,10 +19,8 @@
       <div class="single-participant">
         <p>{{ this.participantID.firstName }}
           {{ this.participantID.lastName }}</p>
-        <a id="validate"
-           href="/activity/validate/{{ this.participantID._id }}/{{ ../this._id }}">Validate</a>
-        <a id="decline"
-           href="/activity/decline/{{ this.participantID._id }}/{{ ../this._id }}">Decline</a>
+        <a id="validate" href="/activity/validate/{{ this.participantID._id }}/{{ ../this._id }}">Validate</a>
+        <a id="decline" href="/activity/decline/{{ this.participantID._id }}/{{ ../this._id }}">Decline</a>
       </div>
     </div>
     {{/each}}
@@ -34,14 +32,14 @@
     {{#each toBeApp}}
     {{#each this.participantsToApprove}}
     <div class="participants-approval">
-      <p>{{ ../this.activityName }}</p>
+      <p><a href="/activity/{{ ../this._id }}">{{ ../this.activityName }}</a></p>
     </div>
     {{/each}}
     {{/each}}
 
     <h3>Activities I created </h3>
 
-    <div class="activity-list">
+    <div class=" activity-list">
       {{#each activity}}
       {{!-- accessible only if logged user === creator ;
 "../" allows to escape the scope of the EACH --}}
@@ -50,17 +48,14 @@
       <div class="each-activity">
 
 
-        <a href="/activity/{{this._id }}"><img src="{{ this.sport.picture }}"
-               alt=""></a>
+        <a href="/activity/{{this._id }}"><img src="{{ this.sport.picture }}" alt=""></a>
 
 
         <h4>{{ this.activityName }}</h4>
-        <a class="activity-creator-link"
-           href="/user/profile/{{ this.creator._id }}">
+        <a class="activity-creator-link" href="/user/profile/{{ this.creator._id }}">
           <div class="activity-creator">
             <p>with {{ this.creator.firstName }}</p>
-            <img src="{{ this.creator.picture }}"
-                 alt="{{ this.creator.firstName }} pic">
+            <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
           </div>
         </a>
         <p>Level: {{ this.requiredLevel }}</p>
@@ -91,8 +86,7 @@
       <div class="each-activity">
 
 
-        <a href="/activity/{{ ../this._id }}"><img src="{{ ../this.sport.picture }}"
-               alt=""></a>
+        <a href="/activity/{{ ../this._id }}"><img src="{{ ../this.sport.picture }}" alt=""></a>
 
 
 
@@ -102,8 +96,7 @@
           <a href="/user/profile/{{ ../this.creator._id }}">
             <p>with {{ ../this.creator.firstName }}</p>
           </a>
-          <img src="{{ ../this.creator.picture }}"
-               alt="{{ ../this.creator.firstName }} pic">
+          <img src="{{ ../this.creator.picture }}" alt="{{ ../this.creator.firstName }} pic">
         </div>
         <p>Level: {{ ../this.requiredLevel }}</p>
         <div class="time">
