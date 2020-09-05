@@ -95,3 +95,7 @@ hbs.registerHelper("comma", function (array) {
   if (!Array.isArray(array)) return "";
   return array.join(", ");
 });
+
+hbs.registerHelper("length", function (array) {
+  return array.length + 1;
+});

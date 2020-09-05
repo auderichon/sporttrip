@@ -6,9 +6,7 @@
   <div class="profile-container">
 
     {{#if user.picture}}
-    <img class="profile-picture"
-         src="{{user.picture}}"
-         alt="Picture of {{user.firstName}}">
+    <img class="profile-picture" src="{{user.picture}}" alt="Picture of {{user.firstName}}">
     {{/if}}
     {{#unless user.picture}}
     <h3>No profile picture yet.</h3>
@@ -17,14 +15,15 @@
     <table class="profile-infos table">
 
       <tr>
-        <th>{{user.firstName}}'sports</th>
+        <th rowspan={{ length user.sports }}>{{user.firstName}}'s sports</th>
         <td>
           {{#each user.sports}}
-          <ul>
-            <li> {{this.sport.name}} -- Level : {{this.level}}</li>
-          </ul>
-          {{/each}}
-        </td>
+      <tr>
+        <td class="sportNameTable">{{this.sport.name}}</td>
+        <td>Level : {{this.level}}</td>
+      </tr>
+      {{/each}}
+      </td>
       </tr>
 
       <tr>
@@ -61,9 +60,7 @@
 
     {{#compare user._id currentUser._id operator="!="}}
     <div id="form-container">
-      <form class="form-all"
-            action="/message/{{user._id}}/{{currentUser._id}}"
-            method="post">
+      <form class="form-all" action="/message/{{user._id}}/{{currentUser._id}}" method="post">
         <h3>Send a message to {{user.firstName}}</h3>
         <div>
           <label for="user-lastname">Message</label>

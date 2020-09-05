@@ -58,7 +58,7 @@
             <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
           </div>
         </a>
-        <p>Level: {{ this.requiredLevel }}</p>
+        <p>Level: {{ comma this.requiredLevel }}</p>
         <div class="time">
           <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>
           <p><i class="fas fa-calendar-day"></i> {{ format-date this.date }}</p>
@@ -98,7 +98,7 @@
           </a>
           <img src="{{ ../this.creator.picture }}" alt="{{ ../this.creator.firstName }} pic">
         </div>
-        <p>Level: {{ ../this.requiredLevel }}</p>
+        <p>Level: {{ comma ../this.requiredLevel }}</p>
         <div class="time">
           <p><i class="fas fa-stopwatch"></i> {{ ../this.duration }}</p>
           <p><i class="fas fa-calendar-day"></i> {{ format-date ../this.date }}</p>

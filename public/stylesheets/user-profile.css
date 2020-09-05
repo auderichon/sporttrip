@@ -1,57 +1,60 @@
 #user-profile {
-	display: flex;
+  display: flex;
 }
 
 .profile-container {
-	width: 80%;
-	margin: auto;
+  width: 80%;
+  margin: auto;
 }
 
 .profile-picture {
-	height: 200px;
-	margin-bottom: 20px;
+  height: 200px;
+  margin-bottom: 20px;
 }
 
 .profile-infos.table tr {
-	height: 35px;
+  height: 35px;
 }
 
 .profile-infos.table th {
-	text-align: left;
-	padding-right: 20px;
+  text-align: left;
+  padding-right: 20px;
 }
 
 .review-title {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .reviews-box {
-	width: 70%;
+  width: 70%;
 }
 
 p.avg-rate {
-	margin-bottom: 10px;
-	color: #00b7ff;
+  margin-bottom: 10px;
+  color: #00b7ff;
 }
 
 p.review-date {
-	font-size: 10px;
-	margin-top: 10px;
+  font-size: 10px;
+  margin-top: 10px;
 }
 
 p.review-content {
-	border-bottom: 1.5px solid var(--color-secondary);
-	margin-top: 0px;
-	color: darkgrey;
+  border-bottom: 1.5px solid var(--color-secondary);
+  margin-top: 0px;
+  color: darkgrey;
 }
 
 .review-add {
-	margin-top: 20px;
-	font-size: 14px;
+  margin-top: 20px;
+  font-size: 14px;
 }
 
 #rate,
 #reviewContent {
-	color: #00b7ff;
+  color: #00b7ff;
 }
 
+.sportNameTable {
+  min-width: 200px;
+}
