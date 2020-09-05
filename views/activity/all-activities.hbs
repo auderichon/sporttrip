@@ -1,26 +1,25 @@
-<h2>All existing activities</h2>
-
-<div class="activity-list">
-  {{#each activities}}
-  <div class="each-activity">
-    <a href="/activity/{{ this._id }}"><img src="{{ this.sport.picture }}"
-           alt=""></a>
-    <h4>{{ this.activityName }}</h4>
-    <a href="/user/profile/{{ this.creator._id }}">
-      <div class="activity-creator">
-        <p>with {{ this.creator.firstName }}</p>
-        <img src="{{ this.creator.picture }}"
-             alt="{{ this.creator.firstName }} pic">
+<div class="container">
+  <h2>All existing activities</h2>
+  <div class="activity-list">
+    {{#each activities}}
+    <div class="each-activity">
+      <a href="/activity/{{ this._id }}"><img src="{{ this.sport.picture }}" alt=""></a>
+      <h4>{{ this.activityName }}</h4>
+      <a href="/user/profile/{{ this.creator._id }}">
+        <div class="activity-creator">
+          <p>with {{ this.creator.firstName }}</p>
+          <img src="{{ this.creator.picture }}" alt="{{ this.creator.firstName }} pic">
+        </div>
+      </a>
+      <p>Level(s): {{ comma this.requiredLevel }}</p>
+      <div class="time">
+        <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>
+        <p><i class="fas fa-calendar-day"></i> {{ format-date this.date }}</p>
       </div>
-    </a>
-    <p>Level: {{ this.requiredLevel }}</p>
-    <div class="time">
-      <p><i class="fas fa-stopwatch"></i> {{ this.duration }}</p>
-      <p><i class="fas fa-calendar-day"></i> {{ format-date this.date }}</p>
+      <div class="activity-button">
+        <a href="/activity/{{ this._id }}">Check it out!</a>
+      </div>
     </div>
-    <div class="activity-button">
-      <a href="/activity/{{ this._id }}">Check it out!</a>
-    </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>
