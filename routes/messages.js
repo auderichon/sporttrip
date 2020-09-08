@@ -33,7 +33,7 @@ router.post("/:user1id/:user2id", (req, res, next) => {
       ],
     })
     .then((dbres) => {
-      console.log("=========", dbres);
+      console.log("=========", req.session.currentUser._id, dbres);
       if (dbres === null) {
         conversationModel
           .create({
@@ -56,7 +56,7 @@ router.post("/:user1id/:user2id", (req, res, next) => {
           .findByIdAndUpdate(dbres._id, {
             $push: {
               messages: {
-                user: req.params.user2id,
+                user: req.session.currentUser._id,
                 content: req.body.content,
                 date: Date.now(),
               },
